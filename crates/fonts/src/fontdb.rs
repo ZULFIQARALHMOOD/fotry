@@ -465,8 +465,10 @@ fn read_fallback_file(path: &std::path::Path) -> Option<Vec<u8>> {
 /// Linux uses Noto fonts.
 #[cfg(windows)]
 pub const RTL_FALLBACKS: &[&str] = &[
-    "Vazirmatn",
     "Noto Naskh Arabic",
+    "Amiri",
+    "Cairo",
+    "Vazirmatn",
     "Noto Sans Arabic",
     "Noto Sans Arabic UI",
     "Sahel",
@@ -483,9 +485,11 @@ pub const RTL_FALLBACKS: &[&str] = &[
 
 #[cfg(target_os = "macos")]
 pub const RTL_FALLBACKS: &[&str] = &[
+    "Noto Naskh Arabic",
+    "Amiri",
+    "Cairo",
     "Helvetica",
     "Vazirmatn",
-    "Noto Naskh Arabic",
     "Noto Sans Arabic",
     "Noto Sans Hebrew",
     "Geeza Pro",
@@ -497,7 +501,7 @@ pub const RTL_FALLBACKS: &[&str] = &[
 
 #[cfg(not(any(windows, target_os = "macos")))]
 pub const RTL_FALLBACKS: &[&str] =
-    &["Noto Naskh Arabic", "Noto Sans Arabic", "Noto Sans Hebrew", "Vazirmatn", "Segoe UI", "Arial", "Tahoma", "DejaVu Sans"];
+    &["Noto Naskh Arabic", "Amiri", "Cairo", "Noto Sans Arabic", "Noto Sans Hebrew", "Vazirmatn", "Segoe UI", "Arial", "Tahoma", "DejaVu Sans"];
 
 /// Families tried (when installed) for characters the loaded fonts lack: CJK, symbols, emoji.
 #[cfg(not(target_arch = "wasm32"))]

@@ -2,6 +2,7 @@
 resolver = "3"
 members = ["crates/*", "apps/*", "xtask"]
 default-members = ["crates/*", "apps/wordcraft", "apps/wordcraft-cli", "xtask"]
+exclude = ["apps/wordcraft-android"]
 
 [workspace.package]
 version = "0.7.0"

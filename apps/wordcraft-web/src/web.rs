@@ -27,6 +27,13 @@ pub fn start() {
             log::error!("missing <canvas id=\"{CANVAS_ID}\">");
             return;
         };
+        if let Err(e) = load_arabic_fonts().await {
+            log::error!("Arabic fallback fonts could not be loaded: {e}");
+            if let Some(el) = document.get_element_by_id(LOADING_ID) {
+                el.set_text_content(Some(&format!("Arabic fallback fonts could not be loaded: {e}")));
+            }
+            return;
+        }
         let dirty = Rc::new(Cell::new(false));
         let saves = AsyncSaves::default();
         if let Err(e) = guard_unload(dirty.clone(), saves.clone()) {
@@ -80,6 +87,27 @@ pub fn start() {
             }
         }
     });
+}
+
+async fn load_arabic_fonts() -> Result<(), String> {
+    let window = web_sys::window().ok_or("no window")?;
+    for name in ["NotoNaskhArabic.ttf", "Amiri-Regular.ttf", "Cairo.ttf"] {
+        let url = format!("./fonts/{name}");
+        let response = wasm_bindgen_futures::JsFuture::from(window.fetch_with_str(&url))
+            .await
+            .map_err(|e| format!("request for {url} failed: {e:?}"))?
+            .dyn_into::<web_sys::Response>()
+            .map_err(|e| format!("invalid response for {url}: {e:?}"))?;
+        if !response.ok() {
+            return Err(format!("request for {url} returned HTTP {}", response.status()));
+        }
+        let data = wasm_bindgen_futures::JsFuture::from(response.array_buffer().map_err(|e| format!("couldn't read {url}: {e:?}"))?)
+            .await
+            .map_err(|e| format!("couldn't read {url}: {e:?}"))?;
+        let bytes = js_sys::Uint8Array::new(&data).to_vec();
+        wordcraft_fonts::FontDb::global().install_font(name, &bytes).map_err(|e| format!("{url}: {e}"))?;
+    }
+    Ok(())
 }
 
 fn query() -> String {
