@@ -1,0 +1,18 @@
+{
+  "name": "wordcraft-android",
+  "version": "0.7.0",
+  "private": true,
+  "description": "Capacitor Android wrapper for the WordCraft web app",
+  "scripts": {
+    "build:web": "cd ../wordcraft-web && trunk build --release",
+    "android:sync": "cap sync android",
+    "android:apk": "cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "6.2.1",
+    "@capacitor/core": "6.2.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "6.2.1"
+  }
+}

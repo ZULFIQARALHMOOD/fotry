@@ -8,3 +8,10 @@ plan/
 /.claude/
 /target-*/
 /craft-fonts/
+
+node_modules/
+apps/wordcraft-android/android/build/
+apps/wordcraft-android/android/app/build/
+apps/wordcraft-android/android/.gradle/
+apps/wordcraft-android/android/local.properties
+*.apk
