@@ -1,7 +1,6 @@
 # Arabic (ar) interface catalog. Columns, separated by a TAB:
 #   context <TAB> English source <TAB> translation
-# This initial catalog translates the primary ribbon, common actions and settings. Other
-# interface strings intentionally fall back to English until they have been translated.
+# Arabic translations are written from the English meaning in batches.
 # Keep placeholders and trailing … unchanged.
 
 	About	حول
@@ -162,3 +161,153 @@
 	Search document	البحث في المستند
 	Status Bar	شريط الحالة
 	Words	كلمات
+	(no suggestions)	لا توجد اقتراحات
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	معالج كلمات مجاني ومفتوح المصدر كُتب من الصفر بلغة Rust.\nوهو جزء من تطبيقات Crafting Apps التابعة لفريق ArtCraft.
+	AaBbCcDd	أأببججد
+	Accept All Changes	قبول كل التغييرات
+	Accept This Change	قبول هذا التغيير
+	Add Space Before Paragraph	إضافة مسافة قبل الفقرة
+	Add Text	إضافة نص
+	Add to Style Gallery	إضافة إلى معرض الأنماط
+	Address Block	كتلة العنوان
+	Address:	العنوان:
+	Address\nBlock	كتلة\nالعنوان
+	Adjust	ضبط
+	After:	بعد:
+	Agents	الوكلاء
+	All Caps	أحرف كبيرة
+	Annotation Reference	مرجع التعليق التوضيحي
+	Annotation Subject	موضوع التعليق التوضيحي
+	Annotation Text	نص التعليق التوضيحي
+	Apply Character Style	تطبيق نمط الأحرف
+	Arrange\nAll	ترتيب\nالكل
+	Arrow	سهم
+	Artistic Effects	تأثيرات فنية
+	Author	المؤلف
+	AutoFit Contents	احتواء المحتويات تلقائيًا
+	AutoFit Window	احتواء النافذة تلقائيًا
+	Automatic Table 1 (3 levels)	جدول تلقائي 1 (3 مستويات)
+	Automatic Table 2 (2 levels)	جدول تلقائي 2 (مستويان)
+	AutoSave saves every change to the file (needs a saved document)	يحفظ الحفظ التلقائي كل تغيير في الملف (يتطلب مستندًا محفوظًا)
+	AutoText	نص تلقائي
+	Banded Columns	أعمدة متناوبة التظليل
+	Banded Rows	صفوف متناوبة التظليل
+	Binary assets added	إضافة أصول ثنائية
+	Binary assets removed	إزالة أصول ثنائية
+	Blank	فارغ
+	Blank (Three Columns)	فارغ (ثلاثة أعمدة)
+	Block\nAuthors	حظر\nالمؤلفين
+	Body text in a short paragraph to show spacing.	نص أساسي في فقرة قصيرة لإظهار التباعد.
+	Book Title	عنوان الكتاب
+	Bookmark name:	اسم الإشارة المرجعية:
+	Delete Bookmark	حذف الإشارة المرجعية
+	Hidden bookmarks	الإشارات المرجعية المخفية
+	Sort by:	ترتيب حسب:
+	Border Painter	ناسخ الحدود
+	Border\nPainter	ناسخ\nالحدود
+	Bottom of Page	أسفل الصفحة
+	Bottom:	أسفل:
+	Box	مربع
+	Bring Forward	إحضار إلى الأمام
+	Bullet Library	مكتبة التعداد النقطي
+	Calendar	تقويم
+	Capitalize Each Word	بدء كل كلمة بحرف كبير
+	Captions	التسميات التوضيحية
+	Category	الفئة
+	Cell Margins	هوامش الخلية
+	Cell Size	حجم الخلية
+	Cell\nMargins	هوامش\nالخلية
+	Change List Level	تغيير مستوى القائمة
+	Character Position	موضع الأحرف
+	Character Scale	مقياس الأحرف
+	Character Shading	تظليل الأحرف
+	Character Spacing	تباعد الأحرف
+	Characters (no spaces)	الأحرف (من دون مسافات)
+	Characters (with spaces)	الأحرف (مع المسافات)
+	Check Compatibility	التحقق من التوافق
+	Check for Errors	التحقق من وجود أخطاء
+	Check\nAccessibility	التحقق من\nإمكانية الوصول
+	Citation Style	نمط الاستشهاد
+	Collapse Selection	طي التحديد
+	Color:	اللون:
+	Colors	الألوان
+	Column Break	فاصل عمود
+	Combine	دمج
+	Commands	الأوامر
+	Community\nDiscord	مجتمع\nDiscord
+	Compact	مضغوط
+	Compress Pictures	ضغط الصور
+	Continuous	مستمر
+	Contributors	المساهمون
+	Convert	تحويل
+	Convert Text to Table	تحويل النص إلى جدول
+	Convert Text to Table…	تحويل النص إلى جدول…
+	Convert to Text	تحويل إلى نص
+	Corrections	التصحيحات
+	Cover Page	صفحة غلاف
+	Create a Style	إنشاء نمط
+	Create an interactive outline of your document.\n\nIt's a great way to keep track of where you are or quickly move your content around.\n\nTo get started, go to the Home tab and apply Heading styles to the headings in your document.	أنشئ مخططًا تفاعليًا لمستندك.\n\nإنها طريقة رائعة لمتابعة موضعك أو لنقل المحتوى بسرعة.\n\nللبدء، انتقل إلى علامة تبويب الرئيسية وطبّق أنماط العناوين على عناوين المستند.
+	Create New Style	إنشاء نمط جديد
+	Crop	اقتصاص
+	Cross-reference	إحالة مرجعية
+	Current Position	الموضع الحالي
+	Current style: {style}	النمط الحالي: {style}
+	Custom Margins…	هوامش مخصصة…
+	Custom Watermark	علامة مائية مخصصة
+	Custom Watermark…	علامة مائية مخصصة…
+	Customize Quick Access Toolbar	تخصيص شريط أدوات الوصول السريع
+	Dark Mode	الوضع الداكن
+	Dashed	متقطع
+	Data	البيانات
+	Date & Time	التاريخ والوقت
+	Decrease Font Size	تصغير حجم الخط
+	Decrease Indent	تقليل المسافة البادئة
+	Default	افتراضي
+	Default Paragraph Font	خط الفقرة الافتراضي
+	Define New Bullet	تعريف تعداد نقطي جديد
+	Define New Number Format	تعريف تنسيق ترقيم جديد
+	Delete Comment	حذف التعليق
+	Delete Next Word	حذف الكلمة التالية
+	Delete Previous Word	حذف الكلمة السابقة
+	Delete Style	حذف النمط
+	Delete Table	حذف الجدول
+	development build	نسخة تطوير
+	Diagonal	قطري
+	Diamond	معيّن
+	Dictate	إملاء
+	Different First Page	صفحة أولى مختلفة
+	Different Odd & Even Pages	صفحات فردية وزوجية مختلفة
+	Discord	Discord
+	Discord community	مجتمع Discord
+	Display	عرض
+	Display for Review	عرض للمراجعة
+	Distribute Columns	توزيع الأعمدة
+	Distribute Rows	توزيع الصفوف
+	Distributed	موزّع
+	Do Not Show in TOC	عدم الإظهار في جدول المحتويات
+	Document End	نهاية المستند
+	Document Formatting	تنسيق المستند
+	Document Property	خاصية المستند
+	Document Start	بداية المستند
+	Document Text	نص المستند
+	Document Title	عنوان المستند
+	Documents you open will show up here.	ستظهر هنا المستندات التي تفتحها.
+	Dot-dash	نقطة وشرطة
+	Dotted	منقّط
+	Double	مزدوج
+	Double Spacing	تباعد مزدوج
+	Double Strikethrough	يتوسطه خط مزدوج
+	Double Underline	تسطير مزدوج
+	Down	إلى الأسفل
+	Draft	مسودة
+	Drawing Tools	أدوات الرسم
+	Drawing\nCanvas	لوحة\nالرسم
+	Drop Cap	حرف استهلالي
+	Edit Footer	تحرير التذييل
+	Edit Header	تحرير الرأس
+	Edit Recipient List	تحرير قائمة المستلمين
+	Edit\nRecipient List	تحرير\nقائمة المستلمين
+	Edited	مُحرّر
+	Editing header/footer	تحرير الرأس/التذييل
+	Editing — edit the document directly	تحرير — تعديل المستند مباشرة
+	Editor	المحرر
