@@ -1211,3 +1211,153 @@ preview	Title	عنوان
 	Functions	دوال
 	Geometry	هندسة
 	Greek Letters	أحرف يونانية
+	Hyperbolic Functions	دوال زائدية
+	Identity Matrices	مصفوفات الوحدة
+	Integrals	تكاملات
+	Inverse Functions	دوال عكسية
+	Inverse Hyperbolic Functions	دوال زائدية عكسية
+	Letter-Like Symbols	رموز شبيهة بالحروف
+	Matrices with Brackets	مصفوفات محاطة بأقواس
+	Negated Relations	علاقات منفية
+	Operator Structures	بُنى العوامل
+	Operators	عوامل
+	Other Large Operators	عوامل كبيرة أخرى
+	Overbars and Underbars	خطوط علوية وسفلية
+	Products and Coproducts	جداءات وضروب مشتركة
+	Radicals	جذور
+	Scripts	رموز علوية وسفلية
+	Single Brackets	أقواس مفردة
+	Sparse Matrices	مصفوفات متناثرة
+	Subscripts and Superscripts	رموز سفلية وعلوية
+	Summations	مجاميع
+	Trigonometric Functions	دوال مثلثية
+	Unions and Intersections	اتحادات وتقاطع
+	1×2 Empty Matrix	مصفوفة فارغة 1×2
+	1×3 Empty Matrix	مصفوفة فارغة 1×3
+	2×1 Empty Matrix	مصفوفة فارغة 2×1
+	2×2 Empty Matrix	مصفوفة فارغة 2×2
+	2×3 Empty Matrix	مصفوفة فارغة 2×3
+	3×1 Empty Matrix	مصفوفة فارغة 3×1
+	3×2 Empty Matrix	مصفوفة فارغة 3×2
+	3×3 Empty Matrix	مصفوفة فارغة 3×3
+	2×2 Determinant	محدد 2×2
+	2×2 Identity Matrix	مصفوفة وحدة 2×2
+	2×2 Identity Matrix (sparse)	مصفوفة وحدة متناثرة 2×2
+	3×3 Identity Matrix	مصفوفة وحدة 3×3
+	3×3 Identity Matrix (sparse)	مصفوفة وحدة متناثرة 3×3
+	2×2 Matrix in Brackets	مصفوفة 2×2 بين أقواس مربعة
+	2×2 Matrix in Double Bars	مصفوفة 2×2 بين خطين مزدوجين
+	2×2 Matrix in Parentheses	مصفوفة 2×2 بين قوسين
+	n×n Identity Matrix	مصفوفة وحدة n×n
+	n×n Matrix	مصفوفة n×n
+	A xor B	أو الحصرية بين A وB
+	Absolute value cases	حالات القيمة المطلقة
+	Acute	حاد
+	Angle Brackets	أقواس زاوية
+	Angle Brackets with Separator	أقواس زاوية مع فاصل
+	Angle Brackets with Two Separators	أقواس زاوية مع فاصلين
+	Bar	خط
+	Baseline Dots	نقاط على خط الأساس
+	Binomial Coefficient	معامل ثنائي
+	Binomial Coefficient (angle)	معامل ثنائي (زاوي)
+	Binomial Coefficient with Angle Brackets	معامل ثنائي بين أقواس زاوية
+	Boxed Formula	صيغة داخل مربع
+	Boxed Formula (example)	صيغة داخل مربع (مثال)
+	Braces	أقواس معقوفة
+	Braces with Separator	أقواس معقوفة مع فاصل
+	Brackets	أقواس مربعة
+	Brackets with Separators	أقواس مربعة مع فواصل
+	Breve	علامة البريف
+	Cases (Three Conditions)	حالات (ثلاثة شروط)
+	Cases (Two Conditions)	حالات (شرطان)
+	Ceiling	دالة السقف
+	Change in y over change in x	التغير في y مقسومًا على التغير في x
+	Check	علامة اختيار
+	Circled Dot	نقطة داخل دائرة
+	Circled Plus	علامة زائد داخل دائرة
+	Circled Times	علامة ضرب داخل دائرة
+	Colon Equal	نقطتان وعلامة يساوي
+	Contour Integral	تكامل مساري
+	Contour Integral with Limits	تكامل مساري مع حدود
+	Contour Integral with Stacked Limits	تكامل مساري بحدود مكدسة
+	Coproduct	ضرب مشترك
+	Coproduct with Limits	ضرب مشترك مع حدود
+	Coproduct with Lower Limit	ضرب مشترك مع حد سفلي
+	Coproduct with Subscript-Superscript Limits	ضرب مشترك بحدود سفلية وعلوية
+	Cosecant Function	دالة قاطع التمام
+	Cosine 2x	جيب تمام 2x
+	Cosine Function	دالة جيب التمام
+	Cotangent Function	دالة ظل التمام
+	Cube Root	جذر تكعيبي
+	Delta Equal To	دلتا تساوي
+	Delta over arrow	دلتا فوق سهم
+	Diagonal Dots	نقاط قطرية
+	Differential	تفاضل
+	Differential theta	تفاضل ثيتا
+	Differential x	تفاضل x
+	Differential y	تفاضل y
+	Dot	نقطة
+	Double Bar	خط مزدوج
+	Double Dot	نقطتان
+	Double Integral	تكامل مزدوج
+	Double Integral with Limits	تكامل مزدوج مع حدود
+	Double Integral with Stacked Limits	تكامل مزدوج بحدود مكدسة
+	Double Left Arrow with Text Above	سهم مزدوج إلى اليسار مع نص أعلاه
+	Double Left Arrow with Text Below	سهم مزدوج إلى اليسار مع نص أسفله
+	Double Left Right Arrow with Text Above	سهم مزدوج إلى اليسار واليمين مع نص أعلاه
+	Double Left Right Arrow with Text Below	سهم مزدوج إلى اليسار واليمين مع نص أسفله
+	Double Right Arrow with Text Above	سهم مزدوج إلى اليمين مع نص أعلاه
+	Double Right Arrow with Text Below	سهم مزدوج إلى اليمين مع نص أسفله
+	Double Square Brackets	أقواس مربعة مزدوجة
+	Double Vertical Bars	خطوط عمودية مزدوجة
+	Double summation	مجموع مزدوج
+	Equal Equal	يساوي يساوي
+	Equal by Definition	يساوي بالتعريف
+	Exponential	أسي
+	Floor	دالة الأرضية
+	Grave	علامة النبرة المائلة إلى أسفل
+	Grouping Character Above	رمز تجميع أعلى
+	Grouping Character Below	رمز تجميع أسفل
+	Hat	علامة القبعة
+	Hyperbolic Cosecant Function	دالة قاطع التمام الزائدي
+	Hyperbolic Cosine Function	دالة جيب التمام الزائدي
+	Hyperbolic Cotangent Function	دالة ظل التمام الزائدي
+	Hyperbolic Secant Function	دالة القاطع الزائدي
+	Hyperbolic Sine Function	دالة الجيب الزائدي
+	Hyperbolic Tangent Function	دالة الظل الزائدي
+	Hypotenuse	وتر
+	Integral with Limits	تكامل مع حدود
+	Integral with Stacked Limits	تكامل بحدود مكدسة
+	Intersection	تقاطع
+	Intersection with Limits	تقاطع مع حدود
+	Intersection with Lower Limit	تقاطع مع حد سفلي
+	Intersection with Subscript-Superscript Limits	تقاطع بحدود سفلية وعلوية
+	Inverse Cosecant Function	دالة قاطع التمام العكسية
+	Inverse Cosine Function	دالة جيب التمام العكسية
+	Inverse Cotangent Function	دالة ظل التمام العكسية
+	Inverse Hyperbolic Cosecant Function	دالة قاطع التمام الزائدي العكسية
+	Inverse Hyperbolic Cosine Function	دالة جيب التمام الزائدي العكسية
+	Inverse Hyperbolic Cotangent Function	دالة ظل التمام الزائدي العكسية
+	Inverse Hyperbolic Secant Function	دالة القاطع الزائدي العكسية
+	Inverse Hyperbolic Sine Function	دالة الجيب الزائدي العكسية
+	Inverse Hyperbolic Tangent Function	دالة الظل الزائدي العكسية
+	Inverse Secant Function	دالة القاطع العكسية
+	Inverse Sine Function	دالة الجيب العكسية
+	Inverse Tangent Function	دالة الظل العكسية
+	Left Arrow with Text Above	سهم إلى اليسار مع نص أعلاه
+	Left Arrow with Text Below	سهم إلى اليسار مع نص أسفله
+	Left Bracket Twice	قوس أيسر مرتين
+	Left Right Arrow Above	سهم إلى اليسار واليمين أعلاه
+	Left Right Arrow with Text Above	سهم إلى اليسار واليمين مع نص أعلاه
+	Left Right Arrow with Text Below	سهم إلى اليسار واليمين مع نص أسفله
+	Left Subscript-Superscript	رمز سفلي وعلوي إلى اليسار
+	Leftwards Arrow Above	سهم إلى اليسار أعلاه
+	Leftwards Harpoon Above	خطاف سهم إلى اليسار أعلاه
+	Limit	نهاية
+	Limit Example	مثال على النهاية
+	Linear Fraction	كسر خطي
+	Logarithm	لوغاريتم
+	Logarithm with Base	لوغاريتم ذو أساس
+	Logical AND	و المنطقية
+	Logical AND with Limits	و المنطقية مع حدود
+	Logical OR	أو المنطقية
