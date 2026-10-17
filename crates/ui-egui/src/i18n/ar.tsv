@@ -911,3 +911,153 @@ preview	Title	عنوان
 	Read Aloud Status	حالة القراءة بصوت عالٍ
 	Reading Speed	سرعة القراءة
 	Skip Citations and Bibliography	تخطي الاستشهادات وقائمة المراجع
+	Skip citations & bibliography	تخطي الاستشهادات وقائمة المراجع
+	Stop Reading	إيقاف القراءة
+	Don't read Zotero, Mendeley or EndNote citations and bibliographies	عدم قراءة استشهادات Zotero أو Mendeley أو EndNote وقوائم مراجعها
+	Play	تشغيل
+	Pause	إيقاف مؤقت
+	Stop	إيقاف
+	Sentence	جملة
+	Paused	متوقف مؤقتًا
+	Finished	انتهى
+	Stopped	تم الإيقاف
+	Speed	السرعة
+	Normal speed	السرعة العادية
+	Your changes will be lost if you don't save them.	ستُفقد تغييراتك إذا لم تحفظها.
+	Scroll ribbon left	تمرير الشريط إلى اليسار
+	Scroll ribbon right	تمرير الشريط إلى اليمين
+	Change Structure	تغيير البنية
+	Change to Display	تحويل إلى عرض مستقل
+	Change to Inline	تحويل إلى مضمّن
+	Conversions	التحويلات
+	Delete Back in Equation	حذف ما قبل المؤشر في المعادلة
+	Delete in Equation	حذف في المعادلة
+	Edit Equation	تحرير المعادلة
+	Enter in Equation	إدراج سطر في المعادلة
+	Equation Gallery	معرض المعادلات
+	Equation Info	معلومات المعادلة
+	Equation Number	رقم المعادلة
+	Input Format	تنسيق الإدخال
+	Insert Structure	إدراج بنية
+	Insert Symbol	إدراج رمز
+	Justification	المحاذاة
+	Leave Equation	الخروج من المعادلة
+	Move in Equation	التنقل داخل المعادلة
+	Normal Text	نص عادي
+	Set Equation	تعيين المعادلة
+	Structure Actions	إجراءات البنية
+	Structures	بُنى
+	Tools	أدوات
+	Type in Equation	الكتابة في المعادلة
+	Inline	مضمّن
+	Number	رقم
+	Close Equation	إغلاق المعادلة
+	Insert New Equation	إدراج معادلة جديدة
+	Built-In	مضمن
+	Professional	احترافي
+	Linear	خطي
+	Fraction	كسر
+	Script	نص علوي/سفلي
+	Radical	جذر
+	Integral	تكامل
+	Large\nOperator	عامل\nكبير
+	Bracket	قوس
+	Function	دالة
+	Accent	علامة تشكيل
+	Limit and\nLog	نهاية و\nلوغاريتم
+	Operator	عامل
+	Equation Options	خيارات المعادلة
+	All symbol sets	كل مجموعات الرموز
+	Send the document straight to the system print dialog, or save a copy in another format below.	أرسل المستند مباشرة إلى مربع حوار طباعة النظام، أو احفظ نسخة بتنسيق آخر أدناه.
+	Or save a copy in another format:	أو احفظ نسخة بتنسيق آخر:
+	Opening print dialog…	جارٍ فتح مربع حوار الطباعة…
+	Print failed: {error}	فشلت الطباعة: {error}
+	Couldn't open {path}: {error}	تعذر فتح {path}: {error}
+	Column Selection	تحديد عمود
+	Style Inspector	فاحص الأنماط
+	Inspect Styles at Selection	فحص الأنماط عند التحديد
+	Clear Formatting Level	مسح مستوى التنسيق
+	Characters	أحرف
+	Direct formatting	تنسيق مباشر
+	Reset to Normal	إعادة التعيين إلى عادي
+	Clear Paragraph Formatting	مسح تنسيق الفقرة
+	Clear Character Style	مسح نمط الأحرف
+	Clear Character Formatting	مسح تنسيق الأحرف
+	Clear All	مسح الكل
+	Paste Special…	لصق خاص…
+	Paste as:	لصق كـ:
+	The clipboard is empty.	الحافظة فارغة.
+	Formatted Text	نص منسق
+	Rich Text Format (RTF)	تنسيق النص المنسق (RTF)
+	HTML Format	تنسيق HTML
+	Result	النتيجة
+	Drops all formatting and pastes plain text.	يزيل كل التنسيقات ويلصق نصًا عاديًا.
+	Advanced Find	بحث متقدم
+	Advanced Find…	بحث متقدم…
+	Go To…	انتقال إلى…
+	New Table Style	نمط جدول جديد
+	Modify Table Style	تعديل نمط الجدول
+	New Table Style…	نمط جدول جديد…
+	Modify Table Style…	تعديل نمط الجدول…
+	Apply formatting to:	تطبيق التنسيق على:
+	Whole Table	الجدول بأكمله
+	Fill color:	لون التعبئة:
+	{count} items highlighted	تم تمييز {count} عناصر
+	{n} pt	{n} نقطة
+	Not {name}	ليس {name}
+	Level {n}	المستوى {n}
+	Body Text	نص أساسي
+	{n} lines	{n} أسطر
+	At least {n}	على الأقل {n}
+	Exactly {n}	بالضبط {n}
+	Centered	توسيط
+	Character spacing	تباعد الأحرف
+	Don't add space between paragraphs of the same style	عدم إضافة مسافة بين الفقرات ذات النمط نفسه
+	Don't hyphenate	عدم فصل الكلمات بواصلة
+	Double strikethrough	يتوسطه خط مزدوج
+	Drop cap	حرف استهلالي
+	First line	السطر الأول
+	Font color	لون الخط
+	Highlight	تمييز
+	Justified	ضبط النص
+	Left indent	مسافة بادئة يسرى
+	Line spacing	تباعد الأسطر
+	Outline level	مستوى المخطط التفصيلي
+	Raised/lowered	مرتفع/منخفض
+	Right indent	مسافة بادئة يمنى
+	Scale	مقياس
+	Space after	مسافة بعد
+	Space before	مسافة قبل
+	Suppress line numbers	إخفاء أرقام الأسطر
+	Underline color	لون التسطير
+	Letters	رسائل
+	E-mail Messages	رسائل بريد إلكتروني
+	Directory	دليل
+	Normal Word Document	مستند Word عادي
+	If…Then…Else…	إذا…ثم…وإلا…
+	If…Then…Else	إذا…ثم…وإلا
+	Merge Record #	دمج السجل رقم
+	Skip Record If…	تخطي السجل إذا…
+	Skip Record If	تخطي السجل إذا
+	Equals:	يساوي:
+	Then insert:	ثم أدرج:
+	Otherwise insert:	وإلا فأدرج:
+	Courtesy Title	لقب المجاملة
+	First Name	الاسم الأول
+	Last Name	اسم العائلة
+	Company	الشركة
+	Address	العنوان
+	City	المدينة
+	State	الولاية/المحافظة
+	Postal Code	الرمز البريدي
+	Country	البلد
+	(not matched)	(غير مطابق)
+	Leave a recipient out of the merge when a field has this value.	استبعاد المستلم من الدمج إذا كانت قيمة أحد الحقول هذه القيمة.
+	Insert one text or another, depending on a field's value.	إدراج نص أو آخر وفقًا لقيمة حقل.
+	Select recipients first to match their fields.	حدد المستلمين أولًا لمطابقة حقولهم.
+	The recipient-list field that fills each part of an address block and greeting line.	حقل قائمة المستلمين الذي يملأ كل جزء من كتلة العنوان وسطر التحية.
+	No errors found: every merge field is in the recipient list.	لم يُعثر على أخطاء: كل حقل دمج موجود في قائمة المستلمين.
+	These merge fields aren't in the recipient list:	حقول الدمج هذه غير موجودة في قائمة المستلمين:
+	Add at least one field.	أضف حقلًا واحدًا على الأقل.
+	Add Field	إضافة حقل
+	Every field needs a name.	يجب أن يكون لكل حقل اسم.
