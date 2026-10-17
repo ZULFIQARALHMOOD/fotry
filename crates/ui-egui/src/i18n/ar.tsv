@@ -1811,3 +1811,153 @@ preview	Title	عنوان
 	Green:	أخضر:
 	Blue:	أزرق:
 	Hue:	درجة اللون:
+	Sat:	التشبع:
+	Lum:	الإضاءة:
+	Hex:	ست عشري:
+	Accessibility Pane	جزء إمكانية الوصول
+	Alt Text Pane	جزء النص البديل
+	Alt\nText	نص\nبديل
+	View Alt Text…	عرض النص البديل…
+	Mark as decorative	وضع علامة كعنصر زخرفي
+	Title:	العنوان:
+	Errors ({n})	الأخطاء ({n})
+	Warnings ({n})	التحذيرات ({n})
+	Tips ({n})	التلميحات ({n})
+	No accessibility issues found.	لم يُعثر على مشكلات في إمكانية الوصول.
+	Describe what this object shows, for people who can't see it.	صِف ما يعرضه هذا الكائن للأشخاص الذين لا يستطيعون رؤيته.
+	Decorative objects only add visual interest: screen readers skip them.	تضيف العناصر الزخرفية لمسة بصرية فقط؛ وتتجاوزها قارئات الشاشة.
+	Describe what this table shows, for people who can't see it.	صِف محتوى هذا الجدول للأشخاص الذين لا يستطيعون رؤيته.
+	Select a picture, shape, chart or table to describe it.	حدد صورة أو شكلًا أو مخططًا أو جدولًا لوصفه.
+	Document Grid	شبكة المستند
+	No grid	بلا شبكة
+	Lines only	الأسطر فقط
+	Lines and characters	الأسطر والأحرف
+	Text snaps to characters	محاذاة النص إلى الأحرف
+	Characters per line:	الأحرف في كل سطر:
+	Lines per page:	الأسطر في كل صفحة:
+	Moved from	نُقل من
+	Moved to	نُقل إلى
+	Developer	المطور
+	Controls	عناصر التحكم
+	Rich Text Content Control	عنصر تحكم محتوى نص منسق
+	Plain Text Content Control	عنصر تحكم محتوى نص عادي
+	Picture Content Control	عنصر تحكم محتوى صورة
+	Building Block Gallery Content Control	عنصر تحكم محتوى معرض الكتل الإنشائية
+	Check Box Content Control	عنصر تحكم محتوى مربع اختيار
+	Combo Box Content Control	عنصر تحكم محتوى مربع تحرير وسرد
+	Drop-Down List Content Control	عنصر تحكم محتوى قائمة منسدلة
+	Date Picker Content Control	عنصر تحكم محتوى منتقي التاريخ
+	Repeating Section Content Control	عنصر تحكم محتوى مقطع متكرر
+	Design Mode	وضع التصميم
+	Content Control at Selection	عنصر التحكم بالمحتوى عند التحديد
+	Toggle Check Box	تبديل مربع الاختيار
+	Choose List Item	اختيار عنصر من القائمة
+	Set Date	تعيين التاريخ
+	Remove Content Control	إزالة عنصر التحكم بالمحتوى
+	Content Control Properties	خصائص عنصر التحكم بالمحتوى
+	Tag	علامة
+	Placeholder text	نص نائب
+	Can't be deleted	لا يمكن حذفه
+	Contents can't be edited	لا يمكن تحرير المحتوى
+	Remove the control once edited	إزالة عنصر التحكم بعد تحريره
+	Allow line breaks	السماح بفواصل الأسطر
+	Date format	تنسيق التاريخ
+	Checked symbol	رمز محدد
+	Unchecked symbol	رمز غير محدد
+	List entries	عناصر القائمة
+	Display text	نص العرض
+	Value	القيمة
+	Today	اليوم
+	Put the caret in a content control first.	ضع المؤشر في عنصر تحكم بالمحتوى أولًا.
+	Right-to-Left Table	جدول من اليمين إلى اليسار
+	Right-to-Left Section	مقطع من اليمين إلى اليسار
+	Table direction:	اتجاه الجدول:
+	Section direction:	اتجاه المقطع:
+	A, B, C, …	أ، ب، ج، …
+	Above the item	أعلى العنصر
+	Accessed on	تاريخ الوصول
+	Add New Source…	إضافة مصدر جديد…
+	Add the chapter number	إضافة رقم الفصل
+	Atmosphere	الغلاف الجوي
+	Below the item	أسفل العنصر
+	Book	كتاب
+	Book title	عنوان الكتاب
+	Caption Numbering	ترقيم التسمية التوضيحية
+	Caption text	نص التسمية التوضيحية
+	Caption:	التسمية التوضيحية:
+	Chapter in a book	فصل في كتاب
+	Chapters begin at:	تبدأ الفصول عند:
+	Collect entries from:	جمع الإدخالات من:
+	Columns:	الأعمدة:
+	Conference	مؤتمر
+	Conference paper	ورقة مؤتمر
+	Container Title	عنوان الوعاء
+	Create Source	إنشاء مصدر
+	Cross-reference:	إحالة مرجعية:
+	Custom Table of Contents…	جدول محتويات مخصص…
+	DOI	معرّف الكائن الرقمي (DOI)
+	Day	اليوم
+	Delete Label	حذف التسمية
+	Edit Source	تحرير المصدر
+	Edition	الطبعة
+	Entry marked.	تم وضع علامة على الإدخال.
+	Example: {sample}	مثال: {sample}
+	Figure	شكل
+	Film	فيلم
+	Heading styles (levels 1–{n})	أنماط العناوين (المستويات 1–{n})
+	I, II, III, …	I، II، III، …
+	Include page numbers	تضمين أرقام الصفحات
+	Indented	بمسافة بادئة
+	Institution	مؤسسة
+	Ionosphere	الغلاف الأيوني
+	Issue	عدد
+	Journal	مجلة علمية
+	Label:	التسمية:
+	Last, First; Last, First	اسم العائلة، الاسم الأول؛ اسم العائلة، الاسم الأول
+	Leave the label out of the caption	استبعاد التسمية من التسمية التوضيحية
+	Letter headings	عناوين الحروف
+	Levels:	المستويات:
+	Link entries to their headings	ربط الإدخالات بعناوينها
+	Made from the author and year when empty	يُنشأ من اسم المؤلف والسنة عند تركه فارغًا
+	Magazine or newspaper article	مقالة في مجلة أو صحيفة
+	Main entry:	الإدخال الرئيسي:
+	Mark	وضع علامة
+	Mark All	وضع علامة على الكل
+	Mark Entry…	وضع علامة على الإدخال…
+	Mark Index Entry	وضع علامة على إدخال الفهرس
+	Mesosphere	الغلاف الأوسط
+	Month	الشهر
+	New Label	تسمية جديدة
+	New Label…	تسمية جديدة…
+	New…	جديد…
+	No sources yet.	لا توجد مصادر بعد.
+	Numbering…	ترقيم…
+	Options…	خيارات…
+	Other	أخرى
+	Other styles and their TOC level:	الأنماط الأخرى ومستوى كل منها في جدول المحتويات:
+	Outline levels	مستويات المخطط التفصيلي
+	Page number style	نمط رقم الصفحة
+	Page numbers at the right margin	أرقام الصفحات عند الهامش الأيمن
+	Page title	عنوان الصفحة
+	Pages of bookmark:	صفحات الإشارة المرجعية:
+	Periodical	دورية
+	Position:	الموضع:
+	Publisher	الناشر
+	Run-in	مدمج في السطر
+	See	انظر
+	Separator:	الفاصل:
+	Show every bibliography field	إظهار كل حقول قائمة المراجع
+	Site name	اسم الموقع
+	Source Manager	إدارة المصادر
+	Source type:	نوع المصدر:
+	Sources in this document:	المصادر في هذا المستند:
+	Styles:	الأنماط:
+	Subentry:	إدخال فرعي:
+	TC entry fields	حقول إدخال جدول المحتويات
+	Tab leader:	قائد الجدولة:
+	Table of Contents Options	خيارات جدول المحتويات
+	Table of Contents Styles	أنماط جدول المحتويات
+	This page	هذه الصفحة
+	Type:	النوع:
+	URL	عنوان URL
+	Volume	مجلد
