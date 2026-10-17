@@ -2111,3 +2111,153 @@ preview	Title	عنوان
 	Clustered Column	أعمدة مجمعة
 	Stacked Column	أعمدة مكدسة
 	Clustered Bar	أشرطة مجمعة
+	Stacked Bar	أشرطة مكدسة
+	Area	مساحة
+	Pie	دائري
+	Doughnut	حلقي
+	Scatter	مبعثر
+	“{text}” ({row}, {series}) isn't a number.	“{text}” ({row}، {series}) ليست رقمًا.
+	Category {n}	الفئة {n}
+	Series {n}	السلسلة {n}
+	Type the categories down the side and a column of values per series.	اكتب الفئات عموديًا في الجانب وعمودًا من القيم لكل سلسلة.
+	Categories	الفئات
+	Series name	اسم السلسلة
+	Remove series	إزالة السلسلة
+	Remove row	إزالة الصف
+	Add Row	إضافة صف
+	Add Series	إضافة سلسلة
+	Edit\nData	تحرير\nالبيانات
+	Change\nChart Type	تغيير\nنوع المخطط
+	Align Text	محاذاة النص
+	Create Link	إنشاء ارتباط
+	Break Link	قطع الارتباط
+	Rotate all text 90°	تدوير كل النص 90°
+	Rotate all text 270°	تدوير كل النص 270°
+	Stacked	مكدس
+	Middle	الوسط
+	Click the empty text box the text should continue in (Esc cancels)	انقر مربع النص الفارغ الذي تريد متابعة النص فيه (اضغط Esc للإلغاء)
+	Not linked: click a text box	غير مرتبط: انقر مربع نص
+	Show KeyTips (Alt or F10)	إظهار تلميحات المفاتيح (Alt أو F10)
+	Location	الموقع
+	Endnotes	حواشٍ ختامية
+	Below text	أسفل النص
+	End of section	نهاية المقطع
+	End of document	نهاية المستند
+	Footnotes to endnotes	تحويل الحواشي السفلية إلى ختامية
+	Endnotes to footnotes	تحويل الحواشي الختامية إلى سفلية
+	Swap footnotes and endnotes	تبديل الحواشي السفلية والختامية
+	Custom mark:	علامة مخصصة:
+	Continuous numbering	ترقيم متتابع
+	Apply	تطبيق
+	Convert Notes	تحويل الحواشي
+	Reading	قراءة
+	Reading Column Width	عرض عمود القراءة
+	Reading Line Spacing	تباعد أسطر القراءة
+	Reading Text Size	حجم نص القراءة
+	Word document	مستند Word
+	All files	كل الملفات
+	Recipient lists	قوائم المستلمين
+	The system file dialog isn't available, so WordCraft shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	مربع حوار ملفات النظام غير متاح، لذا يعرض WordCraft مربع حواره الخاص. لاستخدام مربع حوار النظام، ثبّت بوابة لاختيار الملفات (مثل xdg-desktop-portal-gtk) أو zenity.
+	Up one level	الانتقال إلى المجلد الأعلى
+	Home folder	المجلد الرئيسي
+	{name} wasn't found.	لم يُعثر على {name}.
+	{name} already exists. Choose Save again to replace it.	{name} موجود بالفعل. اختر «حفظ» مرة أخرى لاستبداله.
+	This folder can't be read: {error}	تعذرت قراءة هذا المجلد: {error}
+	Showing the first {count} items.	يتم عرض أول {count} عناصر.
+	File name:	اسم الملف:
+	Browse in WordCraft…	استعراض في WordCraft…
+	Open a file with WordCraft's own browser when the system file dialog doesn't appear.	افتح ملفًا باستخدام مستعرض WordCraft الخاص عندما لا يظهر مربع حوار ملفات النظام.
+	Hide White Space	إخفاء المسافة البيضاء
+	All pages	كل الصفحات
+	Current page	الصفحة الحالية
+	Selected pages	الصفحات المحددة
+	Custom range	نطاق مخصص
+	All pages in the range	كل الصفحات في النطاق
+	Odd pages only	الصفحات الفردية فقط
+	Even pages only	الصفحات الزوجية فقط
+	Copies	نسخ
+	Collate copies	ترتيب النسخ
+	Pages like 1-3, 5	صفحات مثل 1-3 و5
+	{count} of {total} pages will print	ستتم طباعة {count} من أصل {total} صفحات
+	Save these pages as PDF…	حفظ هذه الصفحات بصيغة PDF…
+	The printer, two-sided printing and pages per sheet are chosen in that dialog.	يتم اختيار الطابعة والطباعة على الوجهين وعدد الصفحات في الورقة في مربع الحوار هذا.
+	Previous Page	الصفحة السابقة
+	Print to PDF	طباعة إلى PDF
+	Word XML Document (*.xml)	مستند Word XML (*.xml)
+	Word 2003 XML Document (*.xml)	مستند Word 2003 XML (*.xml)
+	Use wildcards	استخدام أحرف البدل
+	Special	خاص
+	Match prefix	مطابقة البادئة
+	Match suffix	مطابقة اللاحقة
+	Ignore punctuation characters	تجاهل علامات الترقيم
+	Ignore white-space characters	تجاهل أحرف المسافات البيضاء
+	Regular expressions	تعبيرات نمطية
+	Search Options	خيارات البحث
+	Tab Character	حرف علامة الجدولة
+	Any Character	أي حرف
+	Any Digit	أي رقم
+	Any Letter	أي حرف أبجدي
+	Caret Character	حرف علامة الإدراج
+	Section Character	حرف المقطع
+	Paragraph Character	حرف الفقرة
+	Graphic	رسم
+	Manual Line Break	فاصل سطر يدوي
+	Manual Page Break	فاصل صفحة يدوي
+	Section Break	فاصل مقطع
+	White Space	مسافة بيضاء
+	Clipboard Contents	محتويات الحافظة
+	Find What Text	نص البحث
+	Find What Expression	تعبير البحث
+	Character in Range	حرف ضمن نطاق
+	Beginning of Word	بداية الكلمة
+	End of Word	نهاية الكلمة
+	Expression	تعبير
+	Not	ليس
+	Num Occurrences	عدد مرات الظهور
+	Previous 1 or More	واحد أو أكثر من السابق
+	0 or More Characters	صفر أو أكثر من الأحرف
+	Add Shape	إضافة شكل
+	Change Colors	تغيير الألوان
+	Change Layout	تغيير التخطيط
+	Create Graphic	إنشاء رسم
+	Edit Items	تحرير العناصر
+	Layouts	تخطيطات
+	Reset Graphic	إعادة تعيين الرسم
+	SmartArt Design	تصميم SmartArt
+	SmartArt Styles	أنماط SmartArt
+	Text Pane	جزء النص
+	Process	عملية
+	Cycle	دورة
+	Hierarchy	تسلسل هرمي
+	Relationship	علاقة
+	Pyramid	هرم
+	Basic List	قائمة أساسية
+	Basic Process	عملية أساسية
+	Basic Cycle	دورة أساسية
+	Basic Pyramid	هرم أساسي
+	Basic Radial	مخطط شعاعي أساسي
+	Basic Matrix	مصفوفة أساسية
+	Basic Venn	مخطط فن أساسي
+	Shows items of equal weight as blocks in rows.	يعرض العناصر المتساوية الأهمية ككتل في صفوف.
+	Shows steps in order, left to right, with arrows between them.	يعرض الخطوات بالترتيب من اليسار إلى اليمين، مع أسهم بينها.
+	Shows steps that repeat, around a circle.	يعرض الخطوات المتكررة حول دائرة.
+	Shows a tree: each item below the item it belongs to.	يعرض بنية شجرية: يقع كل عنصر أسفل العنصر الذي يتبعه.
+	Shows parts that build on each other, largest at the bottom.	يعرض أجزاءً يبنى بعضها على بعض، ويكون الأكبر في الأسفل.
+	Shows items around a central idea: the first item is the centre.	يعرض عناصر حول فكرة مركزية، ويكون العنصر الأول في الوسط.
+	Shows parts of a whole as quadrants.	يعرض أجزاء الكل في صورة أرباع.
+	Shows overlapping ideas as overlapping circles.	يعرض الأفكار المتداخلة في صورة دوائر متداخلة.
+	Accent {n}	لون تمييز {n}
+	Colorful	ملون
+	Insert SmartArt	إدراج SmartArt
+	One line per item. Enter adds an item.	سطر واحد لكل عنصر. يضيف Enter عنصرًا.
+	Add\nShape	إضافة\nشكل
+	Change\nColors	تغيير\nالألوان
+	Reset\nGraphic	إعادة تعيين\nالرسم
+	Promote to Heading 1	ترقية إلى العنوان 1
+	Demote to Body Text	خفض المستوى إلى نص أساسي
+	Move Up	نقل إلى أعلى
+	Move Down	نقل إلى أسفل
+	Collapse	طي
+	Expand or Collapse Heading	توسيع العنوان أو طيه
+	Select Heading and Content	تحديد العنوان والمحتوى
+	Show Level	إظهار المستوى
