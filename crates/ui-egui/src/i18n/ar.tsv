@@ -311,3 +311,153 @@
 	Editing header/footer	تحرير الرأس/التذييل
 	Editing — edit the document directly	تحرير — تعديل المستند مباشرة
 	Editor	المحرر
+	Effects	التأثيرات
+	Emboss	بارز
+	Emphasis	توكيد
+	Endnote Reference	مرجع الحاشية الختامية
+	Endnote Text	نص الحاشية الختامية
+	Encrypt with Password	تشفير بكلمة مرور
+	English (United States)	الإنجليزية (الولايات المتحدة)
+	Engrave	محفور
+	Enter page number:	أدخل رقم الصفحة:
+	Envelope Address	عنوان المستلم
+	Envelope Return	عنوان المرسل
+	Envelopes	مغلفات
+	Equation	معادلة
+	Eraser	ممحاة
+	Even Page	صفحة زوجية
+	Every command is available to scripts and AI agents: run `wordcraft-cli mcp` for an MCP server, or start the app with `--control <port>` for the JSON control channel.	كل الأوامر متاحة للنصوص البرمجية ووكلاء الذكاء الاصطناعي: شغّل `wordcraft-cli mcp` لبدء خادم MCP، أو ابدأ التطبيق باستخدام `--control <port>` لقناة التحكم بتنسيق JSON.
+	Export a copy to share (PDF, Word document)	تصدير نسخة للمشاركة (PDF أو مستند Word)
+	Export Page as PNG	تصدير الصفحة بصيغة PNG
+	Export PDF	تصدير PDF
+	Exported {path}	تم التصدير إلى {path}
+	Extend Selection	توسيع التحديد
+	Extend Selection by Units	توسيع التحديد حسب الوحدات
+	Field	حقل
+	Find Next	بحث عن التالي
+	Find Previous	بحث عن السابق
+	Find Recipient	البحث عن مستلم
+	Find what:	بحث عن:
+	Finish	إنهاء
+	Finish & Merge	إنهاء ودمج
+	Finish &\nMerge	إنهاء و\nدمج
+	First Column	العمود الأول
+	First commit	أول إيداع
+	First line:	السطر الأول:
+	Fixed Column Width	عرض عمود ثابت
+	Focus	تركيز
+	Font color:	لون الخط:
+	Font Dialog	مربع حوار الخط
+	Font:	الخط:
+	Fonts	الخطوط
+	Footer	تذييل
+	Footnote and Endnote	حاشية سفلية وختامية
+	Footnote Reference	مرجع الحاشية السفلية
+	Footnote Text	نص الحاشية السفلية
+	Footnotes	حواشٍ سفلية
+	Format Page Numbers	تنسيق أرقام الصفحات
+	Format Page Numbers…	تنسيق أرقام الصفحات…
+	Formatting at Selection	التنسيق عند موضع التحديد
+	Formula	صيغة
+	General	عام
+	Go To	انتقال إلى
+	Go to	انتقال إلى
+	Go To (⌘⌥G)	انتقال إلى (⌘⌥G)
+	Grab bag	مجموعة متنوعة
+	Greeting Line	سطر التحية
+	Greeting\nLine	سطر\nالتحية
+	Gridlines	خطوط الشبكة
+	Group	تجميع
+	Grow Font 1 Point	تكبير الخط نقطة واحدة
+	Hanging Indent	مسافة بادئة معلقة
+	Header	رأس
+	Header & Footer	الرأس والتذييل
+	Header Row	صف الرأس
+	Header/Footer Position	موضع الرأس/التذييل
+	Heading 1	العنوان 1
+	Heading 2	العنوان 2
+	Heading 3	العنوان 3
+	Heading {n}	العنوان {n}
+	Headings	عناوين
+	Heart	قلب
+	Hidden	مخفي
+	Highlight Merge Fields	تمييز حقول الدمج
+	Highlight\nMerge Fields	تمييز\nحقول الدمج
+	Highlighter	قلم تمييز
+	Horizontal	أفقي
+	Horizontal Line	خط أفقي
+	Hyperlink	ارتباط تشعبي
+	Hyphenation	واصلة الكلمات
+	Icons	أيقونات
+	Ignore All	تجاهل الكل
+	Illustrations	رسوم توضيحية
+	Immersive	غامر
+	Immersive Reader	القارئ الغامر
+	Immersive\nReader	القارئ\nالغامر
+	In the margin	في الهامش
+	Increase Font Size	تكبير حجم الخط
+	Increase Indent	زيادة المسافة البادئة
+	Indent	مسافة بادئة
+	Indentation	المسافة البادئة
+	Indents	المسافات البادئة
+	Index	فهرس
+	Index Heading	عنوان الفهرس
+	Index {n}	فهرس {n}
+	Info	معلومات
+	Ink to\nMath	تحويل الحبر إلى\nمعادلة
+	Ink to\nShape	تحويل الحبر إلى\nشكل
+	Ink\nReplay	إعادة\nعرض الحبر
+	Insert Above	إدراج أعلى
+	Insert Below	إدراج أسفل
+	Insert Caption	إدراج تسمية توضيحية
+	Insert Caption…	إدراج تسمية توضيحية…
+	Insert Citation	إدراج استشهاد
+	Insert Endnote	إدراج حاشية ختامية
+	Insert Footnote	إدراج حاشية سفلية
+	Insert Hyperlink	إدراج ارتباط تشعبي
+	Insert Index	إدراج فهرس
+	Insert Left	إدراج إلى اليسار
+	Insert Merge Field	إدراج حقل دمج
+	Insert Merge\nField	إدراج حقل\nدمج
+	Insert Right	إدراج إلى اليمين
+	Insert Shapes	إدراج أشكال
+	Insert Table of Authorities	إدراج جدول السلطات
+	Insert Table of Figures	إدراج جدول الأشكال
+	Insert Table…	إدراج جدول…
+	Insert\nAbove	إدراج\nأعلى
+	Insert\nCaption	إدراج\nتسمية توضيحية
+	Insert\nCitation	إدراج\nاستشهاد
+	Insert\nFootnote	إدراج\nحاشية سفلية
+	Intense Emphasis	توكيد قوي
+	Intense Quote	اقتباس بارز
+	Intense Reference	مرجع بارز
+	Inside Borders	حدود داخلية
+	Inspect Document	فحص المستند
+	Interface language:	لغة الواجهة:
+	Join the ArtCraft community on Discord	انضم إلى مجتمع ArtCraft على Discord
+	Join us on Discord: discord.gg/artcraft	انضم إلينا على Discord: discord.gg/artcraft
+	Justify	ضبط النص
+	Keep Lines Together	إبقاء الأسطر معًا
+	Keep lines together	إبقاء الأسطر معًا
+	Keep Text Only	الاحتفاظ بالنص فقط
+	Keep with Next	إبقاء مع التالي
+	Keep with next	إبقاء مع التالي
+	Keywords	كلمات أساسية
+	Keeps the fonts and formatting of the copied text.	يحتفظ بخطوط النص المنسوخ وتنسيقه.
+	Labels	ملصقات
+	Landscape	أفقي
+	{language} (no dictionary)	{language} (لا يوجد قاموس)
+	No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	لم يُثبّت قاموس التدقيق الإملائي للغة {language}، لذلك لن تُدقّق. يبحث WordCraft عن قاموس Hunspell باسم {name} في مجلد WORDCRAFT_DICTIONARIES وفي المواقع المعتادة على النظام.
+	Lasso	لاسو
+	Last Column	العمود الأخير
+	Last commit	آخر إيداع
+	Layout Summary	ملخص التخطيط
+	Left	يسار
+	Left Border	حد أيسر
+	Left:	يسار:
+	Letter	رسالة
+	Line	سطر
+	Line and Page Breaks	فواصل الأسطر والصفحات
+	Line and Paragraph Spacing	تباعد الأسطر والفقرات
+	Line Break	فاصل سطر
+	Line delta	فرق السطر
