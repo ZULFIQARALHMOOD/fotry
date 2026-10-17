@@ -1511,3 +1511,153 @@ preview	Title	عنوان
 	Space after: {pt} pt	المسافة بعد: {pt} نقطة
 	Based on: {style}	مستند إلى: {style}
 	Paragraph style	نمط الفقرة
+	Character style	نمط الأحرف
+	Linked style (paragraph and character)	نمط مرتبط (فقرة وحرف)
+	Table style	نمط جدول
+	Built-in style	نمط مضمن
+	Show in the Styles gallery	إظهار في معرض الأنماط
+	Hide from style lists	إخفاء من قوائم الأنماط
+	Built-in styles can't be deleted.	لا يمكن حذف الأنماط المضمنة.
+	Delete Table Style	حذف نمط الجدول
+	Password	كلمة المرور
+	Password:	كلمة المرور:
+	Encrypt with Password…	تشفير بكلمة مرور…
+	Change Password…	تغيير كلمة المرور…
+	Remove Password	إزالة كلمة المرور
+	A password is required to open this document.	يلزم إدخال كلمة مرور لفتح هذا المستند.
+	Anyone can open this document. Encrypt it with a password to keep it private.	يمكن لأي شخص فتح هذا المستند. شفّره بكلمة مرور للحفاظ على خصوصيته.
+	Anyone who opens the document will need this password.	سيحتاج كل من يفتح المستند إلى كلمة المرور هذه.
+	{name} is protected with a password.	المستند {name} محمي بكلمة مرور.
+	That password isn't right. Check it (passwords are case-sensitive) and try again.	كلمة المرور غير صحيحة. تحقق منها (فكلمات المرور تميّز بين الأحرف الكبيرة والصغيرة) وحاول مرة أخرى.
+	The document will be saved with a password. Save it to protect it.	سيُحفظ المستند بكلمة مرور. احفظه لتأمينه.
+	The password is removed. Save the document to keep the change.	أُزيلت كلمة المرور. احفظ المستند لتثبيت التغيير.
+	The passwords don't match.	كلمتا المرور غير متطابقتين.
+	Keep the password somewhere safe: without it nobody, WordCraft included, can open the document. Leave both boxes empty to remove the password.	احتفظ بكلمة المرور في مكان آمن: لا يمكن لأحد، بما في ذلك WordCraft، فتح المستند من دونها. اترك المربعين فارغين لإزالة كلمة المرور.
+	{cols}×{rows} Table	جدول {cols}×{rows}
+	Name	الاسم
+	PRs	طلبات السحب
+	First	الأول
+	Last	الأخير
+	Change Picture…	تغيير الصورة…
+	Size and Crop…	الحجم والاقتصاص…
+	Insert Columns to the Left	إدراج أعمدة إلى اليسار
+	Insert Columns to the Right	إدراج أعمدة إلى اليمين
+	Insert Rows Above	إدراج صفوف أعلى
+	Insert Rows Below	إدراج صفوف أسفل
+	Mon	الاثنين
+	Tue	الثلاثاء
+	Wed	الأربعاء
+	Sum	المجموع
+	North	الشمال
+	South	الجنوب
+	West	الغرب
+	Total	الإجمالي
+	Draw\nTable	رسم\nجدول
+	(no style)	(بلا نمط)
+	Add tab stop at:	إضافة علامة جدولة عند:
+	Aligned at:	محاذاة عند:
+	Balloons	بالونات
+	Bullet	تعداد نقطي
+	By author	حسب المؤلف
+	Changed lines:	الأسطر التي تغيّرت:
+	Click level to modify:	انقر المستوى لتعديله:
+	Color only	اللون فقط
+	Define New Multilevel List	تعريف قائمة جديدة متعددة المستويات
+	Define New Multilevel List…	تعريف قائمة جديدة متعددة المستويات…
+	Deletions:	عمليات الحذف:
+	Enter formatting for number:	أدخل تنسيق الرقم:
+	Follow number with:	إتباع الرقم بـ:
+	Include level number from:	تضمين رقم المستوى من:
+	Insertions and Deletions	عمليات الإدراج والحذف
+	Insertions:	عمليات الإدراج:
+	Left border	حد أيسر
+	Legal style numbering	ترقيم بالنمط القانوني
+	Link level to style:	ربط المستوى بالنمط:
+	List Definition	تعريف القائمة
+	Nothing	لا شيء
+	Number alignment:	محاذاة الرقم:
+	Number format	تنسيق الرقم
+	Number style for this level:	نمط الرقم لهذا المستوى:
+	Outside border	حد خارجي
+	Restart list after:	إعادة بدء القائمة بعد:
+	Right border	حد أيمن
+	Show all revisions inline	إظهار كل المراجعات ضمن النص
+	Show only comments and formatting in balloons	إظهار التعليقات والتنسيق فقط في البالونات
+	Show revisions in balloons	إظهار المراجعات في البالونات
+	Space	مسافة
+	Start at:	البدء من:
+	Tab character	حرف علامة الجدولة
+	Text indent at:	مسافة بادئة للنص عند:
+	Track Changes Options	خيارات تعقب التغييرات
+	Track formatting	تعقب التنسيق
+	Flip Horizontal	قلب أفقي
+	Flip Vertical	قلب عمودي
+	Rotate Left 90°	تدوير 90° إلى اليسار
+	Rotate Right 90°	تدوير 90° إلى اليمين
+	Rotation	تدوير
+	Rotation:	التدوير:
+	Tab stop position:	موضع علامة الجدولة:
+	Default tab stops:	علامات الجدولة الافتراضية:
+	Tab stops to be cleared:	علامات الجدولة المراد مسحها:
+	All	الكل
+	Decimal	عشري
+	Leader	حرف سابق
+	Set	تعيين
+	Page Border	حد الصفحة
+	Apply to:	تطبيق على:
+	Whole document	المستند بأكمله
+	This section	هذا المقطع
+	Fill	تعبئة
+	Setting:	الإعداد:
+	3-D	ثلاثي الأبعاد
+	Custom	مخصص
+	Style:	النمط:
+	Dot dash	نقطة وشرطة
+	Triple	ثلاثي
+	Between	بين
+	Borders and Shading	حدود وتظليل
+	Tabs…	علامات الجدولة…
+	Borders and Shading…	حدود وتظليل…
+	(All)	(الكل)
+	(none)	(بلا)
+	(normal text)	(نص عادي)
+	1/4 Em Space	مسافة Em بمقدار 1/4
+	A mail merge field	حقل دمج بريد
+	A numbered sequence (figures, tables…)	تسلسل مرقم (أشكال، جداول…)
+	A table of contents	جدول محتويات
+	Categories:	الفئات:
+	Character	حرف
+	Character code:	رمز الحرف:
+	Col #:	رقم العمود:
+	Copyright	حقوق النشر
+	Date formats:	تنسيقات التاريخ:
+	Description:	الوصف:
+	Document Information	معلومات المستند
+	Double Closing Quote	علامة اقتباس إغلاق مزدوجة
+	Double Opening Quote	علامة اقتباس فتح مزدوجة
+	Ellipsis	علامة حذف
+	Em Dash	شرطة طويلة (Em)
+	En Dash	شرطة متوسطة (En)
+	Em Space	مسافة Em
+	En Space	مسافة En
+	Equal column width	عرض أعمدة متساوٍ
+	Field Codes	رموز الحقول
+	Field code:	رمز الحقل:
+	Field codes:	رموز الحقول:
+	Field name:	اسم الحقل:
+	Field names:	أسماء الحقول:
+	Field properties	خصائص الحقل
+	Field…	حقل…
+	Format:	التنسيق:
+	Hide Codes	إخفاء الرموز
+	Index and Tables	فهرس وجداول
+	Line between	خط فاصل
+	Links and References	الارتباطات والمراجع
+	Mail Merge	دمج البريد
+	More Columns…	مزيد من الأعمدة…
+	More Symbols…	مزيد من الرموز…
+	No-Width Non Break	فاصل غير قابل للكسر بلا عرض
+	No-Width Optional Break	فاصل اختياري بلا عرض
+	Paragraph Mark	علامة فقرة
+	Pick a field from the list	اختر حقلًا من القائمة
+	Preserve formatting during updates	الحفاظ على التنسيق أثناء التحديث
