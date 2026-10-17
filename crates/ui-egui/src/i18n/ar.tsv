@@ -611,3 +611,153 @@
 	Picture	صورة
 	Pastes the clipboard's picture.	يلصق الصورة الموجودة في الحافظة.
 	Reading Highlight	تمييز القراءة
+	Record Macro	تسجيل ماكرو
+	Recover Unsaved Documents	استعادة المستندات غير المحفوظة
+	Rectangle	مستطيل
+	Reduce Hanging Indent	تقليل المسافة البادئة المعلقة
+	Reject	رفض
+	Reject All Changes	رفض كل التغييرات
+	Reject Change	رفض التغيير
+	Relaxed	مريح
+	Remove Background	إزالة الخلفية
+	Remove Footer	إزالة التذييل
+	Remove Header	إزالة الرأس
+	Remove Hyperlink	إزالة الارتباط التشعبي
+	Remove Space After Paragraph	إزالة المسافة بعد الفقرة
+	Remove Table of Contents	إزالة جدول المحتويات
+	Remove Watermark	إزالة العلامة المائية
+	Repeat	تكرار
+	Repeat Header Rows	تكرار صفوف الرأس
+	Replace All	استبدال الكل
+	Replace Document Text	استبدال نص المستند
+	Replace with:	استبدال بـ:
+	Replay	إعادة التشغيل
+	Reply	رد
+	Report	تقرير
+	Research	بحث
+	Researcher	باحث
+	Reset Picture	إعادة تعيين الصورة
+	Resolve	حل
+	Resolved	تم الحل
+	Restart at 1	إعادة البدء من 1
+	Restart Each Page	إعادة البدء في كل صفحة
+	Restart Each Section	إعادة البدء في كل مقطع
+	Restrict Editing	تقييد التحرير
+	Restrict\nEditing	تقييد\nالتحرير
+	Reverse the order	عكس الترتيب
+	Reviewing	مراجعة
+	Reviewing Pane	جزء المراجعة
+	Reviewing — edits become suggestions	مراجعة — تتحول التعديلات إلى اقتراحات
+	Rich Text Format (*.rtf)	تنسيق النص المنسق (*.rtf)
+	Right	يمين
+	Right Border	حد أيمن
+	Right-to-Left Text Direction	اتجاه النص من اليمين إلى اليسار
+	Right:	يمين:
+	Rotate	تدوير
+	Rounded Rectangle	مستطيل مستدير الزوايا
+	Rows & Columns	صفوف وأعمدة
+	Ruler	المسطرة
+	Rules	قواعد
+	Résumé	سيرة ذاتية
+	Save a copy in another format. Printing goes through a PDF you can print from any viewer.	احفظ نسخة بتنسيق آخر. تتم الطباعة عبر PDF يمكنك طباعته من أي عارض.
+	Save as Template	حفظ كقالب
+	Saved	محفوظ
+	Search commands and help	البحث في الأوامر والتعليمات
+	Section Breaks	فواصل المقاطع
+	Section Properties	خصائص المقطع
+	Sections	مقاطع
+	Select Cell	تحديد خلية
+	Select Line	تحديد سطر
+	Select Objects	تحديد كائنات
+	Select Paragraph	تحديد فقرة
+	Select Range	تحديد نطاق
+	Select Recipients	تحديد المستلمين
+	Select Row	تحديد صف
+	Select Sentence	تحديد جملة
+	Select Table	تحديد جدول
+	Select Text	تحديد نص
+	Select Text with Similar Formatting	تحديد نص ذي تنسيق مماثل
+	Select Word	تحديد كلمة
+	Select\nRecipients	تحديد\nالمستلمين
+	Selection	التحديد
+	Selection Pane	جزء التحديد
+	Send Backward	إرسال إلى الخلف
+	Sentence case.	حالة أحرف الجملة.
+	Set as Default	تعيين كافتراضي
+	Set Caret	تعيين موضع المؤشر
+	Set Character Formatting	تعيين تنسيق الأحرف
+	Set Numbering Value	تعيين قيمة الترقيم
+	Set Paragraph Formatting	تعيين تنسيق الفقرة
+	Shading	تظليل
+	Shadow	ظل
+	Shape Fill	تعبئة الشكل
+	Shape Format	تنسيق الشكل
+	Shape Outline	مخطط الشكل
+	Shape Styles	أنماط الأشكال
+	Shapes	أشكال
+	Shift+Tab	Shift+Tab
+	Show	إظهار
+	Show all formatting marks	إظهار كل علامات التنسيق
+	Show Comments	إظهار التعليقات
+	Show Markup	إظهار العلامات
+	Show Notes	إظهار الملاحظات
+	Show rulers	إظهار المساطر
+	Animate the caret (it glides and fades)	تحريك المؤشر (ينزلق ويتلاشى)
+	Animation	الرسوم المتحركة
+	On: the caret glides to its new place when you type or use the arrow keys, and its blink fades. Off: it jumps and blinks on and off.	عند التشغيل: ينزلق المؤشر إلى موضعه الجديد أثناء الكتابة أو استخدام مفاتيح الأسهم، ويتلاشى وميضه. عند الإيقاف: ينتقل مباشرة ويومض.
+	Show the community button in the title bar	إظهار زر المجتمع في شريط العنوان
+	Show/Hide ¶	إظهار/إخفاء ¶
+	Show\nComments	إظهار\nالتعليقات
+	Shrink Font 1 Point	تصغير الخط نقطة واحدة
+	Side to Side	جنبًا إلى جنب
+	Side\nto Side	جنبًا\nإلى جنب
+	Signature Line	سطر التوقيع
+	Single	مفرد
+	Single Spacing	تباعد مفرد
+	Size:	الحجم:
+	Small Caps	أحرف استهلالية صغيرة
+	Small caps	أحرف استهلالية صغيرة
+	SmartArt	SmartArt
+	Sort	فرز
+	Source code: github.com/storytold/wordcraft	الشيفرة المصدرية: github.com/storytold/wordcraft
+	Space before/after:	المسافة قبل/بعد:
+	Spacing (pt):	التباعد (نقطة):
+	Speech	الكلام
+	Spelling & Grammar	التدقيق الإملائي والنحوي
+	Spelling &\nGrammar	التدقيق الإملائي\nوالنحوي
+	Spelling Suggestions	اقتراحات إملائية
+	Split	تقسيم
+	Split Cells	تقسيم الخلايا
+	Split Table	تقسيم الجدول
+	Spreadsheet Table	جدول بيانات
+	Standard Colors	ألوان قياسية
+	Star	نجمة
+	Start Mail Merge	بدء دمج البريد
+	Start Mail\nMerge	بدء\nدمج البريد
+	Statistics	إحصاءات
+	Strikethrough	يتوسطه خط
+	Strong	قوي
+	Studio cover	غلاف الاستوديو
+	Studio handbook (sample)	دليل الاستوديو (نموذج)
+	Style	نمط
+	Style based on:	النمط مستند إلى:
+	Style Set	مجموعة أنماط
+	Style: {style}	النمط: {style}
+	Styles Pane	جزء الأنماط
+	Subject	الموضوع
+	Subscript	منخفض
+	Subtitle	عنوان فرعي
+	Subtle Emphasis	توكيد خفيف
+	Subtle Reference	مرجع خفيف
+	Superscript	مرتفع
+	Switch Modes	تبديل الأوضاع
+	Switch\nModes	تبديل\nالأوضاع
+	Symbol	رمز
+	Symbols	رموز
+	Synonyms	مرادفات
+	Tab	علامة جدولة
+	Table Column Width	عرض عمود الجدول
+	Table Grid	شبكة الجدول
+	Table of Authorities	جدول السلطات
+	Table of Contents	جدول المحتويات
+	Table of Figures	جدول الأشكال
