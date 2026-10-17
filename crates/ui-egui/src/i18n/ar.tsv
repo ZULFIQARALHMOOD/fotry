@@ -1961,3 +1961,153 @@ preview	Title	عنوان
 	Type:	النوع:
 	URL	عنوان URL
 	Volume	مجلد
+	Website	موقع ويب
+	Year	السنة
+	a, b, c, …	أ، ب، ج، …
+	i, ii, iii, …	i، ii، iii، …
+	{n} entries marked.	تم وضع علامة على {n} إدخالات.
+	Lasso Select	تحديد حر
+	Move Selected Ink	نقل الحبر المحدد
+	Delete Selected Ink	حذف الحبر المحدد
+	Recolor Selected Ink	إعادة تلوين الحبر المحدد
+	Add Pen	إضافة قلم
+	Remove Pen	إزالة القلم
+	Ink to Shape	تحويل الحبر إلى شكل
+	Convert to Shapes	تحويل إلى أشكال
+	Ink Replay	إعادة تشغيل الحبر
+	Add\nPen	إضافة\nقلم
+	Rewind	إرجاع
+	Forward	تقديم
+	Stroke {n} of {total}	الضربة {n} من {total}
+	Drawing Canvas	لوحة الرسم
+	New Drawing Canvas	لوحة رسم جديدة
+	Fit	احتواء
+	Expand	توسيع
+	Scale Drawing	تغيير مقياس الرسم
+	Canvas Member	عنصر في اللوحة
+	Choose the sheet that holds the recipients.	اختر الورقة التي تحتوي على المستلمين.
+	First row of data contains column headers	يحتوي الصف الأول من البيانات على عناوين الأعمدة
+	Communication	اتصال
+	Office	مكتب
+	People	أشخاص
+	Nature	طبيعة
+	Weather	طقس
+	Technology	تقنية
+	Transport	نقل
+	Icon Color	لون الأيقونة
+	Search icons	البحث عن أيقونات
+	No icons match your search.	لا توجد أيقونات تطابق بحثك.
+	Recolor a one-color picture, such as an icon	إعادة تلوين صورة أحادية اللون، مثل أيقونة
+	Numerals:	الأرقام:
+	Numerals	الأرقام
+	Arabic	عربية
+	Hindi	هندية
+	Context	السياق
+	System	النظام
+	Couldn't make WordCraft the default: {error}	تعذر تعيين WordCraft كتطبيق افتراضي: {error}
+	In Default apps, choose WordCraft for the document types you want it to open.	في التطبيقات الافتراضية، اختر WordCraft لأنواع المستندات التي تريد فتحها به.
+	Make WordCraft the default for Word documents…	تعيين WordCraft افتراضيًا لمستندات Word…
+	Opens .docx, .doc, .rtf and .odt files and Word templates with WordCraft from now on.	يفتح الآن ملفات .docx و.doc و.rtf و.odt وقوالب Word باستخدام WordCraft.
+	Opens Settings › Default apps, where you choose WordCraft for .docx and the other document types.	يفتح الإعدادات › التطبيقات الافتراضية، حيث يمكنك اختيار WordCraft لملفات .docx وأنواع المستندات الأخرى.
+	To open Word documents with WordCraft by default: select one in Finder, choose File › Get Info, pick WordCraft under Open with, then click Change All.	لجعل WordCraft التطبيق الافتراضي لفتح مستندات Word: حدد مستندًا في Finder، واختر ملف › إحضار المعلومات، ثم اختر WordCraft ضمن «فتح باستخدام» وانقر «تغيير الكل».
+	WordCraft is now the default app for Word documents.	أصبح WordCraft الآن التطبيق الافتراضي لمستندات Word.
+	Templates	قوالب
+	Templates and Add-ins	قوالب ووحدات إضافية
+	Attach Template	إرفاق قالب
+	Detach Template	فصل القالب
+	Automatically Update Document Styles	تحديث أنماط المستند تلقائيًا
+	Update Styles from Template	تحديث الأنماط من القالب
+	Organizer	المنظم
+	Copy Styles	نسخ الأنماط
+	Rename Style	إعادة تسمية النمط
+	Document template:	قالب المستند:
+	Attach…	إرفاق…
+	Automatically update document styles	تحديث أنماط المستند تلقائيًا
+	Organizer…	المنظم…
+	1. Formatting restrictions	1. قيود التنسيق
+	2. Editing restrictions	2. قيود التحرير
+	3. Start enforcement	3. بدء تطبيق القيود
+	<< Less	<< أقل
+	Another file	ملف آخر
+	Apply as you type	تطبيق أثناء الكتابة
+	AutoCorrect	التصحيح التلقائي
+	AutoFormat As You Type	التنسيق التلقائي أثناء الكتابة
+	Automatic bulleted lists	قوائم التعداد النقطي التلقائية
+	Automatic numbered lists	قوائم الترقيم التلقائي
+	Border lines	خطوط الحدود
+	Capitalize first letter of sentences	كتابة الحرف الأول من الجمل بحرف كبير
+	Capitalize first letter of table cells	كتابة الحرف الأول في خلايا الجدول بحرف كبير
+	Correct TWo INitial CApitals	تصحيح كتابة أول حرفين بحرف كبير
+	Correct accidental usage of cAPS LOCK key	تصحيح الاستخدام غير المقصود لمفتاح CAPS LOCK
+	Capitalize names of days	كتابة أسماء الأيام بحرف كبير
+	Case changes	تغييرات حالة الأحرف
+	Character level	مستوى الأحرف
+	Checked styles are allowed:	الأنماط المحددة مسموح بها:
+	Combine Documents	دمج المستندات
+	Compare Documents	مقارنة المستندات
+	Compared: {changes} changes	تمت مقارنة {changes} تغييرات
+	Comparing with another file needs the desktop app.	تتطلب مقارنة ملف آخر استخدام تطبيق سطح المكتب.
+	Comparison settings	إعدادات المقارنة
+	Don't capitalize after:	عدم استخدام الأحرف الكبيرة بعد:
+	Editing in this document is restricted.	التحرير في هذا المستند مقيد.
+	Every change is recorded as a tracked change.	يُسجل كل تغيير كتغيير متعقب.
+	Everyone	الجميع
+	Exceptions (optional)	استثناءات (اختياري)
+	Exceptions…	استثناءات…
+	Fields	حقول
+	Filling in forms	تعبئة النماذج
+	Find Next Editable Region	البحث عن منطقة التحرير التالية
+	Footnotes and endnotes	حواشٍ سفلية وختامية
+	Formatting, case changes, white space and tables are compared; the other settings are kept for later.	تتم مقارنة التنسيق وتغييرات حالة الأحرف والمسافات البيضاء والجداول؛ وتُحفظ الإعدادات الأخرى لوقت لاحق.
+	Fractions (1/2) as fraction characters (½)	تحويل الكسور (1/2) إلى رموز كسور (½)
+	Headers and footers	رؤوس وتذييلات
+	Hyphens (--) as dashes (—)	تحويل الواصلة (--) إلى شرطة (—)
+	In equations, typing a name after a backslash replaces it with its symbol.	في المعادلات، يؤدي كتابة اسم بعد شرطة مائلة عكسية إلى استبداله برمزه.
+	Internet addresses as links	عناوين الإنترنت كارتباطات
+	Label changes with:	وضع علامة على التغييرات باستخدام:
+	Limit formatting to a selection of styles	تقييد التنسيق بمجموعة محددة من الأنماط
+	Math AutoCorrect	التصحيح التلقائي الرياضي
+	More >>	مزيد >>
+	Moves	عمليات النقل
+	New document	مستند جديد
+	No changes (read only)	بلا تغييرات (للقراءة فقط)
+	Only allow this kind of editing:	السماح بهذا النوع من التحرير فقط:
+	Only comments can be added, except in regions marked editable.	لا يمكن إضافة سوى التعليقات، باستثناء المناطق المحددة للتحرير.
+	Only form fields can be filled in.	لا يمكن تعبئة سوى حقول النموذج.
+	Only the allowed styles can be applied.	لا يمكن تطبيق سوى الأنماط المسموح بها.
+	Ordinals (1st) as superscript	تحويل الأعداد الترتيبية (1st) إلى أحرف علوية
+	Original document	المستند الأصلي
+	This password type isn't supported.	نوع كلمة المرور هذا غير مدعوم.
+	Replace as you type	استبدال أثناء الكتابة
+	Replace text as you type	استبدال النص أثناء الكتابة
+	Replace:	استبدال:
+	Revised document	المستند المنقح
+	Select text, then tick who can still edit it.	حدد النص، ثم اختر من يمكنه الاستمرار في تحريره.
+	Show changes at:	إظهار التغييرات عند:
+	Show changes in:	إظهار التغييرات في:
+	Smart quotes instead of straight quotes	استخدام علامات الاقتباس المنحنية بدلًا من المستقيمة
+	Start Enforcing Protection	بدء فرض الحماية
+	Stop Protection	إيقاف الحماية
+	Text boxes	مربعات نص
+	The document is read only, except for regions marked editable.	المستند للقراءة فقط، باستثناء المناطق المحددة للتحرير.
+	The password is optional; without it anyone can stop the protection.	كلمة المرور اختيارية؛ ومن دونها يستطيع أي شخص إيقاف الحماية.
+	This document	هذا المستند
+	Tracked changes	التغييرات المتعقبة
+	Type the password to stop the protection.	اكتب كلمة المرور لإيقاف الحماية.
+	White space	مسافة بيضاء
+	With:	باستخدام:
+	Word level	مستوى الكلمات
+	Change Chart Type	تغيير نوع المخطط
+	Chart Design	تصميم المخطط
+	Type	النوع
+	Edit Data	تحرير البيانات
+	Chart Title	عنوان المخطط
+	Chart Layouts	تخطيطات المخطط
+	Add Chart Element	إضافة عنصر مخطط
+	Legend	وسيلة إيضاح
+	Data Labels	تسميات البيانات
+	Above Chart	أعلى المخطط
+	Insert Chart	إدراج مخطط
+	Clustered Column	أعمدة مجمعة
+	Stacked Column	أعمدة مكدسة
+	Clustered Bar	أشرطة مجمعة
