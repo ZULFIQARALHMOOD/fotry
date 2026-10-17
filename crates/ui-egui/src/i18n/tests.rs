@@ -132,7 +132,8 @@ fn bundled_catalogs_are_well_formed() {
             assert!(!e.translation.contains("..."), "{}: use … rather than three dots: {:?}", l.code, e.translation);
         }
         if l.code == "ar" {
-            assert!(entries.len() > 100, "{} has only {} entries", l.code, entries.len());
+            let english_entries = parse_entries(include_str!("tr.tsv")).0;
+            assert_eq!(entries.len(), english_entries.len(), "{} must translate every English catalog entry", l.code);
         } else {
             assert!(l.code == "en" || entries.len() > 700, "{} has {} entries", l.code, entries.len());
         }
@@ -146,11 +147,15 @@ fn arabic_catalog_keys_are_known_and_translations_are_nonempty() {
     assert!(errors.is_empty(), "{errors:?}");
     let (english_keys, errors) = parse_entries(include_str!("tr.tsv"));
     assert!(errors.is_empty(), "{errors:?}");
-    let english_keys: std::collections::HashSet<&str> = english_keys.iter().map(|e| e.source.as_str()).collect();
+    let english_keys: std::collections::HashSet<(String, String)> = english_keys.iter().map(|e| (e.context.clone(), e.source.clone())).collect();
+    let mut arabic_keys = std::collections::HashSet::new();
     for entry in entries {
-        assert!(english_keys.contains(entry.source.as_str()), "unknown English lookup string: {:?}", entry.source);
+        assert!(english_keys.contains(&(entry.context.clone(), entry.source.clone())), "unknown English lookup string: {:?}", entry.source);
         assert!(!entry.translation.trim().is_empty(), "empty Arabic translation for {:?}", entry.source);
+        arabic_keys.insert((entry.context.clone(), entry.source.clone()));
     }
+    let missing: Vec<_> = english_keys.difference(&arabic_keys).cloned().collect();
+    assert!(missing.is_empty(), "Arabic catalog is missing {} English lookup keys: {missing:#?}", missing.len());
     for (source, expected) in [
         ("File", "ملف"),
         ("Home", "الرئيسية"),
@@ -177,7 +182,7 @@ fn every_tab_and_command_is_translated() {
     // Labels that read the same in every language.
     let universal = |s: &str| !s.chars().any(char::is_alphabetic);
     let mut missing = Vec::new();
-    for l in Lang::all().filter(|l| *l != Lang::EN && l.code() != "ar") {
+    for l in Lang::all().filter(|l| *l != Lang::EN) {
         let tabs = crate::ribbon::TABS.iter().chain(&["Table Design", "Table Layout"]).copied();
         let commands = session.registry.all().iter().flat_map(|spec| std::iter::once(spec.label).chain(spec.location.split(" › ")));
         for s in tabs.chain(commands).filter(|s| !s.is_empty() && !universal(s)) {
