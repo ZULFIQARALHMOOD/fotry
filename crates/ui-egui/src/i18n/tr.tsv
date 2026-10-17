@@ -2654,3 +2654,19 @@ preview	Title	Örnek
 	Wait for the print job to finish submitting before closing.	Kapatmadan önce yazdırma işinin gönderilmesinin tamamlanmasını bekleyin.
 	select a picture first	önce bir resim seçin
 	{paper}   {width} × {height}	{paper}   {width} × {height}
+	An autosaved copy of this document is available. Would you like to recover it?	Bu belgenin otomatik kaydedilmiş bir kopyası var. Kurtarmak ister misiniz?
+	Autosaved recovery copy	Otomatik kurtarma kopyası kaydedildi
+	Autosave recovery copy is too large to store.	Otomatik kurtarma kopyası saklanamayacak kadar büyük.
+	Couldn't autosave: {error}	Otomatik kaydedilemedi: {error}
+	Couldn't clear autosave recovery copy: {error}	Otomatik kurtarma kopyası temizlenemedi: {error}
+	Couldn't keep {name} in Recent: {error}	{name} Son Kullanılanlar'a eklenemedi: {error}
+	Couldn't load settings: {error}	Ayarlar yüklenemedi: {error}
+	Couldn't open the recent document: {error}	Son kullanılan belge açılamadı: {error}
+	Couldn't restore the autosaved document: {error}	Otomatik kaydedilen belge kurtarılamadı: {error}
+	Couldn't save {name}: {error}	{name} kaydedilemedi: {error}
+	Couldn't save settings: {error}	Ayarlar kaydedilemedi: {error}
+	Couldn't share the document: {error}	Belge paylaşılamadı: {error}
+	Recover autosaved document?	Otomatik kaydedilmiş belge kurtarılsın mı?
+	Saved to {path}	{path} konumuna kaydedildi
+	Recover unsaved changes automatically	Kaydedilmemiş değişiklikleri otomatik kurtar
+	On Android, a recovery copy is stored in app storage every 30 seconds while changes are unsaved.	Android'de kaydedilmemiş değişiklikler varken uygulama depolamasına her 30 saniyede bir kurtarma kopyası kaydedilir.

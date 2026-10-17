@@ -390,14 +390,19 @@ fn save(app: &mut WordApp, ui: &mut Ui) {
     // The browser can't write to the user's files, so AutoSave can't be turned on there (#176).
     let browser = app.autosave_block() == Some(crate::AutoSaveBlock::Browser);
     let mut autosave = app.autosave && !browser;
-    let r = ui.add_enabled(!browser, egui::Checkbox::new(&mut autosave, tl!("AutoSave documents you have saved in WordCraft")));
+    let label = if app.services.native_storage { "Recover unsaved changes automatically" } else { "AutoSave documents you have saved in WordCraft" };
+    let r = ui.add_enabled(!browser, egui::Checkbox::new(&mut autosave, tl!(label)));
     if browser {
         r.on_disabled_hover_text(crate::AutoSaveBlock::Browser.reason());
     } else if r.changed() {
         app.autosave = autosave;
         app.session.autosave = autosave;
     }
-    note(ui, "AutoSave writes your changes to the file a moment after you stop typing.");
+    if app.services.native_storage {
+        note(ui, "On Android, a recovery copy is stored in app storage every 30 seconds while changes are unsaved.");
+    } else {
+        note(ui, "AutoSave writes your changes to the file a moment after you stop typing.");
+    }
     ui.add_space(8.0);
     // The open document's `file.privacyOptions` (#1062): saved with it, honoured when it is saved.
     section(ui, "Privacy for this document");
@@ -856,6 +861,12 @@ mod tests {
         .unwrap();
         a.ui.recent_count = 30;
         a.ui.print_backgrounds = true;
+        a.ui.language = "ar".into();
+        a.ui.theme = Appearance::Dark;
+        a.ui.ribbon_collapsed = true;
+        a.ui.recent = vec!["Documents/WordCraft/report.docx".into()];
+        a.session.view.zoom = 1.35;
+        a.session.view.numeral = wordcraft_engine::layout::NumeralMode::Hindi;
         let saved = serde_json::to_vec(&a.prefs()).unwrap();
         let mut b = app();
         b.apply_prefs(UiState::from_json(&saved).unwrap());
@@ -863,6 +874,12 @@ mod tests {
         assert_eq!(b.session.prefs.units, Some(Unit::Centimeters));
         assert_eq!(b.session.initials, "VK");
         assert_eq!((b.ui.recent_count, b.ui.print_backgrounds), (30, true));
+        assert_eq!(b.ui.language, "ar");
+        assert_eq!(b.ui.theme, Appearance::Dark);
+        assert!(b.ui.ribbon_collapsed);
+        assert_eq!(b.ui.recent, vec!["Documents/WordCraft/report.docx"]);
+        assert_eq!(b.session.view.zoom, 1.35);
+        assert_eq!(b.session.view.numeral, wordcraft_engine::layout::NumeralMode::Hindi);
         assert!(wordcraft_engine::proof::user_dictionary().contains(&"zqxoptionsword".to_string()));
 
         let junk = br#"{"theme": "dark", "recentCount": "lots", "printBackgrounds": 7, "optionsPane": ["x"], "dark": true,

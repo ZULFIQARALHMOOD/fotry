@@ -43,6 +43,15 @@ fn system_locales_map_to_languages() {
     assert_eq!(lang_from_tag("DE_de.UTF-8@euro"), Some(lang("de")));
 }
 
+#[test]
+fn startup_language_prefers_saved_then_device_then_english() {
+    assert_eq!(startup_lang(Some("ar"), ["fr-FR"]), lang("ar"));
+    assert_eq!(startup_lang(Some("auto"), ["ar-EG"]), lang("ar"));
+    assert_eq!(startup_lang(None, ["qaa-QM", "ar-SA"]), lang("ar"));
+    assert_eq!(startup_lang(None, ["qaa-QM"]), Lang::EN);
+    assert_eq!(startup_lang(Some("not-a-language"), ["ja-JP"]), lang("ja"));
+}
+
 /// A language tag no catalog will ever have: `qaa`–`qtz` are reserved for local use (ISO 639-2),
 /// so these tests keep working as real languages land.
 const UNSUPPORTED: &str = "qaa-QM";

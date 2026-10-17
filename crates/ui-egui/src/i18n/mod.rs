@@ -308,6 +308,17 @@ pub fn first_supported<'a>(tags: impl IntoIterator<Item = &'a str>) -> Option<La
     tags.into_iter().find_map(lang_from_tag)
 }
 
+/// Language used on a fresh launch: a saved explicit choice wins, then the device's first
+/// supported language, then English. A saved `auto` follows the device.
+pub fn startup_lang<'a>(saved: Option<&str>, device_tags: impl IntoIterator<Item = &'a str>) -> Lang {
+    if let Some(code) = saved.and_then(normalize_pref).filter(|code| *code != AUTO)
+        && let Some(lang) = Lang::from_code(code)
+    {
+        return lang;
+    }
+    first_supported(device_tags).unwrap_or(Lang::EN)
+}
+
 /// The system language (looked up once). English when it can't be determined or isn't supported.
 pub fn system_lang() -> Lang {
     // Tests drive the UI by its English labels whatever the machine's language is.

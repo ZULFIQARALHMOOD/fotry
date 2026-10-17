@@ -22,7 +22,14 @@ disabled for that session. Removing the password allows future recovery again.
 Copies live in `recovery/` under the app's profile folder. `WORDCRAFT_PROFILE_DIR` selects a
 separate profile for isolated runs, including preferences, logs and control keys.
 `WORDCRAFT_NO_PREFS` disables recovery as well as preferences. Headless engine/CLI sessions
-and the browser do not create recovery files implicitly.
+and the plain browser do not create recovery files implicitly.
+
+The Capacitor Android app stores recovery snapshots in app-private filesystem storage. While a
+document is modified, it writes an encrypted DOCX snapshot every 30 seconds. On the next launch,
+the app offers to recover or discard an available snapshot. This storage is separate from the
+user-visible `Documents/WordCraft` folder; recovery data is not shared or exported.
+Password-protected snapshots stay encrypted and require the document password to recover; a
+canceled or unsuccessful password prompt leaves the recovery copy available for the next launch.
 
 The desktop host checks for a dirty document every frame but snapshots at most once per ten
 seconds, and only when its revision changes. It clones the shared document model for a bounded
@@ -49,10 +56,10 @@ Windows is therefore unverified.
 
 Limits are 256 MiB of encoded JSON per snapshot, 2 GiB of snapshot files per profile, 128 records
 and 16 generations per record during discovery. Ordinarily only two valid generations remain.
-Copies are retained until saved or explicitly discarded; there is no automatic age-based deletion.
+Desktop copies are retained until saved or explicitly discarded; there is no automatic age-based deletion.
 Over-limit writes report an error and retain the previous valid copy. JSON stores binary parts
 as byte arrays, so it can be substantially larger than DOCX. This first version has a fixed
-interval, English fallback for new labels, and no cloud, version-history or browser recovery.
+interval, English fallback for new labels, and no cloud or version-history.
 
 ## Commands and verification
 

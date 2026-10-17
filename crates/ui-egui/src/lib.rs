@@ -110,6 +110,8 @@ pub struct Services {
     pub file_dialog: Option<Box<dyn Fn(FileDialogRequest) -> std::sync::mpsc::Receiver<FileDialogAnswer>>>,
     /// Web: open a file picker; the file arrives later through `inbox`.
     pub open_async: Option<Box<dyn Fn(&str)>>,
+    /// Web: open a cached native file from the recent-files list.
+    pub open_recent: Option<Box<dyn Fn(&str)>>,
     /// Web: files (name, bytes) delivered asynchronously (picker, drag and drop).
     pub inbox: Option<Inbox>,
     /// Web: pictures pasted from the browser's clipboard (the bytes; the name is ignored). Kept
@@ -119,6 +121,10 @@ pub struct Services {
     /// Web: hand bytes to the browser as a download. An error means no download started (the
     /// browser can't tell the page whether the user then kept the file).
     pub download: Option<Box<dyn Fn(&str, &[u8]) -> Result<(), String>>>,
+    /// Android's Capacitor filesystem is persistent and supports native autosave recovery.
+    pub native_storage: bool,
+    /// Web: a native user-visible save completed, so recovery data may be cleared.
+    pub on_saved: Option<Box<dyn Fn()>>,
     /// Web: saves that `download` started and that finish later (the browser's save picker,
     /// #1315). The hook starts a ticket for such a save and reports how it ended; until then the
     /// document's save isn't confirmed, and a New/Open held back by the Save Changes prompt waits.
@@ -241,6 +247,10 @@ pub struct UiState {
     pub recent_colors: Vec<String>,
     /// Interface theme: light, dark, or follow the OS appearance (#115).
     pub theme: theme::Appearance,
+    /// The document view zoom, restored when the app starts before a document is opened.
+    pub zoom: f32,
+    /// How ASCII and Arabic-Indic digits are displayed.
+    pub numeral: wordcraft_engine::layout::NumeralMode,
     /// Interface size (#475, #822): Auto (the display scale the system reports) or an absolute
     /// size in percent. Junk saved values read as Auto; out-of-range ones are clamped to 50–300 %.
     #[serde(rename = "uiScale")]
@@ -346,6 +356,8 @@ impl Default for UiState {
             recent_symbols: Vec::new(),
             recent_colors: Vec::new(),
             theme: theme::Appearance::default(),
+            zoom: 1.0,
+            numeral: wordcraft_engine::layout::NumeralMode::default(),
             interface_size: theme::InterfaceSize::default(),
             legacy_interface_size: None,
             animations: theme::Animations::default(),
@@ -680,6 +692,8 @@ impl WordApp {
         ui.read_aloud_rate = self.session.read_aloud.rate();
         ui.read_aloud_skip_citations = self.session.read_aloud.skip_citations;
         ui.dark_page = self.session.view.dark_mode;
+        ui.zoom = self.session.view.zoom;
+        ui.numeral = self.session.view.numeral;
         ui.keyboard = self.session.keymap.clone();
         ui.ribbon = self.session.ribbon.clone();
         ui.ink_pens = self.session.view.draw.pens.clone();
@@ -722,6 +736,8 @@ impl WordApp {
         self.session.read_aloud.set_rate(self.ui.read_aloud_rate);
         self.session.read_aloud.skip_citations = self.ui.read_aloud_skip_citations;
         self.session.view.dark_mode = self.ui.dark_page;
+        self.session.view.zoom = self.ui.zoom.clamp(0.1, 5.0);
+        self.session.view.numeral = self.ui.numeral;
         // Keys for commands this version doesn't have are dropped.
         self.session.keymap = std::mem::take(&mut self.ui.keyboard);
         let reg = self.session.registry.clone();
@@ -772,6 +788,15 @@ impl WordApp {
                 message: String::new(),
             });
             return Ok(json!({"pending": "saveChanges"}));
+        }
+        if id == "file.open"
+            && params.get("data").is_none()
+            && let Some(path) = params.get("path").and_then(Value::as_str)
+            && path.starts_with("capacitor-recent/")
+            && let Some(open_recent) = &self.services.open_recent
+        {
+            open_recent(path);
+            return Ok(json!({"pending": true, "path": path}));
         }
         // The ribbon and context-menu Paste commands send no text: read the system clipboard's, as
         // Ctrl+V's paste event carries it (#584), and its HTML and RTF, which egui's paste event
@@ -839,10 +864,22 @@ impl WordApp {
             }
             return r;
         }
-        // Web: saving and exporting become downloads.
+        // Web hosts route save and export through their file writer.
         if self.services.download.is_some() && matches!(id, "file.save" | "file.saveAs" | "file.exportPdf" | "file.exportPng") {
             let name = params.get("path").and_then(Value::as_str).map(str::to_string).unwrap_or_else(|| self.default_save_name());
-            let name = if id == "file.exportPdf" && !name.ends_with(".pdf") { format!("{name}.pdf") } else { name };
+            let name = if id == "file.exportPdf" && self.services.native_storage {
+                std::path::Path::new(&name).with_extension("pdf").to_string_lossy().to_string()
+            } else if id == "file.exportPdf" && !name.to_ascii_lowercase().ends_with(".pdf") {
+                format!("{name}.pdf")
+            } else {
+                name
+            };
+            let name = if self.services.native_storage {
+                let basename = std::path::Path::new(&name).file_name().map(|name| name.to_string_lossy().to_string()).unwrap_or(name);
+                format!("Documents/WordCraft/{basename}")
+            } else {
+                name
+            };
             // A save with a password encrypts this and later saves (`file.save`'s `password`).
             if matches!(id, "file.save" | "file.saveAs")
                 && let Some(pw) = params.get("password").filter(|v| !v.is_null())
@@ -869,8 +906,9 @@ impl WordApp {
             if let Some(d) = &self.services.download
                 && let Err(e) = d(&name, &bytes)
             {
-                let msg = i18n::fmt(tl!("Couldn't download {name}: {error}"), &[("name", &name), ("error", &e)]);
-                log::error!("download of {name} failed: {e}");
+                let message = if self.services.native_storage { "Couldn't save {name}: {error}" } else { "Couldn't download {name}: {error}" };
+                let msg = i18n::fmt(tl!(message), &[("name", &name), ("error", &e)]);
+                log::error!("writing {name} failed: {e}");
                 self.status(msg.clone());
                 return Err(msg);
             }
@@ -1099,7 +1137,20 @@ impl WordApp {
             if let Some(i) = self.saves_in_flight.iter().position(|s| s.ticket == ticket) {
                 let save = self.saves_in_flight.swap_remove(i);
                 match &outcome {
-                    async_saves::SaveOutcome::Saved => log::info!("saved {} through the save picker", save.name),
+                    async_saves::SaveOutcome::Saved => {
+                        log::info!("saved {}", save.name);
+                        if self.services.native_storage && save.marked_saved && save.document == current {
+                            let path = std::path::PathBuf::from(&save.name);
+                            self.session.path = Some(path.clone());
+                            self.autosave_path = Some(path);
+                            self.ui.recent.retain(|recent| recent != &save.name);
+                            self.ui.recent.insert(0, save.name.clone());
+                            self.ui.recent.truncate(MAX_RECENT);
+                            if let Some(on_saved) = &self.services.on_saved {
+                                on_saved();
+                            }
+                        }
+                    }
                     async_saves::SaveOutcome::Cancelled | async_saves::SaveOutcome::Failed(_) => {
                         if save.marked_saved && save.document == current {
                             self.session.dirty = true;
@@ -1107,8 +1158,9 @@ impl WordApp {
                     }
                 }
                 if let async_saves::SaveOutcome::Failed(error) = &outcome {
-                    let msg = i18n::fmt(tl!("Couldn't download {name}: {error}"), &[("name", &save.name), ("error", error)]);
-                    log::error!("the save picker couldn't save {}: {error}", save.name);
+                    let message = if self.services.native_storage { "Couldn't save {name}: {error}" } else { "Couldn't download {name}: {error}" };
+                    let msg = i18n::fmt(tl!(message), &[("name", &save.name), ("error", error)]);
+                    log::error!("couldn't save {}: {error}", save.name);
                     self.status(msg);
                 }
             }
@@ -1193,6 +1245,7 @@ impl WordApp {
             self.handle_request(&req);
         }
         if let Some(p) = self.session.path.as_ref().map(|p| p.to_string_lossy().to_string())
+            && !(self.services.native_storage && p.starts_with("capacitor-uncached/"))
             && self.ui.recent.first() != Some(&p)
         {
             self.ui.recent.retain(|r| *r != p);
@@ -1910,6 +1963,9 @@ impl WordApp {
     /// user saved to in this session, in a format that keeps everything, and never in the browser
     /// (a page can't write to the user's files; saving there is a download, #176).
     pub fn autosave_block(&self) -> Option<AutoSaveBlock> {
+        if self.services.native_storage {
+            return None;
+        }
         if self.services.download.is_some() {
             return Some(AutoSaveBlock::Browser);
         }
@@ -1945,6 +2001,9 @@ impl WordApp {
     /// AutoSave: write a saved document a couple of seconds after the last change. A failure is
     /// shown in the status bar and turns AutoSave off for the file until the user saves it again.
     fn autosave_tick(&mut self, now: f64) {
+        if cfg!(target_arch = "wasm32") && self.services.native_storage {
+            return;
+        }
         if self.autosaves() && self.session.dirty && now - self.last_autosave > 2500.0 && now - self.canvas.caret_visible_since > 1500.0 {
             self.last_autosave = now;
             if let Err(e) = self.session.run("file.save", &json!({})) {

@@ -2598,3 +2598,19 @@ preview	Title	عنوان
 	Wait for the print job to finish submitting before closing.	انتظر حتى يكتمل إرسال مهمة الطباعة قبل الإغلاق.
 	select a picture first	حدد صورة أولًا
 	{paper}   {width} × {height}	{paper}   {width} × {height}
+	An autosaved copy of this document is available. Would you like to recover it?	تتوفر نسخة محفوظة تلقائيًا من هذا المستند. هل تريد استعادتها؟
+	Autosaved recovery copy	حُفظت نسخة الاسترداد تلقائيًا
+	Autosave recovery copy is too large to store.	نسخة الاسترداد التلقائية كبيرة جدًا بحيث يتعذر تخزينها.
+	Couldn't autosave: {error}	تعذر الحفظ التلقائي: {error}
+	Couldn't clear autosave recovery copy: {error}	تعذر مسح نسخة الاسترداد التلقائية: {error}
+	Couldn't keep {name} in Recent: {error}	تعذر الاحتفاظ بـ {name} في الملفات الأخيرة: {error}
+	Couldn't load settings: {error}	تعذر تحميل الإعدادات: {error}
+	Couldn't open the recent document: {error}	تعذر فتح المستند الأخير: {error}
+	Couldn't restore the autosaved document: {error}	تعذر استعادة المستند المحفوظ تلقائيًا: {error}
+	Couldn't save {name}: {error}	تعذر حفظ {name}: {error}
+	Couldn't save settings: {error}	تعذر حفظ الإعدادات: {error}
+	Couldn't share the document: {error}	تعذرت مشاركة المستند: {error}
+	Recover autosaved document?	هل تريد استعادة المستند المحفوظ تلقائيًا؟
+	Saved to {path}	حُفظ في {path}
+	Recover unsaved changes automatically	استرداد التغييرات غير المحفوظة تلقائيًا
+	On Android, a recovery copy is stored in app storage every 30 seconds while changes are unsaved.	على Android، تُخزّن نسخة استرداد في مساحة التطبيق كل 30 ثانية ما دامت هناك تغييرات غير محفوظة.

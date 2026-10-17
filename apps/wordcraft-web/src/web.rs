@@ -7,11 +7,12 @@ use std::rc::Rc;
 use wasm_bindgen::JsCast as _;
 use wordcraft_engine::Session;
 use wordcraft_ui_egui::async_saves::{AsyncSaves, SaveOutcome};
-use wordcraft_ui_egui::{Inbox, Services, WordApp};
+use wordcraft_ui_egui::{Inbox, Services, UiState, WordApp};
 
 const DOC_EXTS: &[&str] = &["docx", "docm", "dotx", "dotm", "doc", "dot", "odt", "rtf", "txt", "md", "html", "htm", "tex", "json", "xml"];
 const IMAGE_EXTS: &[&str] = &["png", "jpg", "jpeg", "gif", "webp", "bmp", "wmf", "emf"];
 const RECIPIENT_EXTS: &[&str] = wordcraft_engine::cmd::mailings::RECIPIENT_EXTENSIONS;
+mod capacitor;
 mod font_store;
 const CANVAS_ID: &str = "wordcraft_canvas";
 const LOADING_ID: &str = "wordcraft_loading";
@@ -27,6 +28,55 @@ pub fn start() {
             log::error!("missing <canvas id=\"{CANVAS_ID}\">");
             return;
         };
+        let android = capacitor::is_android();
+        let device_languages = capacitor::device_languages();
+        let device_lang = wordcraft_ui_egui::i18n::startup_lang(None, device_languages.iter().map(String::as_str));
+        let saved_settings = match capacitor::load_settings(android).await {
+            Ok(settings) => settings,
+            Err(e) if android => {
+                log::error!("couldn't load settings: {e}");
+                if let Some(el) = document.get_element_by_id(LOADING_ID) {
+                    let message =
+                        wordcraft_ui_egui::i18n::fmt(wordcraft_ui_egui::i18n::tr(device_lang, "Couldn't load settings: {error}"), &[("error", &e)]);
+                    el.set_text_content(Some(&message));
+                }
+                return;
+            }
+            Err(e) => {
+                log::error!("couldn't load settings: {e}");
+                None
+            }
+        };
+        let parsed_settings = saved_settings.as_deref().and_then(UiState::from_json);
+        if saved_settings.is_some() && parsed_settings.is_none() {
+            log::warn!("saved settings were invalid; using defaults");
+        }
+        let saved_language = parsed_settings.as_ref().map(|settings| settings.language.as_str());
+        let startup_lang = wordcraft_ui_egui::i18n::startup_lang(saved_language, device_languages.iter().map(String::as_str));
+        let mut ui_settings = parsed_settings.unwrap_or_default();
+        if android {
+            ui_settings.language = startup_lang.code().to_string();
+        }
+        if let Some(root) = document.document_element() {
+            let _ = root.set_attribute("lang", startup_lang.code());
+            let _ = root.set_attribute("dir", if startup_lang.is_rtl() { "rtl" } else { "ltr" });
+        }
+        let recovery = if android {
+            match capacitor::read_private(capacitor::recovery_path()).await {
+                Ok(bytes) if bytes.len() <= MAX_RECOVERY_BYTES => Some(bytes),
+                Ok(bytes) => {
+                    log::warn!("autosave recovery copy is too large ({} bytes)", bytes.len());
+                    None
+                }
+                Err(e) if e.contains("does not exist") || e.contains("File does not exist") || e.contains("ENOENT") => None,
+                Err(e) => {
+                    log::error!("couldn't read autosave recovery copy: {e}");
+                    None
+                }
+            }
+        } else {
+            None
+        };
         if let Err(e) = load_arabic_fonts().await {
             log::error!("Arabic fallback fonts could not be loaded: {e}");
             if let Some(el) = document.get_element_by_id(LOADING_ID) {
@@ -36,6 +86,8 @@ pub fn start() {
         }
         let dirty = Rc::new(Cell::new(false));
         let saves = AsyncSaves::default();
+        let saved_file = Rc::new(RefCell::new(None));
+        let recovery_cleanup_pending = Rc::new(Cell::new(false));
         if let Err(e) = guard_unload(dirty.clone(), saves.clone()) {
             log::error!("no unsaved-changes guard: {e}");
         }
@@ -68,15 +120,52 @@ pub fn start() {
                     let mut session = Session::new(doc);
                     session.system_region = region;
                     let messages = Rc::new(RefCell::new(Vec::new()));
-                    let mut app = WordApp::new(session, services(inbox.clone(), cc.egui_ctx.clone(), dirty, saves.clone(), messages.clone()));
+                    let mut app = WordApp::new(
+                        session,
+                        services(
+                            inbox.clone(),
+                            cc.egui_ctx.clone(),
+                            dirty,
+                            saves.clone(),
+                            messages.clone(),
+                            saved_file.clone(),
+                            recovery_cleanup_pending.clone(),
+                            android,
+                        ),
+                    );
+                    app.apply_prefs(ui_settings);
                     // Pasted pictures wait apart from dropped files: the app inserts one only when the page is the edit target (#1349).
                     app.services.pasted = Some(pasted);
-                    app.autosave = false;
+                    app.autosave = android;
+                    app.session.autosave = android;
                     // No document to show: start on File › Home, as the desktop app does (#766).
                     if !sample {
                         app.start_screen();
                     }
-                    Ok(Box::new(WebShell { app, inbox, messages }))
+                    let settings_snapshot = match serde_json::to_string(&app.prefs()) {
+                        Ok(settings) => settings,
+                        Err(e) => {
+                            log::error!("couldn't serialize initial settings: {e}");
+                            String::new()
+                        }
+                    };
+                    Ok(Box::new(WebShell {
+                        app,
+                        inbox,
+                        messages,
+                        saved_file: saved_file.clone(),
+                        android,
+                        settings_snapshot: Rc::new(RefCell::new(settings_snapshot)),
+                        settings_retry_after: Rc::new(Cell::new(0.0)),
+                        pending_settings: Rc::new(RefCell::new(None)),
+                        settings_write_running: Rc::new(Cell::new(false)),
+                        autosave_last: js_sys::Date::now(),
+                        autosave_was_dirty: false,
+                        autosave_running: Rc::new(Cell::new(false)),
+                        recovery_cleanup_pending: recovery_cleanup_pending.clone(),
+                        recovery,
+                        recovery_open_pending: false,
+                    }))
                 }),
             )
             .await;
@@ -120,6 +209,18 @@ struct WebShell {
     app: WordApp,
     inbox: Inbox,
     messages: Rc<RefCell<Vec<String>>>,
+    saved_file: Rc<RefCell<Option<String>>>,
+    android: bool,
+    settings_snapshot: Rc<RefCell<String>>,
+    settings_retry_after: Rc<Cell<f64>>,
+    pending_settings: Rc<RefCell<Option<String>>>,
+    settings_write_running: Rc<Cell<bool>>,
+    autosave_last: f64,
+    autosave_was_dirty: bool,
+    autosave_running: Rc<Cell<bool>>,
+    recovery_cleanup_pending: Rc<Cell<bool>>,
+    recovery: Option<Vec<u8>>,
+    recovery_open_pending: bool,
 }
 
 impl eframe::App for WebShell {
@@ -144,6 +245,10 @@ impl eframe::App for WebShell {
             self.app.status(msg);
         }
         self.app.logic(ctx);
+        self.persist_settings(ctx);
+        self.autosave_recovery(ctx);
+        self.clear_saved_recovery(ctx);
+        self.clear_recovered_autosave(ctx);
     }
 
     fn raw_input_hook(&mut self, _ctx: &egui::Context, raw: &mut egui::RawInput) {
@@ -152,9 +257,216 @@ impl eframe::App for WebShell {
 
     fn ui(&mut self, ui: &mut egui::Ui, _frame: &mut eframe::Frame) {
         self.app.ui(ui);
+        self.show_recovery_prompt(ui.ctx());
+        self.show_share_button(ui.ctx());
     }
 }
 
+impl WebShell {
+    fn persist_settings(&mut self, ctx: &egui::Context) {
+        let settings = match serde_json::to_string(&self.app.prefs()) {
+            Ok(settings) => settings,
+            Err(e) => {
+                log::error!("couldn't serialize settings: {e}");
+                return;
+            }
+        };
+        if settings.as_str() == self.settings_snapshot.borrow().as_str() || js_sys::Date::now() < self.settings_retry_after.get() {
+            return;
+        }
+        *self.pending_settings.borrow_mut() = Some(settings);
+        if self.settings_write_running.replace(true) {
+            return;
+        }
+        let pending = self.pending_settings.clone();
+        let writing = self.settings_write_running.clone();
+        let snapshot = self.settings_snapshot.clone();
+        let retry_after = self.settings_retry_after.clone();
+        let android = self.android;
+        let messages = self.messages.clone();
+        let ctx = ctx.clone();
+        wasm_bindgen_futures::spawn_local(async move {
+            loop {
+                let value = pending.borrow_mut().take();
+                let Some(value) = value else { break };
+                match capacitor::save_settings(android, value.clone()).await {
+                    Ok(()) => {
+                        *snapshot.borrow_mut() = value;
+                        retry_after.set(0.0);
+                    }
+                    Err(e) => {
+                        log::error!("couldn't save settings: {e}");
+                        messages
+                            .borrow_mut()
+                            .push(wordcraft_ui_egui::i18n::fmt(wordcraft_ui_egui::i18n::t("Couldn't save settings: {error}"), &[("error", &e)]));
+                        retry_after.set(js_sys::Date::now() + 5_000.0);
+                        break;
+                    }
+                }
+            }
+            writing.set(false);
+            ctx.request_repaint();
+        });
+    }
+
+    fn autosave_recovery(&mut self, ctx: &egui::Context) {
+        if !self.android {
+            return;
+        }
+        let now = js_sys::Date::now();
+        if !self.app.session.dirty {
+            self.autosave_was_dirty = false;
+            self.autosave_last = now;
+            return;
+        }
+        if !self.app.autosaves() || self.autosave_running.get() {
+            return;
+        }
+        if !self.autosave_was_dirty {
+            self.autosave_was_dirty = true;
+            self.autosave_last = now;
+            return;
+        }
+        if now - self.autosave_last < 30_000.0 {
+            return;
+        }
+        self.autosave_last = now;
+        let password = self.app.session.password.as_ref().map(wordcraft_engine::Password::as_str);
+        let options = wordcraft_engine::cmd::file::export_options(&self.app.session, &serde_json::json!({}));
+        let bytes = match wordcraft_engine::io::save_bytes_with("recovery.docx", &self.app.session.doc, password, &options) {
+            Ok(bytes) if bytes.len() <= MAX_RECOVERY_BYTES => bytes,
+            Ok(bytes) => {
+                log::error!("autosave recovery copy exceeds the size limit ({} bytes)", bytes.len());
+                self.app.status("Autosave recovery copy is too large to store.");
+                return;
+            }
+            Err(e) => {
+                log::error!("couldn't create autosave recovery copy: {e}");
+                self.app.status(wordcraft_ui_egui::i18n::fmt(wordcraft_ui_egui::i18n::t("Couldn't autosave: {error}"), &[("error", &e.to_string())]));
+                return;
+            }
+        };
+        let running = self.autosave_running.clone();
+        running.set(true);
+        let messages = self.messages.clone();
+        let ctx = ctx.clone();
+        wasm_bindgen_futures::spawn_local(async move {
+            match capacitor::write_private(capacitor::recovery_path(), &bytes).await {
+                Ok(()) => messages.borrow_mut().push(wordcraft_ui_egui::i18n::t("Autosaved recovery copy").to_string()),
+                Err(e) => {
+                    log::error!("couldn't write autosave recovery copy: {e}");
+                    messages
+                        .borrow_mut()
+                        .push(wordcraft_ui_egui::i18n::fmt(wordcraft_ui_egui::i18n::t("Couldn't autosave: {error}"), &[("error", &e)]));
+                }
+            }
+            running.set(false);
+            ctx.request_repaint();
+        });
+    }
+
+    fn clear_saved_recovery(&self, ctx: &egui::Context) {
+        if !self.android || !self.recovery_cleanup_pending.get() || self.app.session.dirty || self.autosave_running.get() {
+            return;
+        }
+        self.recovery_cleanup_pending.set(false);
+        let ctx = ctx.clone();
+        let messages = self.messages.clone();
+        wasm_bindgen_futures::spawn_local(async move {
+            if let Err(e) = capacitor::remove_private(capacitor::recovery_path()).await {
+                log::error!("couldn't clear the autosave recovery copy: {e}");
+                messages.borrow_mut().push(wordcraft_ui_egui::i18n::fmt(
+                    wordcraft_ui_egui::i18n::t("Couldn't clear autosave recovery copy: {error}"),
+                    &[("error", &e)],
+                ));
+            }
+            ctx.request_repaint();
+        });
+    }
+
+    fn show_recovery_prompt(&mut self, ctx: &egui::Context) {
+        let Some(bytes) = self.recovery.as_ref() else { return };
+        let mut action = None;
+        egui::Window::new(wordcraft_ui_egui::i18n::t("Recover autosaved document?"))
+            .id(egui::Id::new("capacitor_recovery_prompt"))
+            .collapsible(false)
+            .resizable(false)
+            .anchor(egui::Align2::CENTER_CENTER, egui::Vec2::ZERO)
+            .show(ctx, |ui| {
+                ui.label(wordcraft_ui_egui::i18n::t("An autosaved copy of this document is available. Would you like to recover it?"));
+                ui.horizontal(|ui| {
+                    if ui.button(wordcraft_ui_egui::i18n::t("Recover")).clicked() {
+                        action = Some(true);
+                    }
+                    if ui.button(wordcraft_ui_egui::i18n::t("Discard")).clicked() {
+                        action = Some(false);
+                    }
+                });
+            });
+        let Some(recover) = action else { return };
+        if recover {
+            let data = wordcraft_engine::cmd::insert::base64_encode(bytes);
+            match self.app.run("file.open", serde_json::json!({"path": "recovered.docx", "data": data})) {
+                Ok(_) => {
+                    self.recovery = None;
+                    self.recovery_open_pending = true;
+                }
+                Err(e) => self.app.status(wordcraft_ui_egui::i18n::fmt(
+                    wordcraft_ui_egui::i18n::t("Couldn't restore the autosaved document: {error}"),
+                    &[("error", &e.to_string())],
+                )),
+            }
+        } else {
+            self.recovery = None;
+            wasm_bindgen_futures::spawn_local(async {
+                if let Err(e) = capacitor::remove_private(capacitor::recovery_path()).await {
+                    log::error!("couldn't discard autosave recovery copy: {e}");
+                }
+            });
+        }
+    }
+
+    fn show_share_button(&self, ctx: &egui::Context) {
+        let Some(path) = self.saved_file.borrow().clone() else { return };
+        egui::Area::new(egui::Id::new("capacitor_saved_share")).anchor(egui::Align2::RIGHT_BOTTOM, egui::vec2(-12.0, -42.0)).show(ctx, |ui| {
+            if ui.button(wordcraft_ui_egui::i18n::t("Share")).clicked() {
+                let messages = self.messages.clone();
+                let ctx = ctx.clone();
+                wasm_bindgen_futures::spawn_local(async move {
+                    let result = async {
+                        let uri = capacitor::document_uri(&path).await?;
+                        let name = std::path::Path::new(&path).file_name().and_then(|name| name.to_str()).unwrap_or("WordCraft document");
+                        capacitor::share_file(&uri, name).await
+                    }
+                    .await;
+                    if let Err(e) = result {
+                        log::error!("couldn't share {path}: {e}");
+                        messages
+                            .borrow_mut()
+                            .push(wordcraft_ui_egui::i18n::fmt(wordcraft_ui_egui::i18n::t("Couldn't share the document: {error}"), &[("error", &e)]));
+                    }
+                    ctx.request_repaint();
+                });
+            }
+        });
+    }
+
+    fn clear_recovered_autosave(&mut self, ctx: &egui::Context) {
+        if !self.recovery_open_pending || !self.app.session.path.as_deref().is_some_and(|path| path == std::path::Path::new("recovered.docx")) {
+            return;
+        }
+        self.recovery_open_pending = false;
+        let ctx = ctx.clone();
+        wasm_bindgen_futures::spawn_local(async move {
+            if let Err(e) = capacitor::remove_private(capacitor::recovery_path()).await {
+                log::error!("couldn't clear the recovered copy: {e}");
+            }
+            ctx.request_repaint();
+        });
+    }
+}
+
+const MAX_RECOVERY_BYTES: usize = 200 << 20;
 /// Largest picture pasted from the browser's clipboard (as `insert.picture` allows).
 const MAX_PASTED_BYTES: f64 = (200u32 << 20) as f64;
 /// Most pictures one paste inserts.
@@ -203,15 +515,33 @@ fn listen_for_pasted_pictures(inbox: Inbox, ctx: egui::Context) -> Result<(), St
 }
 
 /// `dirty` is the flag the `beforeunload` guard reads ([`guard_unload`]).
-fn services(inbox: Inbox, ctx: egui::Context, dirty: Rc<Cell<bool>>, saves: AsyncSaves, messages: Rc<RefCell<Vec<String>>>) -> Services {
+fn services(
+    inbox: Inbox,
+    ctx: egui::Context,
+    dirty: Rc<Cell<bool>>,
+    saves: AsyncSaves,
+    messages: Rc<RefCell<Vec<String>>>,
+    saved_file: Rc<RefCell<Option<String>>>,
+    recovery_cleanup_pending: Rc<Cell<bool>>,
+    android: bool,
+) -> Services {
     let open_inbox = inbox.clone();
+    let recent_inbox = inbox.clone();
+    let open_ctx = ctx.clone();
+    let recent_ctx = ctx.clone();
+    let open_messages = messages.clone();
+    let recent_messages = messages.clone();
     let save_ctx = ctx.clone();
     let font_ctx = ctx.clone();
     let font_messages = messages.clone();
+    let save_messages = messages.clone();
+    let cleanup_ctx = ctx.clone();
     Services {
         open_async: Some(Box::new(move |purpose: &str| {
             let inbox = open_inbox.clone();
-            let ctx = ctx.clone();
+            let ctx = open_ctx.clone();
+            let messages = open_messages.clone();
+            let cache_as_recent = android && purpose == "document";
             let dialog = if purpose == "picture" {
                 rfd::AsyncFileDialog::new().add_filter("Pictures", IMAGE_EXTS)
             } else if purpose == "font" {
@@ -225,18 +555,68 @@ fn services(inbox: Inbox, ctx: egui::Context, dirty: Rc<Cell<bool>>, saves: Asyn
                 let Some(file) = dialog.pick_file().await else {
                     return;
                 };
+                let name = file.file_name();
                 let bytes = file.read().await;
-                inbox.lock().unwrap_or_else(|e| e.into_inner()).push((file.file_name(), bytes));
+                let path = if cache_as_recent {
+                    let path = capacitor::recent_cache_path(&name);
+                    match capacitor::write_private(&path, &bytes).await {
+                        Ok(()) => format!("capacitor-recent/{path}"),
+                        Err(e) => {
+                            log::error!("couldn't cache {name} for Recent: {e}");
+                            messages.borrow_mut().push(wordcraft_ui_egui::i18n::fmt(
+                                wordcraft_ui_egui::i18n::t("Couldn't keep {name} in Recent: {error}"),
+                                &[("name", &name), ("error", &e)],
+                            ));
+                            name
+                        }
+                    }
+                } else {
+                    name
+                };
+                inbox.lock().unwrap_or_else(|e| e.into_inner()).push((path, bytes));
                 ctx.request_repaint();
             });
         })),
-        // Exports ask for a name; the browser decides where the download goes.
+        open_recent: android.then(|| {
+            Box::new(move |path: &str| {
+                let path = path.to_string();
+                let inbox = recent_inbox.clone();
+                let ctx = recent_ctx.clone();
+                let messages = recent_messages.clone();
+                wasm_bindgen_futures::spawn_local(async move {
+                    let result = async {
+                        let storage_path = capacitor::recent_storage_path(&path)?;
+                        capacitor::read_private(storage_path).await
+                    }
+                    .await;
+                    match result {
+                        Ok(bytes) => inbox.lock().unwrap_or_else(|e| e.into_inner()).push((path, bytes)),
+                        Err(e) => {
+                            log::error!("couldn't open recent document: {e}");
+                            messages.borrow_mut().push(wordcraft_ui_egui::i18n::fmt(
+                                wordcraft_ui_egui::i18n::t("Couldn't open the recent document: {error}"),
+                                &[("error", &e)],
+                            ));
+                        }
+                    }
+                    ctx.request_repaint();
+                });
+            }) as Box<dyn Fn(&str)>
+        }),
+        // The browser picks a name; Android saves under Documents/WordCraft.
         pick_save: Some(Box::new(|name: &str| Some(name.to_string()))),
         async_saves: Some(saves.clone()),
-        download: Some(Box::new(move |path: &str, bytes: &[u8]| download(&saves, &save_ctx, path, bytes))),
+        download: Some(Box::new(move |path: &str, bytes: &[u8]| download(&saves, &save_ctx, path, bytes, android, &save_messages, &saved_file))),
         print: Some(Box::new(print_pdf)),
         inbox: Some(inbox),
         on_dirty: Some(Box::new(move |d| dirty.set(d))),
+        native_storage: android,
+        on_saved: android.then(|| {
+            Box::new(move || {
+                recovery_cleanup_pending.set(true);
+                cleanup_ctx.request_repaint();
+            }) as Box<dyn Fn()>
+        }),
         animations_enabled: Some(animations_enabled()),
         store_font: Some(Box::new(font_store::store)),
         forget_font: Some(Box::new(font_store::forget)),
@@ -372,9 +752,42 @@ fn guard_unload(dirty: Rc<Cell<bool>>, saves: AsyncSaves) -> Result<(), String> 
     Ok(())
 }
 
-/// Trigger a browser save dialog or download of `bytes` named after the last component of `path`.
-fn download(saves: &AsyncSaves, ctx: &egui::Context, path: &str, bytes: &[u8]) -> Result<(), String> {
+/// Save `bytes` through the host's storage and report whether its asynchronous write succeeded.
+fn download(
+    saves: &AsyncSaves,
+    ctx: &egui::Context,
+    path: &str,
+    bytes: &[u8],
+    android: bool,
+    messages: &Rc<RefCell<Vec<String>>>,
+    saved_file: &Rc<RefCell<Option<String>>>,
+) -> Result<(), String> {
     let name = std::path::Path::new(path).file_name().map(|n| n.to_string_lossy().to_string()).unwrap_or_else(|| "document".into());
+    if android {
+        let ticket = saves.start();
+        let path = path.to_string();
+        let bytes = bytes.to_vec();
+        let saves = saves.clone();
+        let ctx = ctx.clone();
+        let messages = messages.clone();
+        let saved_file = saved_file.clone();
+        wasm_bindgen_futures::spawn_local(async move {
+            let outcome = match capacitor::save_documents_file(&path, &bytes).await {
+                Ok(()) => {
+                    *saved_file.borrow_mut() = Some(path.clone());
+                    messages.borrow_mut().push(wordcraft_ui_egui::i18n::fmt(wordcraft_ui_egui::i18n::t("Saved to {path}"), &[("path", &path)]));
+                    SaveOutcome::Saved
+                }
+                Err(e) => {
+                    log::error!("couldn't save to {path}: {e}");
+                    SaveOutcome::Failed(e)
+                }
+            };
+            saves.finish(ticket, outcome);
+            ctx.request_repaint();
+        });
+        return Ok(());
+    }
     let window = web_sys::window().ok_or("no window")?;
 
     // On browsers supporting the File System Access API (Chromium: Chrome, Edge, etc.),

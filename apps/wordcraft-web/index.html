@@ -6,6 +6,14 @@
   <title>WordCraft</title>
   <link data-trunk rel="icon" href="../../assets/app-icon/wordcraft.ico" />
   <link data-trunk rel="copy-dir" href="fonts" />
+  <link data-trunk rel="copy-file" href="../wordcraft-android/node_modules/@capacitor/core/dist/capacitor.js" data-target-path="capacitor/capacitor.js" />
+  <link data-trunk rel="copy-file" href="../wordcraft-android/node_modules/@capacitor/preferences/dist/plugin.js" data-target-path="capacitor/preferences.js" />
+  <link data-trunk rel="copy-file" href="../wordcraft-android/node_modules/@capacitor/filesystem/dist/plugin.js" data-target-path="capacitor/filesystem.js" />
+  <link data-trunk rel="copy-file" href="../wordcraft-android/node_modules/@capacitor/share/dist/plugin.js" data-target-path="capacitor/share.js" />
+  <script src="./capacitor/capacitor.js"></script>
+  <script src="./capacitor/preferences.js"></script>
+  <script src="./capacitor/filesystem.js"></script>
+  <script src="./capacitor/share.js"></script>
   <link data-trunk rel="rust" data-bin="wordcraft-web" data-wasm-opt="z" data-weak-refs />
   <style>
     html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #e6e6e6; }
