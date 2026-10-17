@@ -47,7 +47,7 @@ pub fn start() {
                 None
             }
         };
-        let parsed_settings = saved_settings.as_deref().and_then(UiState::from_json);
+        let parsed_settings = saved_settings.as_ref().and_then(|settings| UiState::from_json(settings.as_bytes()));
         if saved_settings.is_some() && parsed_settings.is_none() {
             log::warn!("saved settings were invalid; using defaults");
         }

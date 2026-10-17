@@ -2488,3 +2488,144 @@ preview	Title	제목
 	Bottom Right Cell	오른쪽 아래 셀
 	Inside Horizontal Border	안쪽 가로 테두리
 	Inside Vertical Border	안쪽 세로 테두리
+
+	Hidden bookmarks	Hidden bookmarks
+	Sort by:	Sort by:
+	No document is open. Create a document or open one first.	No document is open. Create a document or open one first.
+	In the margin	In the margin
+	{language} (no dictionary)	{language} (no dictionary)
+	No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.
+	Only for the selected text	Only for the selected text
+	Auto ({percent}%)	Auto ({percent}%)
+	Makes the ribbon, menus and dialogs larger or smaller. Auto follows your system's display scaling; 100% is one screen pixel per point. Document zoom is separate.	Makes the ribbon, menus and dialogs larger or smaller. Auto follows your system's display scaling; 100% is one screen pixel per point. Document zoom is separate.
+	Word 2003 XML Document (*.xml)	Word 2003 XML Document (*.xml)
+	Croatian	Croatian
+	Show alignment guides when moving pictures and shapes	Show alignment guides when moving pictures and shapes
+	Moved objects snap to the page's edges and centre, the margins and other objects. Hold Alt to move freely.	Moved objects snap to the page's edges and centre, the margins and other objects. Hold Alt to move freely.
+	Text of the nearest paragraph with a given style (running headers)	Text of the nearest paragraph with a given style (running headers)
+	Style name:	Style name:
+	Filter and Sort	Filter and Sort
+	And	And
+	Or	Or
+	Comparison	Comparison
+	Compare to	Compare to
+	Add Condition	Add Condition
+	Remove condition	Remove condition
+	Sort by	Sort by
+	Then by	Then by
+	Ascending	Ascending
+	Descending	Descending
+	Equal to	Equal to
+	Not equal to	Not equal to
+	Less than	Less than
+	Greater than	Greater than
+	Less than or equal	Less than or equal
+	Greater than or equal	Greater than or equal
+	Is blank	Is blank
+	Is not blank	Is not blank
+	Contains	Contains
+	Does not contain	Does not contain
+	{count} of {total} recipients will be merged.	{count} of {total} recipients will be merged.
+	Take the last match on the page	Take the last match on the page
+	Show its list number	Show its list number
+	Show its number relative to this field	Show its number relative to this field
+	Show its number with all higher levels	Show its number with all higher levels
+	Number only, without the label's words	Number only, without the label's words
+	Add whether it is above or below	Add whether it is above or below
+	Document name	Document name
+	Rename	Rename
+	Account	Account
+	Trust Center	Trust Center
+	Privacy for this document	Privacy for this document
+	Remove my name from comments, changes and file properties when saving	Remove my name from comments, changes and file properties when saving
+	Leave out the date and time of comments and tracked changes when saving	Leave out the date and time of comments and tracked changes when saving
+	The document you are editing keeps the names and dates; only the saved file leaves them out.	The document you are editing keeps the names and dates; only the saved file leaves them out.
+	Waiting for the save to finish…	Waiting for the save to finish…
+	Saving {name} was cancelled, so it is still open and nothing was lost.	Saving {name} was cancelled, so it is still open and nothing was lost.
+	Paper	Paper
+	Paper size:	Paper size:
+	Custom size	Custom size
+	More Paper Sizes…	More Paper Sizes…
+	The margins don't fit on a page this size; make the margins smaller first.	The margins don't fit on a page this size; make the margins smaller first.
+	Full\nScreen	Full\nScreen
+	Use the browser's full screen (F11)	Use the browser's full screen (F11)
+	{name}   {height} × {width} in	{name}   {height} × {width} in
+	{name}   {height} × {width} mm	{name}   {height} × {width} mm
+	{width} × {height} mm	{width} × {height} mm
+	{kind}, {columns} × {rows}, {size} ({paper})	{kind}, {columns} × {rows}, {size} ({paper})
+	Researcher needs an online service; WordCraft keeps your documents offline.	Researcher needs an online service; WordCraft keeps your documents offline.
+	These settings will be used for new documents.	These settings will be used for new documents.
+	can't split at the first row	can't split at the first row
+	select two or more cells to merge	select two or more cells to merge
+	there is no ink to replay	there is no ink to replay
+	there's no citation after the caret	there's no citation after the caret
+	this item is already at the top level	this item is already at the top level
+	Envelope #10	Envelope #10
+	Envelope DL	Envelope DL
+	Reading Mode	Reading Mode
+	Column width	Column width
+	Text size	Text size
+	Edit Document	Edit Document
+	Go to what:	Go to what:
+	Type +2 or -1 to move from the page you are on.	Type +2 or -1 to move from the page you are on.
+	Suggested	Suggested
+	Set Proofing Language…	Set Proofing Language…
+	Language Preferences…	Language Preferences…
+	Print settings	Print settings
+	Submit print job	Submit print job
+	For which item:	For which item:
+	Heading	Heading
+	Heading text	Heading text
+	Insert reference to:	Insert reference to:
+	Reference type:	Reference type:
+	Dictionaries	Dictionaries
+	Dictionaries folder:	Dictionaries folder:
+	Not set: the system's usual places	Not set: the system's usual places
+	Hunspell .aff and .dic files here (pl_PL, pt_BR, it_IT, hr_HR, tr_TR) are used before the system's.	Hunspell .aff and .dic files here (pl_PL, pt_BR, it_IT, hr_HR, tr_TR) are used before the system's.
+	{language}: {file}	{language}: {file}
+	{language}: no dictionary found	{language}: no dictionary found
+	Recover	Recover
+	Mirror margins	Mirror margins
+	Existing File or Web Page	Existing File or Web Page
+	Link to:	Link to:
+	Place in This Document	Place in This Document
+	Bookmarks	Bookmarks
+	Continue without restoring	Continue without restoring
+	Couldn't save {name}, so it is still open and nothing was lost: {error}	Couldn't save {name}, so it is still open and nothing was lost: {error}
+	Crop on the page works on unturned pictures: set Rotation to 0° first, or use the crop boxes	Crop on the page works on unturned pictures: set Rotation to 0° first, or use the crop boxes
+	Discard	Discard
+	Discard the recovery copy of {name}?	Discard the recovery copy of {name}?
+	Discard…	Discard…
+	Enter bookmark name:	Enter bookmark name:
+	Find “{text}” in the document	Find “{text}” in the document
+	Local recovery is unavailable or still loading.	Local recovery is unavailable or still loading.
+	No recovery copies.	No recovery copies.
+	Nothing of this type in the document.	Nothing of this type in the document.
+	Recovery copy	Recovery copy
+	Recovery is disabled while this document has a password.	Recovery is disabled while this document has a password.
+	Restore	Restore
+	Restore opens an unsaved copy. Your original file stays unchanged.	Restore opens an unsaved copy. Your original file stays unchanged.
+	Select a place in this document:	Select a place in this document:
+	This cannot be undone. Your original file stays unchanged.	This cannot be undone. Your original file stays unchanged.
+	This document has no bookmarks.	This document has no bookmarks.
+	Top of the Document	Top of the Document
+	Type a page number, or +2 / -1.	Type a page number, or +2 / -1.
+	Wait for the print job to finish submitting before closing.	Wait for the print job to finish submitting before closing.
+	select a picture first	select a picture first
+	{paper}   {width} × {height}	{paper}   {width} × {height}
+	An autosaved copy of this document is available. Would you like to recover it?	An autosaved copy of this document is available. Would you like to recover it?
+	Autosaved recovery copy	Autosaved recovery copy
+	Autosave recovery copy is too large to store.	Autosave recovery copy is too large to store.
+	Couldn't autosave: {error}	Couldn't autosave: {error}
+	Couldn't clear autosave recovery copy: {error}	Couldn't clear autosave recovery copy: {error}
+	Couldn't keep {name} in Recent: {error}	Couldn't keep {name} in Recent: {error}
+	Couldn't load settings: {error}	Couldn't load settings: {error}
+	Couldn't open the recent document: {error}	Couldn't open the recent document: {error}
+	Couldn't restore the autosaved document: {error}	Couldn't restore the autosaved document: {error}
+	Couldn't save {name}: {error}	Couldn't save {name}: {error}
+	Couldn't save settings: {error}	Couldn't save settings: {error}
+	Couldn't share the document: {error}	Couldn't share the document: {error}
+	Recover autosaved document?	Recover autosaved document?
+	Saved to {path}	Saved to {path}
+	Recover unsaved changes automatically	Recover unsaved changes automatically
+	On Android, a recovery copy is stored in app storage every 30 seconds while changes are unsaved.	On Android, a recovery copy is stored in app storage every 30 seconds while changes are unsaved.

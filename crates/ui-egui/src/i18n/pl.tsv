@@ -2622,3 +2622,44 @@ preview	Title	Tytuł
 # Reading Mode column widths (#1040)
 	Narrow	Wąska
 	Medium	Średnia
+
+	Bookmarks	Bookmarks
+	Continue without restoring	Continue without restoring
+	Couldn't save {name}, so it is still open and nothing was lost: {error}	Couldn't save {name}, so it is still open and nothing was lost: {error}
+	Crop on the page works on unturned pictures: set Rotation to 0° first, or use the crop boxes	Crop on the page works on unturned pictures: set Rotation to 0° first, or use the crop boxes
+	Discard	Discard
+	Discard the recovery copy of {name}?	Discard the recovery copy of {name}?
+	Discard…	Discard…
+	Enter bookmark name:	Enter bookmark name:
+	Find “{text}” in the document	Find “{text}” in the document
+	Local recovery is unavailable or still loading.	Local recovery is unavailable or still loading.
+	No recovery copies.	No recovery copies.
+	Nothing of this type in the document.	Nothing of this type in the document.
+	Recovery copy	Recovery copy
+	Recovery is disabled while this document has a password.	Recovery is disabled while this document has a password.
+	Restore	Restore
+	Restore opens an unsaved copy. Your original file stays unchanged.	Restore opens an unsaved copy. Your original file stays unchanged.
+	Select a place in this document:	Select a place in this document:
+	This cannot be undone. Your original file stays unchanged.	This cannot be undone. Your original file stays unchanged.
+	This document has no bookmarks.	This document has no bookmarks.
+	Top of the Document	Top of the Document
+	Type a page number, or +2 / -1.	Type a page number, or +2 / -1.
+	Wait for the print job to finish submitting before closing.	Wait for the print job to finish submitting before closing.
+	select a picture first	select a picture first
+	{paper}   {width} × {height}	{paper}   {width} × {height}
+	An autosaved copy of this document is available. Would you like to recover it?	An autosaved copy of this document is available. Would you like to recover it?
+	Autosaved recovery copy	Autosaved recovery copy
+	Autosave recovery copy is too large to store.	Autosave recovery copy is too large to store.
+	Couldn't autosave: {error}	Couldn't autosave: {error}
+	Couldn't clear autosave recovery copy: {error}	Couldn't clear autosave recovery copy: {error}
+	Couldn't keep {name} in Recent: {error}	Couldn't keep {name} in Recent: {error}
+	Couldn't load settings: {error}	Couldn't load settings: {error}
+	Couldn't open the recent document: {error}	Couldn't open the recent document: {error}
+	Couldn't restore the autosaved document: {error}	Couldn't restore the autosaved document: {error}
+	Couldn't save {name}: {error}	Couldn't save {name}: {error}
+	Couldn't save settings: {error}	Couldn't save settings: {error}
+	Couldn't share the document: {error}	Couldn't share the document: {error}
+	Recover autosaved document?	Recover autosaved document?
+	Saved to {path}	Saved to {path}
+	Recover unsaved changes automatically	Recover unsaved changes automatically
+	On Android, a recovery copy is stored in app storage every 30 seconds while changes are unsaved.	On Android, a recovery copy is stored in app storage every 30 seconds while changes are unsaved.

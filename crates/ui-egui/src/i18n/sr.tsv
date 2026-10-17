@@ -2247,3 +2247,411 @@
 # Reading Mode column widths (#1040)
 	Narrow	Уска
 	Medium	Средња
+
+	AaBbCcDd	AaBbCcDd
+	Annotation Reference	Annotation Reference
+	Annotation Subject	Annotation Subject
+	Annotation Text	Annotation Text
+	Body text in a short paragraph to show spacing.	Body text in a short paragraph to show spacing.
+	Book Title	Book Title
+	Category	Category
+	Contributors	Contributors
+	Default Paragraph Font	Default Paragraph Font
+	Emphasis	Emphasis
+	Endnote Reference	Endnote Reference
+	Endnote Text	Endnote Text
+	Envelope Address	Envelope Address
+	Envelope Return	Envelope Return
+	Footnote Reference	Footnote Reference
+	Footnote Text	Footnote Text
+	Hyperlink	Hyperlink
+	Index Heading	Index Heading
+	Index {n}	Index {n}
+	Intense Emphasis	Intense Emphasis
+	Intense Quote	Intense Quote
+	Intense Reference	Intense Reference
+	Keywords	Keywords
+	Line Number	Line Number
+	List Paragraph	List Paragraph
+	No Spacing	No Spacing
+	Normal	Normal
+	Normal Indent	Normal Indent
+	Normal Table	Normal Table
+	Quote	Quote
+	Strong	Strong
+	Subject	Subject
+	Subtitle	Subtitle
+	Subtle Emphasis	Subtle Emphasis
+	Subtle Reference	Subtle Reference
+	Table Grid	Table Grid
+	Table of Figures	Table of Figures
+	TOA Heading	TOA Heading
+	TOC Heading	TOC Heading
+	TOC {n}	TOC {n}
+	Models	Models
+	Good evening	Good evening
+	Good morning	Good morning
+	Good afternoon	Good afternoon
+	Track\nChanges	Track\nChanges
+	Track\nChanges ✓	Track\nChanges ✓
+	tOGGLE cASE	tOGGLE cASE
+	Change to Level 1	Change to Level 1
+	Change to Level 2	Change to Level 2
+	Change to Level 3	Change to Level 3
+	Change to Level 4	Change to Level 4
+	Change to Level 5	Change to Level 5
+	Level 1	Level 1
+	Level 2	Level 2
+	Level 3	Level 3
+	ASAP	ASAP
+	CONFIDENTIAL	CONFIDENTIAL
+	DO NOT COPY	DO NOT COPY
+	DRAFT	DRAFT
+	SAMPLE	SAMPLE
+	URGENT	URGENT
+	Plain Table 1	Plain Table 1
+	Grid Table 1 Light	Grid Table 1 Light
+	Grid Table 4 – Blue	Grid Table 4 – Blue
+	Grid Table 4 – Green	Grid Table 4 – Green
+	Grid Table 4 – Orange	Grid Table 4 – Orange
+	Grid Table 4 – Purple	Grid Table 4 – Purple
+	List Table 3 – Blue	List Table 3 – Blue
+	List Table 3 – Green	List Table 3 – Green
+	List Table 3 – Orange	List Table 3 – Orange
+	List Table 3 – Purple	List Table 3 – Purple
+	Convert between built-up and linear form	Convert between built-up and linear form
+	Justification of a display equation	Justification of a display equation
+	Number the equation; the number sits at the right margin (or type # then the number)	Number the equation; the number sits at the right margin (or type # then the number)
+	Show the equation in the line of text	Show the equation in the line of text
+	Show the equation on a line of its own	Show the equation on a line of its own
+	Type equations in LaTeX	Type equations in LaTeX
+	Type equations in the linear format (UnicodeMath)	Type equations in the linear format (UnicodeMath)
+	Type normal (non-math) text in the equation	Type normal (non-math) text in the equation
+	Sides of a right triangle	Sides of a right triangle
+	Circle area from its radius	Circle area from its radius
+	Roots of ax²+bx+c	Roots of ax²+bx+c
+	Binomial expansion of (x+a)ⁿ	Binomial expansion of (x+a)ⁿ
+	Power series of (1+x)ⁿ	Power series of (1+x)ⁿ
+	Euler's identity	Euler's identity
+	Derivative as a limit	Derivative as a limit
+	Exponential series	Exponential series
+	Integral of e^(−x²)	Integral of e^(−x²)
+	Sine and cosine series of f(x)	Sine and cosine series of f(x)
+	Sum or difference of sines	Sum or difference of sines
+	Sum of cosines	Sum of cosines
+	Normal probability density	Normal probability density
+	Bayes' rule	Bayes' rule
+	Accents	Accents
+	Basic Math	Basic Math
+	Boxed Formulas	Boxed Formulas
+	Cases and Stacks	Cases and Stacks
+	Common Accent Objects	Common Accent Objects
+	Common Brackets	Common Brackets
+	Common Fractions	Common Fractions
+	Common Functions	Common Functions
+	Common Large Operators	Common Large Operators
+	Common Operator Structures	Common Operator Structures
+	Common Operators	Common Operators
+	Common Radicals	Common Radicals
+	Common Subscripts and Superscripts	Common Subscripts and Superscripts
+	Contour Integrals	Contour Integrals
+	Differentials	Differentials
+	Dots	Dots
+	Empty Matrices	Empty Matrices
+	Functions	Functions
+	Geometry	Geometry
+	Greek Letters	Greek Letters
+	Hyperbolic Functions	Hyperbolic Functions
+	Identity Matrices	Identity Matrices
+	Integrals	Integrals
+	Inverse Functions	Inverse Functions
+	Inverse Hyperbolic Functions	Inverse Hyperbolic Functions
+	Letter-Like Symbols	Letter-Like Symbols
+	Matrices with Brackets	Matrices with Brackets
+	Negated Relations	Negated Relations
+	Operator Structures	Operator Structures
+	Operators	Operators
+	Other Large Operators	Other Large Operators
+	Overbars and Underbars	Overbars and Underbars
+	Products and Coproducts	Products and Coproducts
+	Radicals	Radicals
+	Scripts	Scripts
+	Single Brackets	Single Brackets
+	Sparse Matrices	Sparse Matrices
+	Subscripts and Superscripts	Subscripts and Superscripts
+	Summations	Summations
+	Trigonometric Functions	Trigonometric Functions
+	Unions and Intersections	Unions and Intersections
+	1×2 Empty Matrix	1×2 Empty Matrix
+	1×3 Empty Matrix	1×3 Empty Matrix
+	2×1 Empty Matrix	2×1 Empty Matrix
+	2×2 Empty Matrix	2×2 Empty Matrix
+	2×3 Empty Matrix	2×3 Empty Matrix
+	3×1 Empty Matrix	3×1 Empty Matrix
+	3×2 Empty Matrix	3×2 Empty Matrix
+	3×3 Empty Matrix	3×3 Empty Matrix
+	2×2 Determinant	2×2 Determinant
+	2×2 Identity Matrix	2×2 Identity Matrix
+	2×2 Identity Matrix (sparse)	2×2 Identity Matrix (sparse)
+	3×3 Identity Matrix	3×3 Identity Matrix
+	3×3 Identity Matrix (sparse)	3×3 Identity Matrix (sparse)
+	2×2 Matrix in Brackets	2×2 Matrix in Brackets
+	2×2 Matrix in Double Bars	2×2 Matrix in Double Bars
+	2×2 Matrix in Parentheses	2×2 Matrix in Parentheses
+	n×n Identity Matrix	n×n Identity Matrix
+	n×n Matrix	n×n Matrix
+	A xor B	A xor B
+	Absolute value cases	Absolute value cases
+	Acute	Acute
+	Angle Brackets	Angle Brackets
+	Angle Brackets with Separator	Angle Brackets with Separator
+	Angle Brackets with Two Separators	Angle Brackets with Two Separators
+	Baseline Dots	Baseline Dots
+	Binomial Coefficient	Binomial Coefficient
+	Binomial Coefficient (angle)	Binomial Coefficient (angle)
+	Binomial Coefficient with Angle Brackets	Binomial Coefficient with Angle Brackets
+	Boxed Formula	Boxed Formula
+	Boxed Formula (example)	Boxed Formula (example)
+	Braces	Braces
+	Braces with Separator	Braces with Separator
+	Brackets	Brackets
+	Brackets with Separators	Brackets with Separators
+	Breve	Breve
+	Cases (Three Conditions)	Cases (Three Conditions)
+	Cases (Two Conditions)	Cases (Two Conditions)
+	Ceiling	Ceiling
+	Change in y over change in x	Change in y over change in x
+	Check	Check
+	Circled Dot	Circled Dot
+	Circled Plus	Circled Plus
+	Circled Times	Circled Times
+	Colon Equal	Colon Equal
+	Contour Integral	Contour Integral
+	Contour Integral with Limits	Contour Integral with Limits
+	Contour Integral with Stacked Limits	Contour Integral with Stacked Limits
+	Coproduct	Coproduct
+	Coproduct with Limits	Coproduct with Limits
+	Coproduct with Lower Limit	Coproduct with Lower Limit
+	Coproduct with Subscript-Superscript Limits	Coproduct with Subscript-Superscript Limits
+	Cosecant Function	Cosecant Function
+	Cosine 2x	Cosine 2x
+	Cosine Function	Cosine Function
+	Cotangent Function	Cotangent Function
+	Cube Root	Cube Root
+	Delta Equal To	Delta Equal To
+	Delta over arrow	Delta over arrow
+	Diagonal Dots	Diagonal Dots
+	Differential	Differential
+	Differential theta	Differential theta
+	Differential x	Differential x
+	Differential y	Differential y
+	Dot	Dot
+	Double Bar	Double Bar
+	Double Dot	Double Dot
+	Double Integral	Double Integral
+	Double Integral with Limits	Double Integral with Limits
+	Double Integral with Stacked Limits	Double Integral with Stacked Limits
+	Double Left Arrow with Text Above	Double Left Arrow with Text Above
+	Double Left Arrow with Text Below	Double Left Arrow with Text Below
+	Double Left Right Arrow with Text Above	Double Left Right Arrow with Text Above
+	Double Left Right Arrow with Text Below	Double Left Right Arrow with Text Below
+	Double Right Arrow with Text Above	Double Right Arrow with Text Above
+	Double Right Arrow with Text Below	Double Right Arrow with Text Below
+	Double Square Brackets	Double Square Brackets
+	Double Vertical Bars	Double Vertical Bars
+	Double summation	Double summation
+	Equal Equal	Equal Equal
+	Equal by Definition	Equal by Definition
+	Exponential	Exponential
+	Floor	Floor
+	Grave	Grave
+	Grouping Character Above	Grouping Character Above
+	Grouping Character Below	Grouping Character Below
+	Hat	Hat
+	Hyperbolic Cosecant Function	Hyperbolic Cosecant Function
+	Hyperbolic Cosine Function	Hyperbolic Cosine Function
+	Hyperbolic Cotangent Function	Hyperbolic Cotangent Function
+	Hyperbolic Secant Function	Hyperbolic Secant Function
+	Hyperbolic Sine Function	Hyperbolic Sine Function
+	Hyperbolic Tangent Function	Hyperbolic Tangent Function
+	Hypotenuse	Hypotenuse
+	Integral with Limits	Integral with Limits
+	Integral with Stacked Limits	Integral with Stacked Limits
+	Intersection	Intersection
+	Intersection with Limits	Intersection with Limits
+	Intersection with Lower Limit	Intersection with Lower Limit
+	Intersection with Subscript-Superscript Limits	Intersection with Subscript-Superscript Limits
+	Inverse Cosecant Function	Inverse Cosecant Function
+	Inverse Cosine Function	Inverse Cosine Function
+	Inverse Cotangent Function	Inverse Cotangent Function
+	Inverse Hyperbolic Cosecant Function	Inverse Hyperbolic Cosecant Function
+	Inverse Hyperbolic Cosine Function	Inverse Hyperbolic Cosine Function
+	Inverse Hyperbolic Cotangent Function	Inverse Hyperbolic Cotangent Function
+	Inverse Hyperbolic Secant Function	Inverse Hyperbolic Secant Function
+	Inverse Hyperbolic Sine Function	Inverse Hyperbolic Sine Function
+	Inverse Hyperbolic Tangent Function	Inverse Hyperbolic Tangent Function
+	Inverse Secant Function	Inverse Secant Function
+	Inverse Sine Function	Inverse Sine Function
+	Inverse Tangent Function	Inverse Tangent Function
+	Left Arrow with Text Above	Left Arrow with Text Above
+	Left Arrow with Text Below	Left Arrow with Text Below
+	Left Bracket Twice	Left Bracket Twice
+	Left Right Arrow Above	Left Right Arrow Above
+	Left Right Arrow with Text Above	Left Right Arrow with Text Above
+	Left Right Arrow with Text Below	Left Right Arrow with Text Below
+	Left Subscript-Superscript	Left Subscript-Superscript
+	Leftwards Arrow Above	Leftwards Arrow Above
+	Leftwards Harpoon Above	Leftwards Harpoon Above
+	Limit	Limit
+	Limit Example	Limit Example
+	Linear Fraction	Linear Fraction
+	Logarithm	Logarithm
+	Logarithm with Base	Logarithm with Base
+	Logical AND	Logical AND
+	Logical AND with Limits	Logical AND with Limits
+	Logical OR	Logical OR
+	Logical OR with Limits	Logical OR with Limits
+	Maximum	Maximum
+	Maximum Example	Maximum Example
+	Measured By	Measured By
+	Midline Dots	Midline Dots
+	Minimum	Minimum
+	Minus Equal	Minus Equal
+	Natural Logarithm	Natural Logarithm
+	One half	One half
+	Outward Brackets	Outward Brackets
+	Overbar	Overbar
+	Overbrace	Overbrace
+	Parentheses	Parentheses
+	Parentheses with Separator	Parentheses with Separator
+	Partial Differential	Partial Differential
+	Pi Over 2	Pi Over 2
+	Plus Equal	Plus Equal
+	Product	Product
+	Product of A	Product of A
+	Product with Limits	Product with Limits
+	Product with Lower Limit	Product with Lower Limit
+	Product with Subscript-Superscript Limits	Product with Subscript-Superscript Limits
+	Quadratic Root	Quadratic Root
+	Radical with Degree	Radical with Degree
+	Right Arrow with Text Above	Right Arrow with Text Above
+	Right Arrow with Text Below	Right Arrow with Text Below
+	Right Bracket Twice	Right Bracket Twice
+	Rightwards Arrow Above	Rightwards Arrow Above
+	Rightwards Harpoon Above	Rightwards Harpoon Above
+	Secant Function	Secant Function
+	Sine Function	Sine Function
+	Sine theta	Sine theta
+	Single Left Angle	Single Left Angle
+	Single Left Bar	Single Left Bar
+	Single Left Brace	Single Left Brace
+	Single Left Bracket	Single Left Bracket
+	Single Left Parenthesis	Single Left Parenthesis
+	Single Right Brace	Single Right Brace
+	Single Right Bracket	Single Right Bracket
+	Single Right Parenthesis	Single Right Parenthesis
+	Skewed Fraction	Skewed Fraction
+	Small change	Small change
+	Square Root	Square Root
+	Square Root with Degree	Square Root with Degree
+	Square Union	Square Union
+	Stack Object	Stack Object
+	Stack Object (Three)	Stack Object (Three)
+	Stacked Fraction	Stacked Fraction
+	Stacked, no bar	Stacked, no bar
+	Subscript-Superscript	Subscript-Superscript
+	Summation	Summation
+	Summation from 0 to n	Summation from 0 to n
+	Summation over binomials	Summation over binomials
+	Summation with Limits	Summation with Limits
+	Summation with Lower Limit	Summation with Lower Limit
+	Summation with Subscript Limit	Summation with Subscript Limit
+	Summation with Subscript-Superscript Limits	Summation with Subscript-Superscript Limits
+	Surface Integral	Surface Integral
+	Surface Integral with Limits	Surface Integral with Limits
+	Surface Integral with Stacked Limits	Surface Integral with Stacked Limits
+	Tangent Function	Tangent Function
+	Tangent formula	Tangent formula
+	Text over Colon Equal	Text over Colon Equal
+	Text over Equal	Text over Equal
+	Tilde	Tilde
+	Triple Dot	Triple Dot
+	Triple Integral	Triple Integral
+	Triple Integral with Limits	Triple Integral with Limits
+	Triple Integral with Stacked Limits	Triple Integral with Stacked Limits
+	Underbar	Underbar
+	Underbrace	Underbrace
+	Union	Union
+	Union of intersections	Union of intersections
+	Union with Limits	Union with Limits
+	Union with Lower Limit	Union with Lower Limit
+	Union with Plus	Union with Plus
+	Union with Subscript-Superscript Limits	Union with Subscript-Superscript Limits
+	Up Diagonal Dots	Up Diagonal Dots
+	Vector A	Vector A
+	Vector AB	Vector AB
+	Vertical Bars	Vertical Bars
+	Vertical Dots	Vertical Dots
+	Volume Integral	Volume Integral
+	Volume Integral with Limits	Volume Integral with Limits
+	Volume Integral with Stacked Limits	Volume Integral with Stacked Limits
+	Yields	Yields
+	x bar	x bar
+	All - Linear	All - Linear
+	All - Professional	All - Professional
+	Current - Linear	Current - Linear
+	Current - Professional	Current - Professional
+	Centered as Group	Centered as Group
+	✓ None	✓ None
+	Typing	Typing
+	Level 4	Level 4
+	Level 5	Level 5
+	Level 6	Level 6
+	Level 7	Level 7
+	Level 8	Level 8
+	Level 9	Level 9
+	For which item:	For which item:
+	Heading	Heading
+	Heading text	Heading text
+	Insert reference to:	Insert reference to:
+	Reference type:	Reference type:
+	Bookmarks	Bookmarks
+	Continue without restoring	Continue without restoring
+	Couldn't save {name}, so it is still open and nothing was lost: {error}	Couldn't save {name}, so it is still open and nothing was lost: {error}
+	Crop on the page works on unturned pictures: set Rotation to 0° first, or use the crop boxes	Crop on the page works on unturned pictures: set Rotation to 0° first, or use the crop boxes
+	Discard	Discard
+	Discard the recovery copy of {name}?	Discard the recovery copy of {name}?
+	Discard…	Discard…
+	Enter bookmark name:	Enter bookmark name:
+	Find “{text}” in the document	Find “{text}” in the document
+	Local recovery is unavailable or still loading.	Local recovery is unavailable or still loading.
+	No recovery copies.	No recovery copies.
+	Nothing of this type in the document.	Nothing of this type in the document.
+	Recovery copy	Recovery copy
+	Recovery is disabled while this document has a password.	Recovery is disabled while this document has a password.
+	Restore	Restore
+	Restore opens an unsaved copy. Your original file stays unchanged.	Restore opens an unsaved copy. Your original file stays unchanged.
+	Select a place in this document:	Select a place in this document:
+	This cannot be undone. Your original file stays unchanged.	This cannot be undone. Your original file stays unchanged.
+	This document has no bookmarks.	This document has no bookmarks.
+	Top of the Document	Top of the Document
+	Type a page number, or +2 / -1.	Type a page number, or +2 / -1.
+	Wait for the print job to finish submitting before closing.	Wait for the print job to finish submitting before closing.
+	select a picture first	select a picture first
+	{paper}   {width} × {height}	{paper}   {width} × {height}
+	An autosaved copy of this document is available. Would you like to recover it?	An autosaved copy of this document is available. Would you like to recover it?
+	Autosaved recovery copy	Autosaved recovery copy
+	Autosave recovery copy is too large to store.	Autosave recovery copy is too large to store.
+	Couldn't autosave: {error}	Couldn't autosave: {error}
+	Couldn't clear autosave recovery copy: {error}	Couldn't clear autosave recovery copy: {error}
+	Couldn't keep {name} in Recent: {error}	Couldn't keep {name} in Recent: {error}
+	Couldn't load settings: {error}	Couldn't load settings: {error}
+	Couldn't open the recent document: {error}	Couldn't open the recent document: {error}
+	Couldn't restore the autosaved document: {error}	Couldn't restore the autosaved document: {error}
+	Couldn't save {name}: {error}	Couldn't save {name}: {error}
+	Couldn't save settings: {error}	Couldn't save settings: {error}
+	Couldn't share the document: {error}	Couldn't share the document: {error}
+	Recover autosaved document?	Recover autosaved document?
+	Saved to {path}	Saved to {path}
+	Recover unsaved changes automatically	Recover unsaved changes automatically
+	On Android, a recovery copy is stored in app storage every 30 seconds while changes are unsaved.	On Android, a recovery copy is stored in app storage every 30 seconds while changes are unsaved.
