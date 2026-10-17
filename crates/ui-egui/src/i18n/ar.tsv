@@ -1061,3 +1061,153 @@ preview	Title	عنوان
 	Add at least one field.	أضف حقلًا واحدًا على الأقل.
 	Add Field	إضافة حقل
 	Every field needs a name.	يجب أن يكون لكل حقل اسم.
+	Field name	اسم الحقل
+	Field names must be different.	يجب أن تكون أسماء الحقول مختلفة.
+	Fields:	الحقول:
+	Field:	الحقل:
+	Find:	بحث:
+	New Entry	إدخال جديد
+	Recipient List	قائمة المستلمين
+	Recipients: {count}	المستلمون: {count}
+	Remove field	إزالة الحقل
+	Remove recipient	إزالة المستلم
+	Select recipients first to choose from their fields.	حدد المستلمين أولًا للاختيار من حقولهم.
+	Type a New List…	كتابة قائمة جديدة…
+	Type at least one recipient.	اكتب مستلمًا واحدًا على الأقل.
+	Type the recipients, or load them from a file.	اكتب المستلمين أو حمّلهم من ملف.
+	Use an Existing List…	استخدام قائمة موجودة…
+	Interface theme:	نسق الواجهة:
+	Interface\nTheme	نسق\nالواجهة
+	Interface Theme	نسق الواجهة
+	A file dialog is already open.	مربع حوار ملف مفتوح بالفعل.
+	Height:	الارتفاع:
+	Width:	العرض:
+	Row	صف
+	Cell	خلية
+	Preferred width:	العرض المفضل:
+	Alignment:	المحاذاة:
+	Indent from left:	المسافة البادئة من اليسار:
+	Specify height:	تحديد الارتفاع:
+	Exactly	بالضبط
+	At least	على الأقل
+	Allow row to break across pages	السماح بانقسام الصف بين الصفحات
+	Repeat as header row on each page	تكراره كصف رأس في كل صفحة
+	Vertical alignment:	المحاذاة العمودية:
+	Top	أعلى
+	Bottom	أسفل
+	Alt text	نص بديل
+	Alt:	بديل:
+	W:	العرض:
+	H:	الارتفاع:
+	Reset	إعادة تعيين
+	Reset Crop	إعادة تعيين الاقتصاص
+	Insert a new equation (Alt+=)	إدراج معادلة جديدة (Alt+=)
+	Leave the equation (Esc)	الخروج من المعادلة (Esc)
+	Preview	معاينة
+	getartcraft.com/apps/wordcraft	getartcraft.com/apps/wordcraft
+	Browse…	استعراض…
+	AaBbYyZz	أأببججدد
+	Align Top Left	محاذاة إلى أعلى اليسار
+	Align Top Center	محاذاة إلى أعلى الوسط
+	Align Top Right	محاذاة إلى أعلى اليمين
+	Align Center Left	محاذاة إلى الوسط يسارًا
+	Align Center	محاذاة إلى الوسط
+	Align Center Right	محاذاة إلى الوسط يمينًا
+	Align Bottom Left	محاذاة إلى أسفل اليسار
+	Align Bottom Center	محاذاة إلى أسفل الوسط
+	Align Bottom Right	محاذاة إلى أسفل اليمين
+	Commits	الإيداعات
+	{contributors} contributors · {commits} commits	{contributors} مساهمين · {commits} إيداعات
+	Display name	اسم العرض
+	Real name	الاسم الحقيقي
+	Username	اسم المستخدم
+	Document1	مستند1
+	Font…	الخط…
+	Paragraph…	الفقرة…
+	Link…	ارتباط…
+	Lines +/−	الأسطر +/−
+	Model	النموذج
+	Version	الإصدار
+	% of all commits	٪ من جميع الإيداعات
+	pt	نقطة
+	Save the document to turn on AutoSave	احفظ المستند لتشغيل الحفظ التلقائي
+	Models	النماذج
+	Good evening	مساء الخير
+	Good morning	صباح الخير
+	Good afternoon	نهارك سعيد
+	Track\nChanges	تعقب\nالتغييرات
+	Track\nChanges ✓	تعقب\nالتغييرات ✓
+	tOGGLE cASE	تبديل حالة الأحرف
+	Change to Level 1	تغيير إلى المستوى 1
+	Change to Level 2	تغيير إلى المستوى 2
+	Change to Level 3	تغيير إلى المستوى 3
+	Change to Level 4	تغيير إلى المستوى 4
+	Change to Level 5	تغيير إلى المستوى 5
+	Level 1	المستوى 1
+	Level 2	المستوى 2
+	Level 3	المستوى 3
+	ASAP	في أسرع وقت
+	CONFIDENTIAL	سري
+	DO NOT COPY	يُمنع النسخ
+	DRAFT	مسودة
+	SAMPLE	نموذج
+	URGENT	عاجل
+	Atelier	مرسم
+	Craft	حرفة
+	Darkroom	غرفة مظلمة
+	Gallery	معرض
+	Sketchbook	دفتر الرسم
+	Studio	استوديو
+	Plain Table 1	جدول عادي 1
+	Grid Table 1 Light	جدول شبكي 1 فاتح
+	Grid Table 4 – Blue	جدول شبكي 4 – أزرق
+	Grid Table 4 – Green	جدول شبكي 4 – أخضر
+	Grid Table 4 – Orange	جدول شبكي 4 – برتقالي
+	Grid Table 4 – Purple	جدول شبكي 4 – أرجواني
+	List Table 3 – Blue	جدول قائمة 3 – أزرق
+	List Table 3 – Green	جدول قائمة 3 – أخضر
+	List Table 3 – Orange	جدول قائمة 3 – برتقالي
+	List Table 3 – Purple	جدول قائمة 3 – أرجواني
+	Convert between built-up and linear form	التحويل بين الصيغة المركبة والخطية
+	Justification of a display equation	محاذاة معادلة معروضة
+	Number the equation; the number sits at the right margin (or type # then the number)	ترقيم المعادلة؛ يظهر الرقم عند الهامش الأيمن (أو اكتب # ثم الرقم)
+	Show the equation in the line of text	إظهار المعادلة ضمن سطر النص
+	Show the equation on a line of its own	إظهار المعادلة في سطر مستقل
+	Type equations in LaTeX	كتابة المعادلات بتنسيق LaTeX
+	Type equations in the linear format (UnicodeMath)	كتابة المعادلات بالتنسيق الخطي (UnicodeMath)
+	Type normal (non-math) text in the equation	كتابة نص عادي (غير رياضي) داخل المعادلة
+	Sides of a right triangle	أضلاع مثلث قائم الزاوية
+	Circle area from its radius	مساحة الدائرة بدلالة نصف قطرها
+	Roots of ax²+bx+c	جذرا ax²+bx+c
+	Binomial expansion of (x+a)ⁿ	توسع ذي الحدين لـ (x+a)ⁿ
+	Power series of (1+x)ⁿ	متسلسلة القوى لـ (1+x)ⁿ
+	Euler's identity	متطابقة أويلر
+	Derivative as a limit	المشتقة بصيغة نهاية
+	Exponential series	المتسلسلة الأسية
+	Integral of e^(−x²)	تكامل e^(−x²)
+	Sine and cosine series of f(x)	متسلسلتَا الجيب وجيب التمام لـ f(x)
+	Sum or difference of sines	مجموع الجيوب أو فرقها
+	Sum of cosines	مجموع جيوب التمام
+	Normal probability density	كثافة الاحتمال الطبيعية
+	Bayes' rule	قاعدة بايز
+	Accents	علامات التشكيل
+	Arrows	أسهم
+	Basic Math	رياضيات أساسية
+	Boxed Formulas	صيغ داخل مربعات
+	Cases and Stacks	حالات ومكدسات
+	Common Accent Objects	عناصر تشكيل شائعة
+	Common Brackets	أقواس شائعة
+	Common Fractions	كسور شائعة
+	Common Functions	دوال شائعة
+	Common Large Operators	عوامل كبيرة شائعة
+	Common Operator Structures	بُنى عوامل شائعة
+	Common Operators	عوامل شائعة
+	Common Radicals	جذور شائعة
+	Common Subscripts and Superscripts	رموز سفلية وعلوية شائعة
+	Contour Integrals	تكاملات مسارية
+	Differentials	تفاضلات
+	Dots	نقاط
+	Empty Matrices	مصفوفات فارغة
+	Functions	دوال
+	Geometry	هندسة
+	Greek Letters	أحرف يونانية
