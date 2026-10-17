@@ -2411,3 +2411,190 @@ preview	Title	عنوان
 	Printing	الطباعة
 	Recent documents to show:	عدد المستندات الأخيرة المعروضة:
 	Save documents	حفظ المستندات
+	Show the mini toolbar when text is selected	إظهار شريط الأدوات المصغر عند تحديد النص
+	Spaces	مسافات
+	Spelling	الإملاء
+	Spelling and grammar are checked in English (United States).	يتم تدقيق الإملاء والقواعد باللغة الإنجليزية (الولايات المتحدة).
+	Tab characters	أحرف علامات الجدولة
+	These marks show even when Show/Hide ¶ is off.	تظهر هذه العلامات حتى عند إيقاف «إظهار/إخفاء ¶».
+	Typing replaces selected text	استبدال النص المحدد عند الكتابة
+	Update fields before printing	تحديث الحقول قبل الطباعة
+	Use the Insert key to switch overtype on and off	استخدم مفتاح Insert لتشغيل وضع الكتابة فوق النص أو إيقافه
+	Asian text font:	خط النص الآسيوي:
+	Latin text font:	خط النص اللاتيني:
+	Visual effects	تأثيرات مرئية
+	Animation effects:	تأثيرات الحركة:
+	On	تشغيل
+	Off	إيقاف
+	Smooth scrolling and zooming, and menus and buttons that fade in. Off shows every change at once.	تمرير وتكبير سلسان، وقوائم وأزرار تتلاشى عند ظهورها. يؤدي الإيقاف إلى إظهار كل تغيير فورًا.
+	Your system has animation effects turned on.	تأثيرات الحركة مفعلة في نظامك.
+	Your system has animation effects turned off.	تأثيرات الحركة معطلة في نظامك.
+	Your system doesn't report an animation setting, so animation effects stay on.	لا يحدد نظامك إعدادًا لتأثيرات الحركة، لذا تظل مفعلة.
+	Select Column	تحديد عمود
+	Select Table Cells by Clicking	تحديد خلايا الجدول بالنقر
+	Insert Row or Column by Clicking	إدراج صف أو عمود بالنقر
+	Move Table by Dragging	نقل الجدول بالسحب
+	AutoFit Column by Double-Clicking	احتواء العمود تلقائيًا بالنقر المزدوج
+	Region:	المنطقة:
+	Automatic ({region})	تلقائي ({region})
+	Odd Banded Rows	صفوف فردية متناوبة التظليل
+	Even Banded Rows	صفوف زوجية متناوبة التظليل
+	Odd Banded Columns	أعمدة فردية متناوبة التظليل
+	Even Banded Columns	أعمدة زوجية متناوبة التظليل
+	Top Left Cell	الخلية العلوية اليسرى
+	Top Right Cell	الخلية العلوية اليمنى
+	Bottom Left Cell	الخلية السفلية اليسرى
+	Bottom Right Cell	الخلية السفلية اليمنى
+	Inside Horizontal Border	حد أفقي داخلي
+	Inside Vertical Border	حد عمودي داخلي
+	Text of the nearest paragraph with a given style (running headers)	نص أقرب فقرة ذات نمط معين (رؤوس متكررة)
+	Style name:	اسم النمط:
+	Filter Recipients	تصفية المستلمين
+	Sort Recipients	فرز المستلمين
+	Filter and Sort	تصفية وفرز
+	And	و
+	Or	أو
+	Comparison	مقارنة
+	Compare to	مقارنة بـ
+	Add Condition	إضافة شرط
+	Remove condition	إزالة الشرط
+	Sort by	فرز حسب
+	Then by	ثم حسب
+	Ascending	تصاعدي
+	Descending	تنازلي
+	Equal to	يساوي
+	Not equal to	لا يساوي
+	Less than	أقل من
+	Greater than	أكبر من
+	Less than or equal	أقل من أو يساوي
+	Greater than or equal	أكبر من أو يساوي
+	Is blank	فارغ
+	Is not blank	غير فارغ
+	Contains	يحتوي على
+	Does not contain	لا يحتوي على
+	{count} of {total} recipients will be merged.	سيتم دمج {count} من أصل {total} مستلمًا.
+	Take the last match on the page	استخدام آخر تطابق في الصفحة
+	Show its list number	إظهار رقم قائمته
+	Show its number relative to this field	إظهار رقمه نسبةً إلى هذا الحقل
+	Show its number with all higher levels	إظهار رقمه مع كل المستويات الأعلى
+	Number only, without the label's words	الرقم فقط، من دون كلمات التسمية
+	Add whether it is above or below	إضافة ما إذا كان أعلى أو أسفل
+	Start-up	بدء التشغيل
+	Show the Start screen when WordCraft starts	إظهار شاشة البدء عند تشغيل WordCraft
+	On: WordCraft opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	عند التشغيل: يفتح WordCraft على ملف › الرئيسية، مع مستند فارغ والقوالب والمستندات الأخيرة. عند الإيقاف: يفتح مستندًا فارغًا.
+	Typing	الكتابة
+	Level 4	المستوى 4
+	Level 5	المستوى 5
+	Level 6	المستوى 6
+	Level 7	المستوى 7
+	Level 8	المستوى 8
+	Level 9	المستوى 9
+	Copy to	نسخ إلى
+	Rename Document	إعادة تسمية المستند
+	Document name	اسم المستند
+	Rename	إعادة تسمية
+	Account	الحساب
+	Privacy Options	خيارات الخصوصية
+	Trust Center	مركز التوثيق
+	Privacy for this document	خصوصية هذا المستند
+	Remove my name from comments, changes and file properties when saving	إزالة اسمي من التعليقات والتغييرات وخصائص الملف عند الحفظ
+	Leave out the date and time of comments and tracked changes when saving	استبعاد تاريخ التعليقات والتغييرات المتعقبة ووقتها عند الحفظ
+	The document you are editing keeps the names and dates; only the saved file leaves them out.	يحتفظ المستند الذي تحرره بالأسماء والتواريخ؛ ويستبعدها الملف المحفوظ فقط.
+	Privacy Settings	إعدادات الخصوصية
+	Waiting for the save to finish…	في انتظار اكتمال الحفظ…
+	Saving {name} was cancelled, so it is still open and nothing was lost.	أُلغي حفظ {name}، لذلك يظل مفتوحًا ولم يُفقد أي شيء.
+	Paper	ورق
+	Paper size:	حجم الورق:
+	Custom size	حجم مخصص
+	More Paper Sizes…	مزيد من أحجام الورق…
+	The margins don't fit on a page this size; make the margins smaller first.	لا تتسع الهوامش لصفحة بهذا الحجم؛ صغّر الهوامش أولًا.
+	Full Screen	ملء الشاشة
+	Full\nScreen	ملء\nالشاشة
+	Use the browser's full screen (F11)	استخدام وضع ملء الشاشة في المتصفح (F11)
+	{name}   {height} × {width} in	{name}   {height} × {width} بوصة
+	{name}   {height} × {width} mm	{name}   {height} × {width} مم
+	{width} × {height} mm	{width} × {height} مم
+	{kind}, {columns} × {rows}, {size} ({paper})	{kind}، {columns} × {rows}، {size} ({paper})
+	Researcher needs an online service; WordCraft keeps your documents offline.	يتطلب الباحث خدمة عبر الإنترنت؛ ويحافظ WordCraft على مستنداتك دون اتصال.
+	These settings will be used for new documents.	ستُستخدم هذه الإعدادات للمستندات الجديدة.
+	can't split at the first row	يتعذر التقسيم عند الصف الأول
+	select two or more cells to merge	حدد خليتين أو أكثر لدمجها
+	there is no ink to replay	لا يوجد حبر لإعادة تشغيله
+	there's no citation after the caret	لا يوجد استشهاد بعد المؤشر
+	this item is already at the top level	هذا العنصر في المستوى الأعلى بالفعل
+	Envelope #10	مغلف #10
+	Envelope DL	مغلف DL
+	Reading Mode	وضع القراءة
+	Column width	عرض العمود
+	Text size	حجم النص
+	Go to what:	انتقال إلى:
+	Type +2 or -1 to move from the page you are on.	اكتب +2 أو -1 للانتقال انطلاقًا من الصفحة الحالية.
+	Suggested	مقترح
+	Set Proofing Language…	تعيين لغة التدقيق…
+	Language Preferences…	تفضيلات اللغة…
+	Printer	الطابعة
+	Select a printer	تحديد طابعة
+	Refresh printers	تحديث قائمة الطابعات
+	Two-sided printing	طباعة على الوجهين
+	Printer default	الافتراضي للطابعة
+	One-sided	على وجه واحد
+	Two-sided: long edge	على الوجهين: قلب على الحافة الطويلة
+	Two-sided: short edge	على الوجهين: قلب على الحافة القصيرة
+	Grayscale	تدرج رمادي
+	Finding printers…	جارٍ البحث عن الطابعات…
+	No printers found. Configure a system printer or export a PDF.	لم يُعثر على طابعات. أعد إعداد طابعة النظام أو صدّر ملف PDF.
+	Printer discovery failed.	فشل اكتشاف الطابعات.
+	Submitting print job…	جارٍ إرسال مهمة الطباعة…
+	Print job submitted.	تم إرسال مهمة الطباعة.
+	Print job submitted: {receipt}	تم إرسال مهمة الطباعة: {receipt}
+	Print failed: the printing worker stopped.	فشلت الطباعة: توقف عامل الطباعة.
+	Print settings	إعدادات الطباعة
+	Submit print job	إرسال مهمة الطباعة
+	For which item:	لأي عنصر:
+	Heading	عنوان
+	Heading text	نص العنوان
+	Insert reference to:	إدراج مرجع إلى:
+	Reference type:	نوع المرجع:
+	Dictionaries	قواميس
+	Dictionaries folder:	مجلد القواميس:
+	Not set: the system's usual places	غير محدد: المواقع المعتادة في النظام
+	Hunspell .aff and .dic files here (pl_PL, pt_BR, it_IT, hr_HR, tr_TR) are used before the system's.	تُستخدم ملفات Hunspell ‏.aff و.dic هنا (pl_PL وpt_BR وit_IT وhr_HR وtr_TR) قبل ملفات النظام.
+	{language}: {file}	{language}: {file}
+	{language}: no dictionary found	{language}: لم يُعثر على قاموس
+	Recover	استعادة
+	Mirror margins	عكس الهوامش
+	Existing File or Web Page	ملف أو صفحة ويب موجودة
+	Link to:	ارتباط بـ:
+	Place in This Document	موضع في هذا المستند
+	Column {n}	العمود {n}
+	Header row	صف الرأس
+	No header row	بلا صف رأس
+	My list has	تحتوي قائمتي على
+	Formula:	الصيغة:
+	Paste function:	لصق دالة:
+	Narrow	ضيق
+	Medium	متوسط
+	Bookmarks	إشارات مرجعية
+	Continue without restoring	المتابعة دون استعادة
+	Couldn't save {name}, so it is still open and nothing was lost: {error}	تعذر حفظ {name}، لذا يظل مفتوحًا ولم يُفقد أي شيء: {error}
+	Crop on the page works on unturned pictures: set Rotation to 0° first, or use the crop boxes	يعمل الاقتصاص على الصفحة مع الصور غير المدارة: اضبط التدوير على 0° أولًا أو استخدم مربعات الاقتصاص.
+	Discard	تجاهل
+	Discard the recovery copy of {name}?	هل تريد تجاهل نسخة الاسترداد من {name}؟
+	Discard…	تجاهل…
+	Enter bookmark name:	أدخل اسم الإشارة المرجعية:
+	Find “{text}” in the document	ابحث عن “{text}” في المستند
+	Local recovery is unavailable or still loading.	الاسترداد المحلي غير متاح أو لا يزال قيد التحميل.
+	No recovery copies.	لا توجد نسخ استرداد.
+	Nothing of this type in the document.	لا يوجد شيء من هذا النوع في المستند.
+	Recovery copy	نسخة استرداد
+	Recovery is disabled while this document has a password.	يُعطّل الاسترداد ما دام هذا المستند محميًا بكلمة مرور.
+	Restore	استعادة
+	Restore opens an unsaved copy. Your original file stays unchanged.	تفتح «استعادة» نسخة غير محفوظة. يظل الملف الأصلي دون تغيير.
+	Select a place in this document:	حدد موضعًا في هذا المستند:
+	This cannot be undone. Your original file stays unchanged.	لا يمكن التراجع عن هذا الإجراء. يظل الملف الأصلي دون تغيير.
+	This document has no bookmarks.	لا توجد إشارات مرجعية في هذا المستند.
+	Top of the Document	أعلى المستند
+	Type a page number, or +2 / -1.	اكتب رقم صفحة أو +2 / -1.
+	Wait for the print job to finish submitting before closing.	انتظر حتى يكتمل إرسال مهمة الطباعة قبل الإغلاق.
+	select a picture first	حدد صورة أولًا
+	{paper}   {width} × {height}	{paper}   {width} × {height}

@@ -2629,3 +2629,28 @@ preview	Title	Örnek
 # Reading Mode column widths (#1040)
 	Narrow	Dar
 	Medium	Orta
+# Source lookup strings added before the catalog was updated (#Arabic UI coverage).
+	Bookmarks	Yer İşaretleri
+	Continue without restoring	Geri yüklemeden devam et
+	Couldn't save {name}, so it is still open and nothing was lost: {error}	{name} kaydedilemedi; açık kalıyor ve hiçbir şey kaybolmadı: {error}
+	Crop on the page works on unturned pictures: set Rotation to 0° first, or use the crop boxes	Sayfada kırpma, döndürülmemiş resimlerde çalışır: önce Döndürme değerini 0° yapın veya kırpma kutularını kullanın.
+	Discard	Vazgeç
+	Discard the recovery copy of {name}?	{name} kurtarma kopyası silinsin mi?
+	Discard…	Vazgeç…
+	Enter bookmark name:	Yer işareti adını girin:
+	Find “{text}” in the document	Belgede “{text}” metnini bul
+	Local recovery is unavailable or still loading.	Yerel kurtarma kullanılamıyor veya hâlâ yükleniyor.
+	No recovery copies.	Kurtarma kopyası yok.
+	Nothing of this type in the document.	Belgede bu türden hiçbir şey yok.
+	Recovery copy	Kurtarma kopyası
+	Recovery is disabled while this document has a password.	Bu belgede parola varken kurtarma devre dışıdır.
+	Restore	Geri Yükle
+	Restore opens an unsaved copy. Your original file stays unchanged.	Geri Yükle, kaydedilmemiş bir kopyayı açar. Özgün dosyanız değişmeden kalır.
+	Select a place in this document:	Bu belgede bir yer seçin:
+	This cannot be undone. Your original file stays unchanged.	Bu işlem geri alınamaz. Özgün dosyanız değişmeden kalır.
+	This document has no bookmarks.	Bu belgede yer işareti yok.
+	Top of the Document	Belgenin başı
+	Type a page number, or +2 / -1.	Bir sayfa numarası veya +2 / -1 yazın.
+	Wait for the print job to finish submitting before closing.	Kapatmadan önce yazdırma işinin gönderilmesinin tamamlanmasını bekleyin.
+	select a picture first	önce bir resim seçin
+	{paper}   {width} × {height}	{paper}   {width} × {height}
