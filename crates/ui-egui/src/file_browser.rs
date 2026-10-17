@@ -12,7 +12,7 @@ use std::path::{Path, PathBuf};
 use egui::{Align2, Rect, Sense, Ui, pos2, vec2};
 
 use crate::file_dialogs::{AfterPick, FileDialogRequest, open_filters};
-use crate::theme::{APP_COLOR, Tokens, regular};
+use crate::theme::{Tokens, regular};
 use crate::{WordApp, icons};
 
 /// At most this many entries are listed; a bigger folder shows the first ones and says so.
@@ -442,7 +442,7 @@ fn body(ui: &mut Ui, b: &mut FileBrowser, t: &Tokens) -> Option<Option<PathBuf>>
     ui.horizontal(|ui| {
         ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
             cancel |= ui.button(tl!("Cancel")).clicked();
-            let ok = ui.add(egui::Button::new(egui::RichText::new(tl!(b.ok_label())).color(egui::Color32::WHITE)).fill(APP_COLOR));
+            let ok = ui.add(egui::Button::new(egui::RichText::new(tl!(b.ok_label())).color(t.on_accent)).fill(t.accent));
             pick |= ok.clicked() || enter;
         });
     });

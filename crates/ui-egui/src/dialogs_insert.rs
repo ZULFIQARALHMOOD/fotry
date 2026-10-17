@@ -83,7 +83,12 @@ pub(crate) fn buttons(ui: &mut Ui, ok: &str, cancel: &str, ok_enabled: bool) -> 
     let mut r = (false, false);
     ui.add_space(8.0);
     ui.horizontal(|ui| {
-        ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+        let layout = if crate::i18n::current().is_rtl() {
+            egui::Layout::left_to_right(egui::Align::Center)
+        } else {
+            egui::Layout::right_to_left(egui::Align::Center)
+        };
+        ui.with_layout(layout, |ui| {
             if ui.button(tl!(cancel)).clicked() || ui.input(|i| i.key_pressed(egui::Key::Escape)) {
                 r.1 = true;
             }

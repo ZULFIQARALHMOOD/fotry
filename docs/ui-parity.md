@@ -53,11 +53,12 @@ Document title opens Rename Document; the account badge opens Options › Genera
 | File dialogs (Open, Save As, Export, Insert Picture) | system dialog, without blocking the window (#94), its Save As type list naming every format with the document's own first (#1399); Linux/BSD without a file chooser portal or zenity: WordCraft's own browser, also File › Open › Browse in WordCraft… (#576) | system dialog | 95% | — |
 | Platform conventions (macOS menus/traffic lights #255, Windows title bar, Linux CSD on Wayland #78) | partial | native | 70% | 3–5 |
 | Screen readers (VoiceOver, Narrator, Orca) | AccessKit on; the document canvas describes paragraphs, headings (level), list items, tables, links, pictures (alt text) and the caret and selection, for the pages on screen (#488); Windows Magnifier follows the caret, also onto an empty line after Enter or Shift+Enter (#1119); not yet tried with real screen readers | full | 50% | 5–8 |
-| Right-to-left (mirrored) interface | ❌ | ✅ (Arabic, Hebrew Word) | 0% | in localization |
+| Right-to-left interface | Arabic tab order, main dialog action order/alignment and side-pane position/alignment follow RTL; complete mirroring is not implemented (group order, remaining menus/lists and some controls are still LTR) | ✅ (Arabic, Hebrew Word) | partial | in localization |
 
 ## Revision history
 
 | Date | Change | Summary |
+| 2026-10-16 | minor | Initial Arabic RTL UI behavior: ribbon tabs, common dialog button order, dialog/pane alignment and side-pane placement follow RTL; ribbon group order and many nested menu/list layouts remain LTR |
 |---|---|---|
 | 2026-10-13 | trivial | New/Modify Table Style: No Border on a part that inherits its lines hides them; emptying the font box makes the part's font inherited again (#1288) |
 | 2026-10-14 | trivial | Tab stops edited on the ruler: corner kind selector, click to set, drag to move or off to clear, per-kind markers mirrored for RTL; each gesture one `para.tabs` call and one undo step; Rulers 85% → 90% |

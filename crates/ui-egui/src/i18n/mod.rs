@@ -52,8 +52,9 @@ pub struct LangInfo {
 }
 
 /// The registry. English first: it is the fallback and the source language.
-pub static LANGUAGES: [LangInfo; 23] = [
+pub static LANGUAGES: [LangInfo; 24] = [
     LangInfo { code: "en", name: "English", source: "", prefer_hans: false, editing_lang: None, catalog: OnceLock::new() },
+    LangInfo { code: "ar", name: "العربية", source: include_str!("ar.tsv"), prefer_hans: false, editing_lang: None, catalog: OnceLock::new() },
     // Simplified Chinese; `zh`, `zh-CN`, `zh-SG` and `zh-Hans-*` resolve here (see `candidates`).
     LangInfo {
         code: "zh-hans",
@@ -214,6 +215,10 @@ impl Lang {
 
     pub fn prefers_korean(self) -> bool {
         self.0.code == "ko"
+    }
+
+    pub fn is_rtl(self) -> bool {
+        self.0.code == "ar"
     }
 
     /// The language new blank documents are written in with this interface ([`LangInfo::editing_lang`]).

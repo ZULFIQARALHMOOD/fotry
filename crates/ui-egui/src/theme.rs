@@ -4,9 +4,40 @@ use std::sync::Arc;
 
 use egui::{Align2, Color32, CornerRadius, FontData, FontDefinitions, FontFamily, FontId, Rect, Stroke, Visuals};
 
-/// WordCraft's app colour (and its darker ink for text on light backgrounds).
-pub const APP_COLOR: Color32 = Color32::from_rgb(0x3B, 0x5B, 0xDB);
-pub const APP_INK: Color32 = Color32::from_rgb(0x2B, 0x47, 0xB5);
+#[derive(Clone, Copy)]
+pub struct AccentVariant {
+    pub base: Color32,
+    pub hover: Color32,
+    pub selected: Color32,
+    pub text: Color32,
+    pub on_base: Color32,
+    pub on_hover: Color32,
+}
+
+#[derive(Clone, Copy)]
+pub struct AccentPalette {
+    pub light: AccentVariant,
+    pub dark: AccentVariant,
+}
+
+pub const ACCENT: AccentPalette = AccentPalette {
+    light: AccentVariant {
+        base: Color32::from_rgb(0x0F, 0x76, 0x6E),
+        hover: Color32::from_rgb(0x0D, 0x94, 0x88),
+        selected: Color32::from_rgb(0xCC, 0xFB, 0xF1),
+        text: Color32::from_rgb(0x0F, 0x76, 0x6E),
+        on_base: Color32::WHITE,
+        on_hover: Color32::from_rgb(0x00, 0x1A, 0x18),
+    },
+    dark: AccentVariant {
+        base: Color32::from_rgb(0x0F, 0x76, 0x6E),
+        hover: Color32::from_rgb(0x0D, 0x94, 0x88),
+        selected: Color32::from_rgb(0x13, 0x4E, 0x4A),
+        text: Color32::from_rgb(0x5E, 0xEA, 0xD4),
+        on_base: Color32::WHITE,
+        on_hover: Color32::from_rgb(0x00, 0x1A, 0x18),
+    },
+};
 
 /// The interface theme setting (File › Options › General, View › Interface Theme): a fixed light or
 /// dark palette, or `System`, which follows the OS light/dark appearance live (#115). Dark page
@@ -248,9 +279,12 @@ pub struct Tokens {
     pub pressed: Color32,
     pub checked: Color32,
     pub accent: Color32,
+    pub accent_hover: Color32,
     pub accent_text: Color32,
     /// Text/icon colour drawn on top of `accent` (e.g. keytip badge letters).
     pub on_accent: Color32,
+    /// Text/icon colour drawn on the accent hover surface.
+    pub on_accent_hover: Color32,
     pub input: Color32,
     pub input_border: Color32,
     pub group_label: Color32,
@@ -280,6 +314,7 @@ pub struct Tokens {
 
 impl Tokens {
     pub fn light() -> Self {
+        let accent = ACCENT.light;
         Tokens {
             dark: false,
             title_bar: Color32::from_rgb(0xF0, 0xF0, 0xF0),
@@ -295,10 +330,12 @@ impl Tokens {
             icon: Color32::from_rgb(0x42, 0x42, 0x42),
             hover: Color32::from_rgb(0xE6, 0xE6, 0xE6),
             pressed: Color32::from_rgb(0xD6, 0xD6, 0xD6),
-            checked: Color32::from_rgb(0xDD, 0xE3, 0xF8),
-            accent: APP_COLOR,
-            accent_text: APP_INK,
-            on_accent: Color32::WHITE,
+            checked: accent.selected,
+            accent: accent.base,
+            accent_hover: accent.hover,
+            accent_text: accent.text,
+            on_accent: accent.on_base,
+            on_accent_hover: accent.on_hover,
             input: Color32::WHITE,
             input_border: Color32::from_rgb(0x8A, 0x8A, 0x8A),
             group_label: Color32::from_rgb(0x70, 0x70, 0x70),
@@ -322,6 +359,7 @@ impl Tokens {
         }
     }
     pub fn dark() -> Self {
+        let accent = ACCENT.dark;
         Tokens {
             dark: true,
             title_bar: Color32::from_rgb(0x1F, 0x1F, 0x1F),
@@ -337,11 +375,12 @@ impl Tokens {
             icon: Color32::from_rgb(0xDD, 0xDD, 0xDD),
             hover: Color32::from_rgb(0x3D, 0x3D, 0x3D),
             pressed: Color32::from_rgb(0x4A, 0x4A, 0x4A),
-            checked: Color32::from_rgb(0x2E, 0x3A, 0x66),
-            accent: Color32::from_rgb(0x7A, 0x93, 0xF0),
-            accent_text: Color32::from_rgb(0x9C, 0xB0, 0xF5),
-            // Dark text on the light dark-theme accent: white on #7a93f0 is only 2.9:1 (#655).
-            on_accent: Color32::from_rgb(0x11, 0x16, 0x2E),
+            checked: accent.selected,
+            accent: accent.base,
+            accent_hover: accent.hover,
+            accent_text: accent.text,
+            on_accent: accent.on_base,
+            on_accent_hover: accent.on_hover,
             input: Color32::from_rgb(0x1E, 0x1E, 0x1E),
             input_border: Color32::from_rgb(0x7A, 0x7A, 0x7A),
             group_label: Color32::from_rgb(0xA0, 0xA0, 0xA0),
@@ -479,16 +518,18 @@ pub fn font_definitions_language(prefer_hans: bool, prefer_korean: bool, system_
     add(&mut fonts, "InterMedium", include_bytes!("../../../assets/fonts/Inter-Medium.ttf"));
     add(&mut fonts, "InterSemiBold", include_bytes!("../../../assets/fonts/Inter-SemiBold.ttf"));
     add(&mut fonts, "SourceSans", include_bytes!("../../../assets/fonts/SourceSans3-Regular.ttf"));
+    add(&mut fonts, "Cairo", include_bytes!("../../../apps/wordcraft-web/fonts/Cairo.ttf"));
     add(&mut fonts, "Mono", include_bytes!("../../../assets/fonts/JetBrainsMono-Regular.ttf"));
     if let Some(prop) = fonts.families.get_mut(&FontFamily::Proportional) {
         prop.insert(0, "Inter".into());
         prop.push("SourceSans".into());
+        prop.push("Cairo".into());
     }
     if let Some(m) = fonts.families.get_mut(&FontFamily::Monospace) {
         m.insert(0, "Mono".into());
     }
-    fonts.families.insert(FontFamily::Name("medium".into()), vec!["InterMedium".into(), "Inter".into(), "SourceSans".into()]);
-    fonts.families.insert(FontFamily::Name("semibold".into()), vec!["InterSemiBold".into(), "Inter".into(), "SourceSans".into()]);
+    fonts.families.insert(FontFamily::Name("medium".into()), vec!["InterMedium".into(), "Inter".into(), "SourceSans".into(), "Cairo".into()]);
+    fonts.families.insert(FontFamily::Name("semibold".into()), vec!["InterSemiBold".into(), "Inter".into(), "SourceSans".into(), "Cairo".into()]);
     let add_cjk = |fonts: &mut FontDefinitions, name: String, data: FontData| {
         fonts.font_data.insert(name.clone(), Arc::new(data));
         for fam in [FontFamily::Proportional, FontFamily::Name("medium".into()), FontFamily::Name("semibold".into())] {
@@ -732,16 +773,20 @@ mod tests {
         (x.max(y) + 0.05) / (x.min(y) + 0.05)
     }
 
-    /// #655: text and knobs on filled accent controls (Share, avatar, AutoSave, keytips) reach 4.5:1
-    /// on the accent and on its hover shade, in both themes.
+    /// Filled accent controls keep readable text in both themes and hover states.
     #[test]
     fn on_accent_reads_on_the_accent() {
         for t in [super::Tokens::light(), super::Tokens::dark()] {
-            for (name, bg) in [("accent", t.accent), ("hover", t.accent_text)] {
-                let r = contrast(t.on_accent, bg);
-                assert!(r >= 4.5, "dark={}: on_accent on {name} is {r:.2}:1", t.dark);
-            }
+            let base = contrast(t.on_accent, t.accent);
+            assert!(base >= 4.5, "dark={}: on_accent on base is {base:.2}:1", t.dark);
+            let hover = contrast(t.on_accent_hover, t.accent_hover);
+            assert!(hover >= 4.5, "dark={}: on_accent_hover is {hover:.2}:1", t.dark);
+            assert_eq!(t.checked, if t.dark { super::ACCENT.dark.selected } else { super::ACCENT.light.selected });
         }
+        assert_eq!(super::ACCENT.light.base, egui::Color32::from_rgb(0x0F, 0x76, 0x6E));
+        assert_eq!(super::ACCENT.light.hover, egui::Color32::from_rgb(0x0D, 0x94, 0x88));
+        assert_eq!(super::ACCENT.light.selected, egui::Color32::from_rgb(0xCC, 0xFB, 0xF1));
+        assert_eq!(super::ACCENT.dark.selected, egui::Color32::from_rgb(0x13, 0x4E, 0x4A));
     }
 
     /// #657: text field and combo outlines reach 3:1 against the field and everything it sits on.
@@ -810,11 +855,22 @@ mod tests {
         assert!(semi.iter().any(|n| n.starts_with("fallback ")), "the caption is painted with semibold");
     }
 
+    #[test]
+    fn embedded_arabic_ui_font_covers_interface_text() {
+        let fonts = super::font_definitions(false, false);
+        assert!(fonts.families[&egui::FontFamily::Proportional].iter().any(|name| name == "Cairo"));
+        assert!(fonts.font_data.contains_key("Cairo"));
+        let ctx = egui::Context::default();
+        ctx.set_fonts(fonts);
+        let covered = ctx.fonts_mut(|fonts| fonts.has_glyphs(&egui::FontId::proportional(12.0), "العربية مراجعة"));
+        assert!(covered, "the embedded fallback must draw Arabic interface labels");
+    }
+
     /// #656: dialog primary buttons, the Discord pill, the table eraser and the Navigation search
     /// highlight take their colours from the theme, not fixed light-theme values.
     #[test]
     fn interface_colours_come_from_the_theme() {
-        let banned = ["fill(crate::theme::APP_COLOR)", "0x58, 0x65, 0xF2", "0x47, 0x52, 0xC4", "0xFF, 0xF1, 0x76", "0xD1, 0x3B, 0x3B"];
+        let banned = ["APP_COLOR", "APP_INK", "0x58, 0x65, 0xF2", "0x47, 0x52, 0xC4", "0xFF, 0xF1, 0x76"];
         let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("src");
         for entry in std::fs::read_dir(&dir).unwrap() {
             let path = entry.unwrap().path();

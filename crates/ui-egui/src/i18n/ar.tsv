@@ -1,0 +1,164 @@
+# Arabic (ar) interface catalog. Columns, separated by a TAB:
+#   context <TAB> English source <TAB> translation
+# This initial catalog translates the primary ribbon, common actions and settings. Other
+# interface strings intentionally fall back to English until they have been translated.
+# Keep placeholders and trailing … unchanged.
+
+	About	حول
+	About WordCraft	حول WordCraft
+	Accept	قبول
+	Accessibility	إمكانية الوصول
+	Add	إضافة
+	Add a comment	إضافة تعليق
+	Add a Table	إدراج جدول
+	Add to Dictionary	إضافة إلى القاموس
+	Advanced	متقدم
+	Align	محاذاة
+	Align Left	محاذاة إلى اليسار
+	Align Right	محاذاة إلى اليمين
+	Alignment	المحاذاة
+	All Borders	كل الحدود
+	All caps	أحرف كبيرة
+	All Markup	كل العلامات
+	Alt Text	نص بديل
+	Apply Style	تطبيق النمط
+	Arrange	ترتيب
+	AutoCorrect Options	خيارات التصحيح التلقائي
+	AutoFit	احتواء تلقائي
+	AutoSave	حفظ تلقائي
+	Backspace	مسافة للخلف
+	Before:	قبل:
+	Bibliography	المراجع
+	Blank document	مستند فارغ
+	Blank Page	صفحة فارغة
+	Bold	غامق
+	Bookmark	إشارة مرجعية
+	Borders	حدود
+	Bottom Border	حد سفلي
+	Breaks	فواصل
+	Bullets	تعداد نقطي
+	Cancel	إلغاء
+	Caption	تسمية توضيحية
+	Center	توسيط
+	Change	تغيير
+	Change Case	تغيير حالة الأحرف
+	Change Picture	تغيير الصورة
+	Change Shape	تغيير الشكل
+	Changes	التغييرات
+	Chart	مخطط
+	Check Accessibility	التحقق من إمكانية الوصول
+	Check Spelling as You Type	تدقيق الإملاء أثناء الكتابة
+	Citations & Bibliography	الاستشهادات والمراجع
+	Clear	مسح
+	Clear All Formatting	مسح كل التنسيقات
+	Clipboard	الحافظة
+	Close	إغلاق
+	Close Header and Footer	إغلاق الرأس والتذييل
+	Color	اللون
+	Column	عمود
+	Columns	أعمدة
+	Comment	تعليق
+	Comments	تعليقات
+	Comments Pane	جزء التعليقات
+	Compare	مقارنة
+	Confirm password:	تأكيد كلمة المرور:
+	Copy	نسخ
+	Copy Formatting	نسخ التنسيق
+	Create	إنشاء
+	Cut	قص
+	Date and Time	التاريخ والوقت
+	Delete	حذف
+	Delete Cells	حذف خلايا
+	Delete Columns	حذف أعمدة
+	Delete Rows	حذف صفوف
+	Design	تصميم
+	Custom dictionary	القاموس المخصص
+	Documents	مستندات
+	Draw	رسم
+	Edit…	تحرير…
+	Edit Document	تحرير المستند
+	Editing	تحرير
+	Export	تصدير
+	File	ملف
+	Find	بحث
+	Find and Replace	بحث واستبدال
+	Font	الخط
+	Font Color	لون الخط
+	Font Size	حجم الخط
+	Format	تنسيق
+	Format Painter	نسخ التنسيق
+	Formatting	التنسيق
+	Help	تعليمات
+	Home	الرئيسية
+	Insert	إدراج
+	New Comment	تعليق جديد
+	Insert Table	إدراج جدول
+	Italic	مائل
+	Layout	تخطيط
+	Language	اللغة
+	Line Spacing	تباعد الأسطر
+	Link	ارتباط
+	List	قائمة
+	Mailings	مراسلات
+	Manage Styles	إدارة الأنماط
+	More Colors…	مزيد من الألوان…
+	New	جديد
+	New Document	مستند جديد
+	New Style…	نمط جديد…
+	No	لا
+	OK	موافق
+	Open	فتح
+	Options	خيارات
+	Page	صفحة
+	Page Color	لون الصفحة
+	Page Number	رقم الصفحة
+	Page Setup	إعداد الصفحة
+	Paragraph	فقرة
+	Paragraph Spacing	تباعد الفقرات
+	Paste	لصق
+	Paste Special	لصق خاص
+	Print	طباعة
+	Redo	إعادة
+	References	مراجع
+	Remove	إزالة
+	Replace	استبدال
+	Review	مراجعة
+	Save	حفظ
+	Save As	حفظ باسم
+	Search	بحث
+	Search Commands	البحث في الأوامر
+	Select	تحديد
+	Select All	تحديد الكل
+	Settings…	الإعدادات…
+	Share	مشاركة
+	Size	الحجم
+	Spacing	تباعد
+	Styles	أنماط
+	Table	جدول
+	Table Design	تصميم الجدول
+	Table Layout	تخطيط الجدول
+	Text	نص
+	Undo	تراجع
+	Underline	تسطير
+	View	عرض
+	Word Count	عدد الكلمات
+	Yes	نعم
+	Zoom	تكبير/تصغير
+	1.5 Line Spacing	تباعد الأسطر 1.5
+	Automatic	تلقائي
+	Automatic ({language})	تلقائي ({language})
+	Automatic follows your system's language. Menus and commands change; your documents don't.	يتبع الخيار التلقائي لغة النظام. تتغير القوائم والأوامر، ولا تتغير مستنداتك.
+	Dark	داكن
+	Interface language	لغة الواجهة
+	Light	فاتح
+	Use system setting	استخدام إعداد النظام
+	Navigation	التنقل
+	Navigation Pane	جزء التنقل
+	No document is open. Create a document or open one first.	لا يوجد مستند مفتوح. أنشئ مستندًا أو افتح مستندًا أولًا.
+	Pages	صفحات
+	Proofing language	لغة التدقيق
+	Recent	الأخيرة
+	Results	النتائج
+	Search document	البحث في المستند
+	Status Bar	شريط الحالة
+	Words	كلمات

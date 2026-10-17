@@ -1293,8 +1293,11 @@ pub fn show(app: &mut WordApp, ctx: &egui::Context) {
     };
     let id = egui::Id::new(("dialog", title));
     let shown = place_dialog(ctx, id, egui::Window::new(tl!(title)).id(id).collapsible(false).resizable(false)).open(&mut open).show(ctx, |ui| {
-        ui.set_min_width(340.0);
-        close = body(app, ui, &mut d);
+        let align = if crate::i18n::current().is_rtl() { egui::Align::RIGHT } else { egui::Align::LEFT };
+        ui.scope_builder(egui::UiBuilder::new().layout(egui::Layout::top_down(align)), |ui| {
+            ui.set_min_width(340.0);
+            close = body(app, ui, &mut d);
+        });
     });
     if shown.is_some() {
         count_dialog_frame(ctx, id);
@@ -1430,7 +1433,12 @@ pub(crate) fn buttons(ui: &mut Ui, ok: &str) -> (bool, bool) {
     let mut r = (false, false);
     ui.add_space(8.0);
     ui.horizontal(|ui| {
-        ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+        let layout = if crate::i18n::current().is_rtl() {
+            egui::Layout::left_to_right(egui::Align::Center)
+        } else {
+            egui::Layout::right_to_left(egui::Align::Center)
+        };
+        ui.with_layout(layout, |ui| {
             // Enter and Escape belong to the Colors dialog while it is open above this one.
             let keys = !crate::colors::is_open(ui.ctx());
             if ui.button(tl!("Cancel")).clicked() || (keys && ui.input(|i| i.key_pressed(egui::Key::Escape))) {

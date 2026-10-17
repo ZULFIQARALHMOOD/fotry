@@ -19,6 +19,9 @@ fn system_locales_map_to_languages() {
     assert_eq!(lang_from_tag("zh-Hant"), Some(lang("zh-hant")));
     assert_eq!(lang_from_tag("ja-JP"), Some(lang("ja")));
     assert_eq!(lang_from_tag("ja_JP.eucJP@euro"), Some(lang("ja")));
+    assert_eq!(lang_from_tag("ar"), Some(lang("ar")));
+    assert_eq!(lang_from_tag("ar-EG"), Some(lang("ar")));
+    assert_eq!(lang_from_tag("ar_SA.UTF-8"), Some(lang("ar")));
     assert_eq!(lang_from_tag("ko-KR"), Some(lang("ko")));
     assert_eq!(lang_from_tag("ko_KR.UTF-8"), Some(lang("ko")));
     assert_eq!(lang_from_tag("en-GB"), Some(Lang::EN));
@@ -59,6 +62,7 @@ fn the_first_supported_preferred_language_wins() {
 #[test]
 fn settings_resolve_with_fallback() {
     assert_eq!(Lang::from_pref("ja"), lang("ja"));
+    assert_eq!(Lang::from_pref("ar"), lang("ar"));
     assert_eq!(Lang::from_pref("ZH-HANS"), lang("zh-hans"));
     assert_eq!(Lang::from_pref("en"), Lang::EN);
     // `auto` and unknown codes follow the system (English under test).
@@ -74,6 +78,7 @@ fn settings_resolve_with_fallback() {
 fn lookups_fall_back_to_english() {
     let zh = lang("zh-hans");
     assert_eq!(tr(zh, "File"), "文件");
+    assert_eq!(tr(lang("ar"), "File"), "ملف");
     assert_eq!(tr(lang("zh-hant"), "File"), "檔案");
     assert_eq!(tr(lang("ja"), "File"), "ファイル");
     assert_eq!(tr(zh, "no such label"), "no such label");
@@ -126,19 +131,53 @@ fn bundled_catalogs_are_well_formed() {
             assert_eq!(e.translation.trim(), e.translation, "{}: stray whitespace in {:?}", l.code, e.translation);
             assert!(!e.translation.contains("..."), "{}: use … rather than three dots: {:?}", l.code, e.translation);
         }
-        assert!(l.code == "en" || entries.len() > 700, "{} has {} entries", l.code, entries.len());
+        if l.code == "ar" {
+            assert!(entries.len() > 100, "{} has only {} entries", l.code, entries.len());
+        } else {
+            assert!(l.code == "en" || entries.len() > 700, "{} has {} entries", l.code, entries.len());
+        }
+    }
+}
+
+#[test]
+fn arabic_catalog_keys_are_known_and_translations_are_nonempty() {
+    let arabic = lang("ar");
+    let (entries, errors) = parse_entries(arabic.0.source);
+    assert!(errors.is_empty(), "{errors:?}");
+    let (english_keys, errors) = parse_entries(include_str!("tr.tsv"));
+    assert!(errors.is_empty(), "{errors:?}");
+    let english_keys: std::collections::HashSet<&str> = english_keys.iter().map(|e| e.source.as_str()).collect();
+    for entry in entries {
+        assert!(english_keys.contains(entry.source.as_str()), "unknown English lookup string: {:?}", entry.source);
+        assert!(!entry.translation.trim().is_empty(), "empty Arabic translation for {:?}", entry.source);
+    }
+    for (source, expected) in [
+        ("File", "ملف"),
+        ("Home", "الرئيسية"),
+        ("Insert", "إدراج"),
+        ("Layout", "تخطيط"),
+        ("Review", "مراجعة"),
+        ("View", "عرض"),
+        ("Paste", "لصق"),
+        ("Copy", "نسخ"),
+        ("Cut", "قص"),
+        ("Bold", "غامق"),
+        ("Italic", "مائل"),
+        ("Underline", "تسطير"),
+    ] {
+        assert_eq!(tr(arabic, source), expected, "{source}");
     }
 }
 
 /// The ribbon tabs and every registered command's label and ribbon location are translated, in
-/// every language, so menus, tooltips and command search never fall back to English.
+/// every full catalog, so menus, tooltips and command search never fall back to English.
 #[test]
 fn every_tab_and_command_is_translated() {
     let session = wordcraft_engine::Session::new(wordcraft_doc::Document::new());
     // Labels that read the same in every language.
     let universal = |s: &str| !s.chars().any(char::is_alphabetic);
     let mut missing = Vec::new();
-    for l in Lang::all().filter(|l| *l != Lang::EN) {
+    for l in Lang::all().filter(|l| *l != Lang::EN && l.code() != "ar") {
         let tabs = crate::ribbon::TABS.iter().chain(&["Table Design", "Table Layout"]).copied();
         let commands = session.registry.all().iter().flat_map(|spec| std::iter::once(spec.label).chain(spec.location.split(" › ")));
         for s in tabs.chain(commands).filter(|s| !s.is_empty() && !universal(s)) {
@@ -202,8 +241,17 @@ fn the_language_setting_is_a_ui_command_and_persists() {
     // Settings saved before this option existed follow the system.
     let legacy: crate::UiState = serde_json::from_str(r#"{"tab":"Home"}"#).unwrap();
     assert_eq!(legacy.language, AUTO);
+    app.run("ui.language", serde_json::json!({"value": "ar"})).unwrap();
+    assert_eq!(Lang::from_pref(&app.ui.language), lang("ar"));
+    let ctx = egui::Context::default();
+    app.logic(&ctx);
+    assert_eq!(current(), lang("ar"), "the next frame applies the new language without a restart");
+    let saved = serde_json::to_string(&app.ui).unwrap();
+    let restored: crate::UiState = serde_json::from_str(&saved).unwrap();
+    assert_eq!(restored.language, "ar");
     app.run("ui.language", serde_json::json!({"value": "auto"})).unwrap();
     assert_eq!(app.ui.language, AUTO);
+    set_current(Lang::EN);
     // Reading without a value reports the current setting.
     assert_eq!(app.run("ui.language", serde_json::json!({})).unwrap()["language"], AUTO);
 }

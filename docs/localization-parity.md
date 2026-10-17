@@ -19,11 +19,15 @@ native-speaker review (human).
 
 ## What WordCraft ships (measured)
 
-- **23 interface languages**: English plus `zh-hans`, `zh-hant`, `ja`, Korean `ko` (#1216), `uk`, `es`, `pt-br`,
+- **24 interface languages**: English plus `ar`, `zh-hans`, `zh-hant`, `ja`, Korean `ko` (#1216), `uk`, `es`, `pt-br`,
   Serbian `sr`/`sr-latn` (#250), Estonian `et`, Turkish `tr`, Russian `ru`, Italian `it` (#594), German `de` (#574), Polish `pl`, Czech `cs`, Hungarian `hu`, French `fr`, Bulgarian `bg`, Vietnamese `vi` (#1434), Swedish `sv` (#1219) and Croatian `hr` (#1271). Catalogs have 2,061–2,504 entries
-  each; Polish has every key of every other catalog, including the built-in style names and the equation gallery, except the citation style names only Hungarian, Bulgarian and Swedish translate so far (a test checks it). A test (`every_tab_and_command_is_translated`) enforces that every ribbon tab, command
-  label and ribbon location is translated in every language.
-  `pl`, `pl-PL` and `pl_PL.UTF-8` system locales pick Polish automatically.
+  in the 23 full catalogs; the initial Arabic catalog has 158 entries, covering the main ribbon,
+  common actions, settings and some panes/dialogs. Untranslated Arabic strings deliberately fall
+  back to English. Polish has every key of every other full catalog, including built-in style names
+  and the equation gallery, except citation style names only Hungarian, Bulgarian and Swedish
+  translate so far (a test checks it). The full-catalog test enforces every tab, command label and
+  ribbon location; the Arabic test checks every included key is a known English lookup and has a
+  nonempty translation. `ar-*` locales select Arabic automatically and the choice is saved.
 - Of the 675 English strings a scan extracts from `tl!(…)` calls and command labels/locations, each
   catalog covers **661 (98%)**. Some newer dialog and pane strings (Equation tab tooltips, Zotero,
   Read Aloud, Backstage greetings) aren't wrapped in `tl!` yet, so they show in English in every
@@ -50,7 +54,7 @@ shared items below.
 | Simplified Chinese (Mandarin) | zh-hans | 929 entries; 98% of extracted, ~95% of visible | most; newer panes English | CJK ✅, IME ✅; Windows UI font fixed (#248); interface font chain covers every catalog character, installed CJK font after the embedded ones when it doesn't, PingFang found on macOS 12 (#486); font list by Chinese names (宋体, 微软雅黑, #505); no vertical text | no | partial | 3–5 |
 | Spanish | es | ~930; 98% / ~95% | most | Latin ✅ | no | partial | 1–2 |
 | Hindi | hi | 0 | ❌ | Devanagari shaping via HarfRust, untested; no hyphenation | no | none | 4–6 |
-| Arabic | ar | 0 | ❌ | shaping, joining, lam-alef, bidi ✅ (#207); no kashida; **no mirrored UI** | no | none | 6–8 |
+| Arabic | ar | 158 initial entries | primary ribbon, common actions, settings; newer and less common strings remain English | Cairo fallback embedded; tab order, dialog buttons and side panes follow RTL; full mirroring is incomplete | no | partial | 6–8 |
 | French | fr | 2,033 entries | most; newer dialogs partly English | Latin ✅ | no | partial | 1–2 |
 | Portuguese | pt-br (pt-PT none) | ~930; 98% / ~95% (pt-BR) | most | Latin ✅ | no | partial | 2–4 (pt-BR finish + pt-PT) |
 | Indonesian | id | 0 | ❌ | Latin ✅ | no | none | 3–4 |
@@ -191,6 +195,7 @@ WordCraft keeps 2,54 cm).
 ## Revision history
 
 | Date | Change | Summary |
+| 2026-10-16 | minor | Arabic (`ar`) is selectable and follows `ar-*` system/browser locales; its initial 158-entry MSA catalog covers primary ribbon labels, common actions and settings, with English fallback for the remaining UI. Cairo is used as an embedded UI fallback; tab order, dialog actions and side-pane position/alignment follow RTL, while full mirroring and native review remain open |
 |---|---|---|
 | 2026-10-12 | minor | Czech proofing review: short-word splits rank after deletion, NOSUGGEST excludes suggestions while accepting typed forms, affix comments apply only to headers, ratios keep spaces and repeated-word messages use Czech quotes; synthetic engine end-to-end and latency checks |
 | 2026-10-12 | minor | Czech spelling from the installed Hunspell dictionary, runtime-table suggestions and generic checks; Czech interface writes cs-CZ documents; no Czech hyphenation patterns bundled; estimates unchanged |

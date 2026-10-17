@@ -140,7 +140,7 @@ fn undo_list(ui: &mut Ui, app: &mut WordApp) {
             .collect();
         for (i, (r, label)) in rects.iter().zip(&rows).enumerate() {
             if hovered.is_some_and(|h| i <= h) {
-                ui.painter().rect_filled(*r, 0.0, t.selection);
+                ui.painter().rect_filled(*r, 0.0, t.checked);
             }
             // Clipped to its row: a long label never runs into the scroll bar.
             ui.painter_at(r.shrink2(vec2(6.0, 0.0))).text(pos2(r.min.x + 6.0, r.center().y), Align2::LEFT_CENTER, label, regular(12.0), t.text);
@@ -295,15 +295,22 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
                     ui.add_space(8.0);
                     if app.ui.show_discord {
                         let (r, resp) = ui.allocate_exact_size(vec2(84.0, 22.0), Sense::click());
-                        ui.painter().rect_filled(r, 11.0, if resp.hovered() { t.accent_text } else { t.accent });
+                        let hovered = resp.hovered();
+                        ui.painter().rect_filled(r, 11.0, if hovered { t.accent_hover } else { t.accent });
                         icons::paint(
                             ui.painter(),
                             Rect::from_center_size(pos2(r.min.x + 13.0, r.center().y), vec2(14.0, 14.0)),
                             "discord",
-                            t.on_accent,
-                            t.on_accent,
+                            if hovered { t.on_accent_hover } else { t.on_accent },
+                            if hovered { t.on_accent_hover } else { t.on_accent },
                         );
-                        ui.painter().text(pos2(r.min.x + 24.0, r.center().y), Align2::LEFT_CENTER, tl!("Discord"), medium(11.5), t.on_accent);
+                        ui.painter().text(
+                            pos2(r.min.x + 24.0, r.center().y),
+                            Align2::LEFT_CENTER,
+                            tl!("Discord"),
+                            medium(11.5),
+                            if hovered { t.on_accent_hover } else { t.on_accent },
+                        );
                         if resp.on_hover_text(tl!("Join the ArtCraft community on Discord")).clicked() {
                             let _ = app.run("ui.discord", json!({}));
                         }

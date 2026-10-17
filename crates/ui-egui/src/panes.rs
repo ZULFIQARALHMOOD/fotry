@@ -9,83 +9,96 @@ use wordcraft_doc::{Pos, StoryRef};
 use crate::WordApp;
 use crate::theme::{Tokens, regular, semibold};
 
+fn side_panel(id: &'static str, logical_left: bool) -> egui::Panel {
+    if logical_left != crate::i18n::current().is_rtl() { egui::Panel::left(id) } else { egui::Panel::right(id) }
+}
+
+fn aligned<R>(ui: &mut Ui, align: egui::Align, add: impl FnOnce(&mut Ui) -> R) -> egui::InnerResponse<R> {
+    ui.scope_builder(egui::UiBuilder::new().layout(egui::Layout::top_down(align)), add)
+}
+
 pub fn show(app: &mut WordApp, ui: &mut Ui) {
     let t = Tokens::get(ui.ctx());
+    let align = if crate::i18n::current().is_rtl() { egui::Align::RIGHT } else { egui::Align::LEFT };
     // SmartArt Design › Text Pane, while a SmartArt graphic WordCraft can edit is selected.
     if app.session.view.smart_art_pane && wordcraft_engine::cmd::smart_art::selected_smart_art(&app.session).is_some() {
-        egui::Panel::left("smart_art_pane")
+        side_panel("smart_art_pane", true)
             .default_size(250.0)
             .resizable(true)
             .frame(egui::Frame::NONE.fill(t.panel).inner_margin(10).stroke(Stroke::new(1.0, t.border)))
             .show(ui, |ui| {
-                if header(ui, "Text Pane") {
-                    let _ = app.run("smartArt.textPane", json!({"value": false}));
-                    return;
-                }
-                crate::dialogs_smart_art::text_pane(app, ui);
+                aligned(ui, align, |ui| {
+                    if header(ui, "Text Pane") {
+                        let _ = app.run("smartArt.textPane", json!({"value": false}));
+                        return;
+                    }
+                    crate::dialogs_smart_art::text_pane(app, ui);
+                })
             });
     }
     if app.session.view.nav_pane {
-        egui::Panel::left("nav_pane")
+        side_panel("nav_pane", true)
             .default_size(260.0)
             .resizable(true)
             .frame(egui::Frame::NONE.fill(t.panel).inner_margin(10).stroke(Stroke::new(1.0, t.border)))
-            .show(ui, |ui| nav(app, ui));
+            .show(ui, |ui| aligned(ui, align, |ui| nav(app, ui)));
     }
     if app.session.view.clipboard_pane {
-        egui::Panel::left("clipboard_pane")
+        side_panel("clipboard_pane", true)
             .default_size(250.0)
             .resizable(true)
             .frame(egui::Frame::NONE.fill(t.panel).inner_margin(10).stroke(Stroke::new(1.0, t.border)))
-            .show(ui, |ui| clipboard(app, ui));
+            .show(ui, |ui| aligned(ui, align, |ui| clipboard(app, ui)));
     }
     if app.session.view.styles_pane {
-        egui::Panel::right("styles_pane")
+        side_panel("styles_pane", false)
             .default_size(250.0)
             .resizable(true)
             .frame(egui::Frame::NONE.fill(t.panel).inner_margin(10).stroke(Stroke::new(1.0, t.border)))
-            .show(ui, |ui| styles(app, ui));
+            .show(ui, |ui| aligned(ui, align, |ui| styles(app, ui)));
     }
     if app.session.view.style_inspector {
-        egui::Panel::right("style_inspector")
+        side_panel("style_inspector", false)
             .default_size(240.0)
             .resizable(true)
             .frame(egui::Frame::NONE.fill(t.panel).inner_margin(10).stroke(Stroke::new(1.0, t.border)))
-            .show(ui, |ui| inspector(app, ui));
+            .show(ui, |ui| aligned(ui, align, |ui| inspector(app, ui)));
     }
     if app.session.view.accessibility_pane {
-        egui::Panel::right("accessibility_pane")
+        side_panel("accessibility_pane", false)
             .default_size(280.0)
             .resizable(true)
             .frame(egui::Frame::NONE.fill(t.panel).inner_margin(10).stroke(Stroke::new(1.0, t.border)))
-            .show(ui, |ui| crate::a11y_pane::accessibility(app, ui));
+            .show(ui, |ui| aligned(ui, align, |ui| crate::a11y_pane::accessibility(app, ui)));
     }
     if app.session.view.alt_text_pane {
-        egui::Panel::right("alt_text_pane")
+        side_panel("alt_text_pane", false)
             .default_size(260.0)
             .resizable(true)
             .frame(egui::Frame::NONE.fill(t.panel).inner_margin(10).stroke(Stroke::new(1.0, t.border)))
-            .show(ui, |ui| crate::a11y_pane::alt_text(app, ui));
+            .show(ui, |ui| aligned(ui, align, |ui| crate::a11y_pane::alt_text(app, ui)));
     }
     if app.restrict.open {
-        egui::Panel::right("restrict_pane")
+        side_panel("restrict_pane", false)
             .default_size(270.0)
             .resizable(true)
             .frame(egui::Frame::NONE.fill(t.panel).inner_margin(10).stroke(Stroke::new(1.0, t.border)))
             .show(ui, |ui| {
-                if header(ui, "Restrict Editing") {
-                    app.restrict.open = false;
-                    return;
-                }
-                crate::dialogs_review::restrict_pane(app, ui);
+                aligned(ui, align, |ui| {
+                    if header(ui, "Restrict Editing") {
+                        app.restrict.open = false;
+                        return;
+                    }
+                    crate::dialogs_review::restrict_pane(app, ui);
+                })
             });
     }
     if app.session.view.comments_pane {
-        egui::Panel::right("comments_pane")
+        side_panel("comments_pane", false)
             .default_size(290.0)
             .resizable(true)
             .frame(egui::Frame::NONE.fill(t.panel).inner_margin(10).stroke(Stroke::new(1.0, t.border)))
-            .show(ui, |ui| comments(app, ui));
+            .show(ui, |ui| aligned(ui, align, |ui| comments(app, ui)));
     }
 }
 

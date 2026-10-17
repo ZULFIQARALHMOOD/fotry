@@ -230,15 +230,22 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
                     let share = tl!("Share");
                     let share_w = ui.ctx().fonts_mut(|f| f.layout_no_wrap(share.to_string(), medium(12.0), t.text).size().x);
                     let (r, resp) = ui.allocate_exact_size(vec2((share_w + 36.0).max(74.0), 24.0), Sense::click());
-                    ui.painter().rect_filled(r, 4.0, if resp.hovered() { t.accent_text } else { t.accent });
+                    let hovered = resp.hovered();
+                    ui.painter().rect_filled(r, 4.0, if hovered { t.accent_hover } else { t.accent });
                     icons::paint(
                         ui.painter(),
                         Rect::from_center_size(pos2(r.min.x + 14.0, r.center().y), vec2(14.0, 14.0)),
                         "share",
-                        t.on_accent,
-                        t.on_accent,
+                        if hovered { t.on_accent_hover } else { t.on_accent },
+                        if hovered { t.on_accent_hover } else { t.on_accent },
                     );
-                    ui.painter().text(pos2(r.min.x + 26.0, r.center().y), Align2::LEFT_CENTER, share, medium(12.0), t.on_accent);
+                    ui.painter().text(
+                        pos2(r.min.x + 26.0, r.center().y),
+                        Align2::LEFT_CENTER,
+                        share,
+                        medium(12.0),
+                        if hovered { t.on_accent_hover } else { t.on_accent },
+                    );
                     if resp.on_hover_text(tl!("Export a copy to share (PDF, Word document)")).clicked() {
                         let _ = app.run("ui.backstage", json!({"value": true, "page": "export"}));
                     }
@@ -261,7 +268,12 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
                         let _ = app.run("view.commentsPane", json!({}));
                     }
                     ui.add_space(8.0);
-                    ui.with_layout(egui::Layout::left_to_right(egui::Align::Center), |ui| {
+                    let tab_layout = if crate::i18n::current().is_rtl() {
+                        egui::Layout::right_to_left(egui::Align::Center)
+                    } else {
+                        egui::Layout::left_to_right(egui::Align::Center)
+                    };
+                    ui.with_layout(tab_layout, |ui| {
                         // The tabs that don't fit go into a » menu at the end of the strip. File, the
                         // active tab and the contextual tabs (appended last) stay on the strip (#897).
                         let labels: Vec<&str> = tabs.iter().map(|(tab, custom)| if *custom { tab.as_str() } else { tl!(tab) }).collect();
