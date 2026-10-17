@@ -2261,3 +2261,153 @@ preview	Title	عنوان
 	Expand or Collapse Heading	توسيع العنوان أو طيه
 	Select Heading and Content	تحديد العنوان والمحتوى
 	Show Level	إظهار المستوى
+	Show Level 1	إظهار المستوى 1
+	Show Level 2	إظهار المستوى 2
+	Show Level 3	إظهار المستوى 3
+	Show Level 4	إظهار المستوى 4
+	Show Level 5	إظهار المستوى 5
+	Show Level 6	إظهار المستوى 6
+	Show Level 7	إظهار المستوى 7
+	Show Level 8	إظهار المستوى 8
+	Show Level 9	إظهار المستوى 9
+	Show All Levels	إظهار كل المستويات
+	All Levels	كل المستويات
+	Show First Line Only	إظهار السطر الأول فقط
+	Show Text Formatting	إظهار تنسيق النص
+	Close Outline View	إغلاق عرض المخطط التفصيلي
+	Outline State	حالة المخطط التفصيلي
+	Outlining	مخطط تفصيلي
+	Outline Tools	أدوات المخطط التفصيلي
+	Close Outline\nView	إغلاق عرض\nالمخطط التفصيلي
+	Move with Text	التحريك مع النص
+	Fix Position on Page	تثبيت الموضع على الصفحة
+	Formatting exceptions	استثناءات التنسيق
+	Inside:	داخلي:
+	Mirror indents	عكس المسافات البادئة
+	Outside:	خارجي:
+	WordArt Styles	أنماط WordArt
+	Text Fill	تعبئة النص
+	Text Outline	مخطط النص
+	Transform	تحويل
+	No Fill	بلا تعبئة
+	No Outline	بلا مخطط
+	Reflection	انعكاس
+	No Reflection	بلا انعكاس
+	No Transform	بلا تحويل
+	Connect Shapes	توصيل الأشكال
+	Straight Connector	موصل مستقيم
+	Straight Arrow Connector	موصل سهم مستقيم
+	Elbow Connector	موصل بزوايا
+	Elbow Arrow Connector	موصل سهم بزوايا
+	Curved Connector	موصل منحني
+	Curved Arrow Connector	موصل سهم منحني
+	Arch Up	قوس إلى أعلى
+	Arch Down	قوس إلى أسفل
+	Slant Up	ميل إلى أعلى
+	Slant Down	ميل إلى أسفل
+	Inflate	انتفاخ
+	Deflate	انكماش
+	Chevron Up	شيفرون إلى أعلى
+	Chevron Down	شيفرون إلى أسفل
+	Triangle Up	مثلث إلى أعلى
+	Triangle Down	مثلث إلى أسفل
+	Solid Accent	لون تمييز مصمت
+	Light with Outline	فاتح مع مخطط
+	Hollow	أجوف
+	Accent Gradient	تدرج لون التمييز
+	Dark with Shadow	داكن مع ظل
+	Soft Glow	توهج ناعم
+	Accent with Reflection	لون تمييز مع انعكاس
+	Warm Gradient with Outline	تدرج دافئ مع مخطط
+	Add line numbering	إضافة ترقيم للأسطر
+	Add to Document	إضافة إلى المستند
+	Address labels	ملصقات العناوين
+	Auto	تلقائي
+	Automatically hyphenate document	فصل كلمات المستند بواصلات تلقائيًا
+	Chinese (Simplified)	الصينية (المبسطة)
+	Chinese (Traditional)	الصينية (التقليدية)
+	Column:	العمود:
+	Count by:	الزيادة بمقدار:
+	Czech	التشيكية
+	Danish	الدنماركية
+	Delivery address:	عنوان التسليم:
+	Detect language automatically	اكتشاف اللغة تلقائيًا
+	Do not check spelling or grammar	عدم تدقيق الإملاء أو القواعد
+	Dutch	الهولندية
+	Envelope size:	حجم المغلف:
+	Estonian	الإستونية
+	Finnish	الفنلندية
+	French (France)	الفرنسية (فرنسا)
+	From text:	بدءًا من النص:
+	Full page of the same label	صفحة كاملة من الملصق نفسه
+	German (Germany)	الألمانية (ألمانيا)
+	Greek	اليونانية
+	Hebrew	العبرية
+	Hyphenate at:	الفصل عند:
+	Hyphenate words in CAPS	فصل الكلمات المكتوبة بأحرف كبيرة
+	Hyphenation Options…	خيارات فصل الكلمات…
+	Hyphenation zone:	منطقة فصل الكلمات:
+	Italian	الإيطالية
+	Croatian	الكرواتية
+	Japanese	اليابانية
+	Korean	الكورية
+	Limit consecutive hyphens to:	تحديد عدد الواصلات المتتالية بـ:
+	Line Numbering Options…	خيارات ترقيم الأسطر…
+	Manual Hyphenation	فصل الكلمات يدويًا
+	Manual hyphenation is complete.	اكتمل فصل الكلمات يدويًا.
+	Manual…	يدوي…
+	Mark selected text as:	وضع علامة على النص المحدد باعتباره:
+	No limit	بلا حد
+	Norwegian (Bokmål)	النرويجية (بوكمال)
+	Numbering:	الترقيم:
+	Omit	إغفال
+	One label per recipient	ملصق واحد لكل مستلم
+	Portuguese (Brazil)	البرتغالية (البرازيل)
+	Portuguese (Portugal)	البرتغالية (البرتغال)
+	Return address labels	ملصقات عنوان المرسل
+	Return address:	عنوان المرسل:
+	Row:	الصف:
+	Russian	الروسية
+	Serbian (Cyrillic)	الصربية (السيريلية)
+	Serbian (Latin)	الصربية (اللاتينية)
+	Set As Default	تعيين كافتراضي
+	Shipping labels	ملصقات الشحن
+	Single label	ملصق واحد
+	Spanish (Mexico)	الإسبانية (المكسيك)
+	Spanish (Spain)	الإسبانية (إسبانيا)
+	Swedish	السويدية
+	Turkish	التركية
+	Ukrainian	الأوكرانية
+	{language} is now the document's default language.	أصبحت {language} الآن اللغة الافتراضية للمستند.
+	As you type	أثناء الكتابة
+	AutoSave writes your changes to the file a moment after you stop typing.	يكتب الحفظ التلقائي تغييراتك إلى الملف بعد لحظات من التوقف عن الكتابة.
+	Centimeters	سنتيمترات
+	Check spelling as you type	تدقيق الإملاء أثناء الكتابة
+	Click to switch back to inserting	انقر للعودة إلى وضع الإدراج
+	Formatting marks	علامات التنسيق
+	Hidden text	نص مخفي
+	Ignore web and file addresses	تجاهل عناوين الويب والملفات
+	Ignore words in capitals	تجاهل الكلمات المكتوبة بأحرف كبيرة
+	Ignore words with numbers	تجاهل الكلمات التي تحتوي على أرقام
+	Inches	بوصات
+	Initials:	الأحرف الأولى:
+	Interface	الواجهة
+	Mark grammar errors as you type	تمييز الأخطاء النحوية أثناء الكتابة
+	Measurement units:	وحدات القياس:
+	Millimeters	ملليمترات
+	New comments and tracked changes are recorded under this name and these initials.	تُسجل التعليقات الجديدة والتغييرات المتعقبة باسمك وبالأحرف الأولى هذه.
+	New word	كلمة جديدة
+	No words yet. Add to Dictionary on a misspelled word puts it here.	لا توجد كلمات بعد. يؤدي اختيار «إضافة إلى القاموس» لكلمة بها خطأ إملائي إلى إضافتها هنا.
+	Overtype	الكتابة فوق النص
+	Overtype (typing replaces the characters after the caret)	الكتابة فوق النص (يستبدل ما تكتبه الأحرف بعد المؤشر)
+	Show alignment guides when moving pictures and shapes	إظهار أدلة المحاذاة عند نقل الصور والأشكال
+	Moved objects snap to the page's edges and centre, the margins and other objects. Hold Alt to move freely.	تلتقط الكائنات المنقولة حواف الصفحة ووسطها والهوامش والكائنات الأخرى. اضغط Alt للتحريك بحرية.
+	Page display	عرض الصفحة
+	Paragraph marks	علامات الفقرات
+	Personalize	تخصيص
+	Picas	بيكاس
+	Points	نقاط
+	Print the page color	طباعة لون الصفحة
+	Printing	الطباعة
+	Recent documents to show:	عدد المستندات الأخيرة المعروضة:
+	Save documents	حفظ المستندات
