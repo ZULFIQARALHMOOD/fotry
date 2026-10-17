@@ -1661,3 +1661,153 @@ preview	Title	عنوان
 	Paragraph Mark	علامة فقرة
 	Pick a field from the list	اختر حقلًا من القائمة
 	Preserve formatting during updates	الحفاظ على التنسيق أثناء التحديث
+	Presets	إعدادات مسبقة
+	Recently used symbols:	الرموز المستخدمة مؤخرًا:
+	Registered	مسجل
+	Section Mark	علامة المقطع
+	Sequence name:	اسم التسلسل:
+	Shortcut key:	مفتاح الاختصار:
+	Single Closing Quote	علامة اقتباس إغلاق مفردة
+	Single Opening Quote	علامة اقتباس فتح مفردة
+	Spacing:	التباعد:
+	Special Characters	أحرف خاصة
+	Subset:	مجموعة فرعية:
+	The time right now	الوقت الحالي
+	When this document was first created	وقت إنشاء هذا المستند أول مرة
+	When this document was most recently printed	وقت طباعة هذا المستند آخر مرة
+	When this document was most recently saved	وقت حفظ هذا المستند آخر مرة
+	The document has no bookmarks yet.	لا يحتوي المستند على إشارات مرجعية بعد.
+	Who the document properties name as author	المؤلف المذكور في خصائص المستند
+	Name of the file this document is saved as	اسم الملف الذي حُفظ به هذا المستند
+	Title from the document properties	العنوان من خصائص المستند
+	How many pages the whole document has	عدد صفحات المستند بأكمله
+	How many pages this section has	عدد صفحات هذا المقطع
+	Number of the page the field sits on	رقم الصفحة التي يقع فيها الحقل
+	Number of the section the field sits in	رقم المقطع الذي يقع فيه الحقل
+	How many words the document holds	عدد الكلمات في المستند
+	Page on which a bookmarked passage falls	الصفحة التي يقع فيها النص ذو الإشارة المرجعية
+	Copy of the text a bookmark marks	نسخة من النص المحدد بإشارة مرجعية
+	This field has no options.	لا توجد خيارات لهذا الحقل.
+	This font has no characters to show.	لا يحتوي هذا الخط على أحرف لعرضها.
+	This point forward	من هذه النقطة فصاعدًا
+	The date it is today	تاريخ اليوم
+	Trademark	علامة تجارية
+	Type the field's name and its switches, for example PAGE \\* roman.	اكتب اسم الحقل ومفاتيحه، مثل PAGE \\* roman.
+	Width and spacing	العرض والتباعد
+	from Unicode (hex)	من Unicode (ست عشري)
+	All - Linear	الكل - خطي
+	All - Professional	الكل - احترافي
+	Current - Linear	الحالي - خطي
+	Current - Professional	الحالي - احترافي
+	Centered as Group	توسيط كمجموعة
+	✓ None	✓ بلا
+	Formatted	منسق
+	Interface size:	حجم الواجهة:
+	Auto ({percent}%)	تلقائي ({percent}٪)
+	Makes the ribbon, menus and dialogs larger or smaller. Auto follows your system's display scaling; 100% is one screen pixel per point. Document zoom is separate.	يجعل الشريط والقوائم ومربعات الحوار أكبر أو أصغر. يتبع الخيار التلقائي مقياس العرض في النظام؛ وتمثل 100٪ بكسل شاشة واحدًا لكل نقطة. تكبير المستند مستقل.
+	Deleted	محذوف
+	Copyright Sign	رمز حقوق النشر
+	Demote	خفض المستوى
+	Edit Field Code	تحرير رمز الحقل
+	Edit Field…	تحرير الحقل…
+	Go Back	رجوع
+	Do Not Check Spelling or Grammar	عدم تدقيق الإملاء أو القواعد
+	English (United Kingdom)	الإنجليزية (المملكة المتحدة)
+	Polish	البولندية
+	Insert Date Field	إدراج حقل تاريخ
+	Insert Page Field	إدراج حقل صفحة
+	Insert Time Field	إدراج حقل وقت
+	Lock Fields	تأمين الحقول
+	Move Paragraph Down	نقل الفقرة إلى أسفل
+	Move Paragraph Up	نقل الفقرة إلى أعلى
+	Next Field	الحقل التالي
+	Previous Field	الحقل السابق
+	Promote	رفع المستوى
+	Registered Sign	رمز العلامة المسجلة
+	Reset Character Formatting	إعادة تعيين تنسيق الأحرف
+	Reset Paragraph Formatting	إعادة تعيين تنسيق الفقرة
+	Selected Fields	الحقول المحددة
+	Toggle Field Codes	تبديل رموز الحقول
+	Toggle Unicode Character	تبديل حرف Unicode
+	Type Character Code	كتابة رمز الحرف
+	Trademark Sign	رمز العلامة التجارية
+	Unlink Fields	إلغاء ارتباط الحقول
+	Unlock Fields	إلغاء تأمين الحقول
+	Customize Keyboard	تخصيص لوحة المفاتيح
+	Choose a command	اختيار أمر
+	Choose a shortcut	اختيار اختصار
+	All Commands	كل الأوامر
+	Commands:	الأوامر:
+	Keys for this command:	مفاتيح هذا الأمر:
+	New shortcut:	اختصار جديد:
+	Now used by {command}	يُستخدم الآن بواسطة {command}
+	Not used by any command	لا يستخدمه أي أمر
+	Remove every custom shortcut and restore the built-in keys?	هل تريد إزالة كل الاختصارات المخصصة واستعادة المفاتيح المضمنة؟
+	Assign	تعيين
+	Reset All…	إعادة تعيين الكل…
+	Press a key combination	اضغط مجموعة مفاتيح
+	Customize	تخصيص
+	Keyboard shortcuts:	اختصارات لوحة المفاتيح:
+	Customize…	تخصيص…
+	Customize Ribbon	تخصيص الشريط
+	Add to Quick Access Toolbar	إضافة إلى شريط أدوات الوصول السريع
+	Remove from Quick Access Toolbar	إزالة من شريط أدوات الوصول السريع
+	Customize the Ribbon…	تخصيص الشريط…
+	Customize Quick Access Toolbar…	تخصيص شريط أدوات الوصول السريع…
+	More Commands…	مزيد من الأوامر…
+	Ribbon	الشريط
+	(Custom)	(مخصص)
+	Remove every custom tab and group and show all tabs again?	هل تريد إزالة كل علامات التبويب والمجموعات المخصصة وإظهار علامات التبويب كلها مجددًا؟
+	Put the default commands back on the Quick Access Toolbar?	هل تريد إعادة الأوامر الافتراضية إلى شريط أدوات الوصول السريع؟
+	Reset…	إعادة تعيين…
+	Add >>	إضافة >>
+	<< Remove	<< إزالة
+	Pick a custom group (New Group makes one)	اختر مجموعة مخصصة (ينشئ «مجموعة جديدة» مجموعةً جديدة)
+	Ribbon tabs	علامات تبويب الشريط
+	New Tab	علامة تبويب جديدة
+	New Group	مجموعة جديدة
+	Rename…	إعادة تسمية…
+	Ribbon and Quick Access Toolbar:	الشريط وشريط أدوات الوصول السريع:
+	Enclose Characters	إحاطة الأحرف
+	Shrink text	تصغير النص
+	Enlarge symbol	تكبير الرمز
+	Enclosure	إحاطة
+	Circle	دائرة
+	Base text:	النص الأساسي:
+	Distribute letters	توزيع الأحرف
+	Distribute spacing	توزيع التباعد
+	Offset (pt):	الإزاحة (نقطة):
+	Phonetic Guide	دليل النطق
+	Right (vertical)	يمين (عمودي)
+	Ruby text:	نص روبي:
+	Size (pt):	الحجم (نقطة):
+	In Line with Text	ضمن النص
+	Through	من خلال
+	Top and Bottom	أعلى وأسفل
+	Behind Text	خلف النص
+	In Front of Text	أمام النص
+	Wrap Text Sides	التفاف النص حول الجانبين
+	Both Sides	الجانبان
+	Left Only	اليسار فقط
+	Right Only	اليمين فقط
+	Largest Only	الأكبر فقط
+	Resize Table by Dragging	تغيير حجم الجدول بالسحب
+	Add Font…	إضافة خط…
+	Added Fonts	الخطوط المضافة
+	Remove Added Font	إزالة الخط المضاف
+	Load System Installed Fonts…	تحميل الخطوط المثبتة في النظام…
+	All system fonts are already available.	كل خطوط النظام متاحة بالفعل.
+	Local font access is not supported by your browser.	متصفحك لا يدعم الوصول إلى الخطوط المحلية.
+	Local font access was denied.	رُفض الوصول إلى الخطوط المحلية.
+	Loaded {count} system fonts.	تم تحميل {count} خطًا من خطوط النظام.
+	Print Markup	طباعة العلامات
+	Comments beside each page and tracked changes in PDFs, prints and images; a comment list at the end of web pages, Markdown and text.	التعليقات بجانب كل صفحة والتغييرات المتعقبة في ملفات PDF والمطبوعات والصور؛ وقائمة بالتعليقات في نهاية صفحات الويب وملفات Markdown والنصوص.
+	Recent Colors	الألوان الأخيرة
+	Standard	قياسي
+	Current	الحالي
+	Colors:	الألوان:
+	Color model:	نموذج اللون:
+	Red:	أحمر:
+	Green:	أخضر:
+	Blue:	أزرق:
+	Hue:	درجة اللون:
