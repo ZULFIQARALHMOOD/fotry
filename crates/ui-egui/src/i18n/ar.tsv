@@ -1361,3 +1361,153 @@ preview	Title	عنوان
 	Logical AND	و المنطقية
 	Logical AND with Limits	و المنطقية مع حدود
 	Logical OR	أو المنطقية
+	Logical OR with Limits	أو المنطقية مع حدود
+	Maximum	القيمة العظمى
+	Maximum Example	مثال على القيمة العظمى
+	Measured By	مقاس بواسطة
+	Midline Dots	نقاط على خط المنتصف
+	Minimum	القيمة الصغرى
+	Minus Equal	ناقص يساوي
+	Natural Logarithm	لوغاريتم طبيعي
+	One half	نصف
+	Outward Brackets	أقواس متجهة إلى الخارج
+	Overbar	خط علوي
+	Overbrace	قوس معقوف علوي
+	Parentheses	أقواس دائرية
+	Parentheses with Separator	أقواس دائرية مع فاصل
+	Partial Differential	تفاضل جزئي
+	Pi Over 2	باي على 2
+	Plus Equal	زائد يساوي
+	Product	حاصل ضرب
+	Product of A	حاصل ضرب A
+	Product with Limits	حاصل ضرب مع حدود
+	Product with Lower Limit	حاصل ضرب مع حد سفلي
+	Product with Subscript-Superscript Limits	حاصل ضرب بحدود سفلية وعلوية
+	Quadratic Root	جذر تربيعي
+	Radical with Degree	جذر ذو رتبة
+	Right Arrow with Text Above	سهم إلى اليمين مع نص أعلاه
+	Right Arrow with Text Below	سهم إلى اليمين مع نص أسفله
+	Right Bracket Twice	قوس أيمن مرتين
+	Rightwards Arrow Above	سهم متجه إلى اليمين أعلاه
+	Rightwards Harpoon Above	خطاف سهم متجه إلى اليمين أعلاه
+	Secant Function	دالة القاطع
+	Sine Function	دالة الجيب
+	Sine theta	جيب ثيتا
+	Single Left Angle	قوس زاوي أيسر مفرد
+	Single Left Bar	خط أيسر مفرد
+	Single Left Brace	قوس معقوف أيسر مفرد
+	Single Left Bracket	قوس مربع أيسر مفرد
+	Single Left Parenthesis	قوس دائري أيسر مفرد
+	Single Right Brace	قوس معقوف أيمن مفرد
+	Single Right Bracket	قوس مربع أيمن مفرد
+	Single Right Parenthesis	قوس دائري أيمن مفرد
+	Skewed Fraction	كسر مائل
+	Small change	تغير صغير
+	Square	مربع
+	Square Root	جذر تربيعي
+	Square Root with Degree	جذر تربيعي ذو رتبة
+	Square Union	اتحاد مربعات
+	Stack Object	عنصر مكدس
+	Stack Object (Three)	عنصر مكدس (ثلاثة)
+	Stacked Fraction	كسر مكدس
+	Stacked, no bar	مكدس بلا خط
+	Subscript-Superscript	رمز سفلي وعلوي
+	Summation	مجموع
+	Summation from 0 to n	مجموع من 0 إلى n
+	Summation over binomials	مجموع معاملات ثنائية
+	Summation with Limits	مجموع مع حدود
+	Summation with Lower Limit	مجموع مع حد سفلي
+	Summation with Subscript Limit	مجموع مع حد سفلي
+	Summation with Subscript-Superscript Limits	مجموع بحدود سفلية وعلوية
+	Surface Integral	تكامل سطحي
+	Surface Integral with Limits	تكامل سطحي مع حدود
+	Surface Integral with Stacked Limits	تكامل سطحي بحدود مكدسة
+	Tangent Function	دالة الظل
+	Tangent formula	صيغة الظل
+	Text over Colon Equal	نص فوق نقطتين وعلامة يساوي
+	Text over Equal	نص فوق علامة يساوي
+	Tilde	علامة التلدة
+	Triple Dot	ثلاث نقاط
+	Triple Integral	تكامل ثلاثي
+	Triple Integral with Limits	تكامل ثلاثي مع حدود
+	Triple Integral with Stacked Limits	تكامل ثلاثي بحدود مكدسة
+	Underbar	خط سفلي
+	Underbrace	قوس معقوف سفلي
+	Union	اتحاد
+	Union of intersections	اتحاد تقاطعات
+	Union with Limits	اتحاد مع حدود
+	Union with Lower Limit	اتحاد مع حد سفلي
+	Union with Plus	اتحاد مع علامة زائد
+	Union with Subscript-Superscript Limits	اتحاد بحدود سفلية وعلوية
+	Up Diagonal Dots	نقاط قطرية صاعدة
+	Vector A	المتجه A
+	Vector AB	المتجه AB
+	Vertical Bars	خطوط عمودية
+	Vertical Dots	نقاط عمودية
+	Volume Integral	تكامل حجمي
+	Volume Integral with Limits	تكامل حجمي مع حدود
+	Volume Integral with Stacked Limits	تكامل حجمي بحدود مكدسة
+	Yields	ينتج
+	x bar	متوسط x
+	AutoSave isn't available in the browser: it can't write to your files. Save downloads a copy.	الحفظ التلقائي غير متاح في المتصفح لأنه لا يستطيع الكتابة في ملفاتك. يؤدي الحفظ إلى تنزيل نسخة.
+	AutoSave only keeps .docx, .odt and .rtf files; {name} can't keep all formatting. Save as .docx to turn on AutoSave.	يحفظ الحفظ التلقائي ملفات .docx و.odt و.rtf فقط؛ لا يحتفظ {name} بكل التنسيقات. احفظه بتنسيق .docx لتشغيل الحفظ التلقائي.
+	Save the document to turn on AutoSave (a file you have only opened isn't rewritten until you save it)	احفظ المستند لتشغيل الحفظ التلقائي (لا يُعاد حفظ الملف الذي فتحته فقط حتى تحفظه)
+	Add Object to Selection	إضافة كائن إلى التحديد
+	Add space between Asian and Latin text	إضافة مسافة بين النص الآسيوي واللاتيني
+	Add space between Asian text and numbers	إضافة مسافة بين النص الآسيوي والأرقام
+	Allow hanging punctuation	السماح بعلامات ترقيم معلقة
+	Allow Latin text to wrap in the middle of a word	السماح بالتفاف النص اللاتيني في منتصف الكلمة
+	Apply Asian line-breaking rules (kinsoku)	تطبيق قواعد فصل الأسطر الآسيوية (كينسوكو)
+	Asian Typography	الطباعة الآسيوية
+	Click a border between two cells to merge them. Esc stops.	انقر حدًا بين خليتين لدمجهما. اضغط Esc للإيقاف.
+	Compress punctuation at the start of a line	ضغط علامات الترقيم في بداية السطر
+	Drag a rectangle to draw a table, or a line across cells to split them. Esc stops.	اسحب لرسم مستطيل لإنشاء جدول، أو خطًا عبر الخلايا لتقسيمها. اضغط Esc للإيقاف.
+	Draw Table	رسم جدول
+	Indents and Spacing	المسافات البادئة والتباعد
+	Line breaking	فصل الأسطر
+	Clipboard Pane	جزء الحافظة
+	Clipboard Items	عناصر الحافظة
+	Paste Clipboard Item	لصق عنصر الحافظة
+	Paste All	لصق الكل
+	Delete Clipboard Item	حذف عنصر الحافظة
+	Click an item to paste it.	انقر عنصرًا للصقه.
+	Nothing collected yet. Items you copy or cut appear here.	لا توجد عناصر بعد. ستظهر هنا العناصر التي تنسخها أو تقصها.
+	(picture or object)	(صورة أو كائن)
+	Ungroup	إلغاء التجميع
+	Draw Ink	الرسم بالحبر
+	Erase Ink	مسح الحبر
+	Hide Ink	إخفاء الحبر
+	Hide\nInk	إخفاء\nالحبر
+	Pens	أقلام
+	Ink	حبر
+	Thickness	السُمك
+	Shape Effects	تأثيرات الشكل
+	Glow	توهج
+	Soft Edges	حواف ناعمة
+	No Shadow	بلا ظل
+	No Glow	بلا توهج
+	No Soft Edges	بلا حواف ناعمة
+	Glow Colors	ألوان التوهج
+	Weight	السُمك
+	Shadow, glow and soft edges	الظل والتوهج والحواف الناعمة
+	Offset: Bottom Right	الإزاحة: أسفل اليمين
+	Offset: Bottom	الإزاحة: أسفل
+	Offset: Bottom Left	الإزاحة: أسفل اليسار
+	Offset: Right	الإزاحة: اليمين
+	Offset: Center	الإزاحة: الوسط
+	Offset: Left	الإزاحة: اليسار
+	Offset: Top Right	الإزاحة: أعلى اليمين
+	Offset: Top	الإزاحة: أعلى
+	Offset: Top Left	الإزاحة: أعلى اليسار
+	Show or Hide Style	إظهار النمط أو إخفاؤه
+	Manage Styles…	إدارة الأنماط…
+	Sort order:	ترتيب الفرز:
+	As Recommended	حسب التوصية
+	Alphabetical	أبجديًا
+	Font: {font}	الخط: {font}
+	{size} pt	{size} نقطة
+	Color: {color}	اللون: {color}
+	Space before: {pt} pt	المسافة قبل: {pt} نقطة
+	Space after: {pt} pt	المسافة بعد: {pt} نقطة
+	Based on: {style}	مستند إلى: {style}
+	Paragraph style	نمط الفقرة
