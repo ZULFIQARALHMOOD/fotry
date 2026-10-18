@@ -6,7 +6,7 @@ use serde_json::{Value, json};
 use crate::colors::{Remember, Target};
 use crate::options::MeasureExt;
 use crate::theme::{Tokens, medium, regular, semibold};
-use crate::widgets::{CONTENT_H, LABEL_H, big, big_toggle, combo, font_combo, group, menu_button, small, split};
+use crate::widgets::{CONTENT_H, big, big_toggle, combo, font_combo, group, menu_button, small, split};
 use crate::{WordApp, icons};
 
 pub const TABS: [&str; 13] = wordcraft_engine::ribbon::TABS;
@@ -166,6 +166,13 @@ pub fn in_table_public(app: &WordApp) -> bool {
 
 pub fn show(app: &mut WordApp, ui: &mut Ui) {
     let t = Tokens::get(ui.ctx());
+    let compact = crate::layout::is_compact(ui.ctx());
+    let tab_height = if compact {
+        crate::layout::COMPACT_TABS_HEIGHT
+    } else {
+        crate::layout::target_size(ui.ctx(), vec2(1.0, crate::layout::DESKTOP_TABS_HEIGHT)).y
+    };
+    let more_tabs_width = crate::layout::target_size(ui.ctx(), vec2(MORE_TABS_W, tab_height)).x;
     if app.session.view.read_mode {
         reading_toolbar(app, ui, t);
         return;
@@ -214,8 +221,8 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
         }
     }
     // Tab strip.
-    egui::Panel::top("tabs")
-        .exact_size(30.0)
+    let tabs_shown = egui::Panel::top("tabs")
+        .exact_size(tab_height)
         .frame(egui::Frame::NONE.fill(t.tab_strip).inner_margin(egui::Margin { left: 8, right: 10, top: 0, bottom: 0 }))
         .show(ui, |ui| {
             ui.horizontal_centered(|ui| {
@@ -225,49 +232,51 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
                     if !app.has_document() {
                         ui.disable();
                     }
-                    // Share, Editing mode, Comments, drawn first so the tabs get only the room
-                    // left of them (#897).
-                    let share = tl!("Share");
-                    let share_w = ui.ctx().fonts_mut(|f| f.layout_no_wrap(share.to_string(), medium(12.0), t.text).size().x);
-                    let (r, resp) = ui.allocate_exact_size(vec2((share_w + 36.0).max(74.0), 24.0), Sense::click());
-                    let hovered = resp.hovered();
-                    ui.painter().rect_filled(r, 4.0, if hovered { t.accent_hover } else { t.accent });
-                    icons::paint(
-                        ui.painter(),
-                        Rect::from_center_size(pos2(r.min.x + 14.0, r.center().y), vec2(14.0, 14.0)),
-                        "share",
-                        if hovered { t.on_accent_hover } else { t.on_accent },
-                        if hovered { t.on_accent_hover } else { t.on_accent },
-                    );
-                    ui.painter().text(
-                        pos2(r.min.x + 26.0, r.center().y),
-                        Align2::LEFT_CENTER,
-                        share,
-                        medium(12.0),
-                        if hovered { t.on_accent_hover } else { t.on_accent },
-                    );
-                    if resp.on_hover_text(tl!("Export a copy to share (PDF, Word document)")).clicked() {
-                        let _ = app.run("ui.backstage", json!({"value": true, "page": "export"}));
-                    }
-                    ui.add_space(6.0);
-                    let track = app.session.doc.settings.track_changes;
-                    let mode =
-                        crate::widgets::icon_text_menu_button(ui, "pencil", if track { tl!("Reviewing") } else { tl!("Editing") }, regular(12.0));
-                    egui::Popup::menu(&mode).show(|ui| {
-                        if ui.selectable_label(!track, tl!(tl!("Editing — edit the document directly"))).clicked() {
-                            let _ = app.run("review.trackChanges", json!({"value": false}));
-                            ui.close();
+                    if !compact {
+                        // Share, Editing mode and Comments give the tabs only the room left of
+                        // them on wide screens. On compact screens they would crowd the tabs.
+                        let share = tl!("Share");
+                        let share_w = ui.ctx().fonts_mut(|f| f.layout_no_wrap(share.to_string(), medium(12.0), t.text).size().x);
+                        let (r, resp) = ui.allocate_exact_size(vec2((share_w + 36.0).max(74.0), 24.0), Sense::click());
+                        let hovered = resp.hovered();
+                        ui.painter().rect_filled(r, 4.0, if hovered { t.accent_hover } else { t.accent });
+                        icons::paint(
+                            ui.painter(),
+                            Rect::from_center_size(pos2(r.min.x + 14.0, r.center().y), vec2(14.0, 14.0)),
+                            "share",
+                            if hovered { t.on_accent_hover } else { t.on_accent },
+                            if hovered { t.on_accent_hover } else { t.on_accent },
+                        );
+                        ui.painter().text(
+                            pos2(r.min.x + 26.0, r.center().y),
+                            Align2::LEFT_CENTER,
+                            share,
+                            medium(12.0),
+                            if hovered { t.on_accent_hover } else { t.on_accent },
+                        );
+                        if resp.on_hover_text(tl!("Export a copy to share (PDF, Word document)")).clicked() {
+                            let _ = app.run("ui.backstage", json!({"value": true, "page": "export"}));
                         }
-                        if ui.selectable_label(track, tl!(tl!("Reviewing — edits become suggestions"))).clicked() {
-                            let _ = app.run("review.trackChanges", json!({"value": true}));
-                            ui.close();
+                        ui.add_space(6.0);
+                        let track = app.session.doc.settings.track_changes;
+                        let mode =
+                            crate::widgets::icon_text_menu_button(ui, "pencil", if track { tl!("Reviewing") } else { tl!("Editing") }, regular(12.0));
+                        egui::Popup::menu(&mode).show(|ui| {
+                            if ui.selectable_label(!track, tl!(tl!("Editing — edit the document directly"))).clicked() {
+                                let _ = app.run("review.trackChanges", json!({"value": false}));
+                                ui.close();
+                            }
+                            if ui.selectable_label(track, tl!(tl!("Reviewing — edits become suggestions"))).clicked() {
+                                let _ = app.run("review.trackChanges", json!({"value": true}));
+                                ui.close();
+                            }
+                        });
+                        ui.add_space(4.0);
+                        if crate::widgets::icon_text_button(ui, "comment", tl!("Comments"), regular(12.0)).clicked() {
+                            let _ = app.run("view.commentsPane", json!({}));
                         }
-                    });
-                    ui.add_space(4.0);
-                    if crate::widgets::icon_text_button(ui, "comment", tl!("Comments"), regular(12.0)).clicked() {
-                        let _ = app.run("view.commentsPane", json!({}));
+                        ui.add_space(8.0);
                     }
-                    ui.add_space(8.0);
                     let tab_layout = if crate::i18n::current().is_rtl() {
                         egui::Layout::right_to_left(egui::Align::Center)
                     } else {
@@ -282,18 +291,20 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
                             .zip(&labels)
                             .map(|((tab, custom), shown)| {
                                 let w = ui.ctx().fonts_mut(|f| f.layout_no_wrap(shown.to_string(), medium(12.5), t.text).size().x) + 18.0;
+                                let w = crate::layout::target_size(ui.ctx(), vec2(w, tab_height)).x;
                                 let contextual = !custom && wordcraft_engine::ribbon::CONTEXTUAL_TABS.contains(&tab.as_str());
                                 (w + 2.0, tab == "File" || *tab == app.ui.tab || contextual)
                             })
                             .collect();
-                        let fits = fit_tabs(&widths, ui.available_width(), MORE_TABS_W + 2.0);
+                        let fits = fit_tabs(&widths, ui.available_width(), more_tabs_width + 2.0);
                         for ((tab, custom), _) in tabs.iter().zip(&fits).filter(|(_, fits)| **fits) {
                             let (tab, custom) = (tab.as_str(), *custom);
                             let contextual = !custom && wordcraft_engine::ribbon::CONTEXTUAL_TABS.contains(&tab);
                             // A custom tab's name is the user's own text: shown as typed.
                             let shown = if custom { tab } else { tl!(tab) };
                             let w = ui.ctx().fonts_mut(|f| f.layout_no_wrap(shown.to_string(), medium(12.5), t.text).size().x) + 18.0;
-                            let (r, resp) = ui.allocate_exact_size(vec2(w, 30.0), Sense::click());
+                            let w = crate::layout::target_size(ui.ctx(), vec2(w, tab_height)).x;
+                            let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(w, tab_height)), Sense::click());
                             if app.ui.keytips == crate::keytips::Phase::Tabs {
                                 crate::keytips::record_tab(r, tab, &app.ui.keytip_prefix, &mut app.keytip_rects);
                             }
@@ -324,7 +335,8 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
                             .map(|(((tab, _), shown), _)| (tab.as_str(), *shown))
                             .collect();
                         if !left_out.is_empty() {
-                            let (r, resp) = ui.allocate_exact_size(vec2(MORE_TABS_W, 30.0), Sense::click());
+                            let (r, resp) =
+                                ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(more_tabs_width, tab_height)), Sense::click());
                             if resp.hovered() {
                                 ui.painter().rect_filled(r.shrink2(vec2(0.0, 4.0)), 4.0, t.hover);
                             }
@@ -342,11 +354,12 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
                 });
             });
         });
+    crate::layout::record_rect(ui.ctx(), "tabs", tabs_shown.response.rect);
     if app.ui.ribbon_collapsed {
         return;
     }
-    egui::Panel::top("ribbon")
-        .exact_size(CONTENT_H + LABEL_H + 10.0)
+    let shown = egui::Panel::top("ribbon")
+        .exact_size(crate::layout::ribbon_height(ui.ctx()))
         .frame(
             egui::Frame::NONE.fill(t.ribbon).inner_margin(egui::Margin { left: 8, right: 8, top: 4, bottom: 4 }).stroke(Stroke::new(1.0, t.border)),
         )
@@ -403,15 +416,16 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
             let overflow = scroll.content_size.x - r.width();
             let offset = scroll.state.offset.x;
             let step = 160.0;
+            let edge_width = crate::layout::target_size(ui.ctx(), vec2(18.0, 1.0)).x;
             let mut next = None;
             if offset > 1.0 {
-                let left = Rect::from_min_max(r.left_top(), pos2(r.left() + 18.0, r.bottom()));
+                let left = Rect::from_min_max(r.left_top(), pos2(r.left() + edge_width, r.bottom()));
                 if edge_cue(ui, left, "‹", tl!("Scroll ribbon left"), &t) {
                     next = Some(offset - step);
                 }
             }
             if overflow - offset > 1.0 {
-                let right = Rect::from_min_max(pos2(r.right() - 18.0, r.top()), r.right_bottom());
+                let right = Rect::from_min_max(pos2(r.right() - edge_width, r.top()), r.right_bottom());
                 if edge_cue(ui, right, "›", tl!("Scroll ribbon right"), &t) {
                     next = Some(offset + step);
                 }
@@ -422,6 +436,7 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
                 state.store(ui.ctx(), scroll.id);
             }
         });
+    crate::layout::record_rect(ui.ctx(), "ribbon", shown.response.rect);
 }
 
 /// Custom groups (Customize Ribbon, #379): up to three commands as large buttons, more as small
@@ -856,7 +871,7 @@ fn home(app: &mut WordApp, ui: &mut Ui) {
                     egui::Grid::new("hl").spacing(vec2(3.0, 3.0)).show(ui, |ui| {
                         for (i, h) in grid.iter().enumerate().skip(1) {
                             let c = h.rgb().unwrap_or(wordcraft_doc::Rgb::WHITE);
-                            let (r, resp) = ui.allocate_exact_size(vec2(18.0, 18.0), Sense::click());
+                            let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(18.0, 18.0)), Sense::click());
                             ui.painter().rect_filled(r, 2.0, egui::Color32::from_rgb(c.0, c.1, c.2));
                             if resp.on_hover_text(h.name()).clicked() {
                                 app.canvas.last_highlight = h.ooxml().to_string();
@@ -1262,7 +1277,7 @@ fn update_gallery_pen(app: &mut WordApp, custom: Option<usize>, tool: wordcraft_
 fn gallery_pen(ui: &mut Ui, app: &mut WordApp, i: usize, pen: wordcraft_engine::cmd::draw::CustomPen, active: bool) {
     use wordcraft_doc::freeform::InkTool;
     let t = Tokens::get(ui.ctx());
-    let (r, resp) = ui.allocate_exact_size(vec2(34.0, CONTENT_H), Sense::click());
+    let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(34.0, CONTENT_H)), Sense::click());
     crate::widgets::bg(ui, r, &resp, active, &t);
     let icon = match pen.kind {
         InkTool::Pen => "pen",
@@ -2043,7 +2058,7 @@ fn smart_art_design(app: &mut WordApp, ui: &mut Ui) {
         let t = Tokens::get(ui.ctx());
         egui::Grid::new("smart_art_layout_gallery").spacing(vec2(2.0, 2.0)).show(ui, |ui| {
             for (k, layout) in SmartArtLayout::ALL.into_iter().enumerate() {
-                let (r, resp) = ui.allocate_exact_size(vec2(46.0, 31.0), Sense::click());
+                let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(46.0, 31.0)), Sense::click());
                 let on = g.layout == layout;
                 let fill = if on {
                     t.checked

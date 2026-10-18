@@ -1212,11 +1212,10 @@ const DIALOG_CENTRED_FRAMES: u8 = 2;
 /// the bottom edge and the tab strip stays under the mouse (#507). It is no longer anchored after
 /// that, so dragging the title bar moves it (#732). egui keeps it on screen if it grows past the
 /// bottom.
-fn place_dialog<'a>(ctx: &egui::Context, id: egui::Id, w: egui::Window<'a>) -> egui::Window<'a> {
-    let w = w.pivot(egui::Align2::CENTER_TOP);
+fn place_dialog<'a>(ctx: &egui::Context, id: egui::Id, area: egui::Rect, w: egui::Window<'a>) -> egui::Window<'a> {
     match ctx.data(|d| d.get_temp::<(egui::Id, u8)>(dialog_top_key())) {
-        Some((open, frames)) if open == id && frames >= DIALOG_CENTRED_FRAMES => w,
-        _ => w.anchor(egui::Align2::CENTER_CENTER, vec2(0.0, -40.0)),
+        Some((open, frames)) if open == id && frames >= DIALOG_CENTRED_FRAMES => w.pivot(egui::Align2::CENTER_TOP),
+        _ => w.pivot(egui::Align2::CENTER_CENTER).anchor(egui::Align2::CENTER_CENTER, area.center() - ctx.content_rect().center()),
     }
 }
 
@@ -1292,13 +1291,22 @@ pub fn show(app: &mut WordApp, ctx: &egui::Context) {
         Dialog::Layout(d) => d.title(),
     };
     let id = egui::Id::new(("dialog", title));
-    let shown = place_dialog(ctx, id, egui::Window::new(tl!(title)).id(id).collapsible(false).resizable(false)).open(&mut open).show(ctx, |ui| {
-        let align = if crate::i18n::current().is_rtl() { egui::Align::RIGHT } else { egui::Align::LEFT };
-        ui.scope_builder(egui::UiBuilder::new().layout(egui::Layout::top_down(align)), |ui| {
-            ui.set_min_width(340.0);
-            close = body(app, ui, &mut d);
+    let area = crate::layout::dialog_area(ctx, app.ui.ribbon_collapsed);
+    let max_size = area.size();
+    let shown = place_dialog(ctx, id, area, egui::Window::new(tl!(title)).id(id).collapsible(false).resizable(false).max_size(max_size))
+        .open(&mut open)
+        .show(ctx, |ui| {
+            let align = if crate::i18n::current().is_rtl() { egui::Align::RIGHT } else { egui::Align::LEFT };
+            egui::ScrollArea::both().max_height((max_size.y - 48.0).max(0.0)).max_width((max_size.x - 24.0).max(0.0)).show(ui, |ui| {
+                ui.scope_builder(egui::UiBuilder::new().layout(egui::Layout::top_down(align)), |ui| {
+                    ui.set_min_width((max_size.x - 32.0).clamp(0.0, 340.0));
+                    close = body(app, ui, &mut d);
+                });
+            });
         });
-    });
+    if let Some(dialog) = &shown {
+        crate::layout::record_rect(ctx, "dialog", dialog.response.rect);
+    }
     if shown.is_some() {
         count_dialog_frame(ctx, id);
     }

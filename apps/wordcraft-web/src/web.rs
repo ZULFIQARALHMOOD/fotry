@@ -108,6 +108,10 @@ pub fn start() {
                     // Fonts the user added on an earlier visit (#582); the app notices them arrive.
                     font_store::load_all(cc.egui_ctx.clone());
                     let inbox: Inbox = Inbox::default();
+                    let touch_device = web_sys::window()
+                        .and_then(|window| window.match_media("(pointer: coarse)").ok().flatten())
+                        .is_some_and(|query| query.matches());
+                    wordcraft_ui_egui::layout::set_touch_device(&cc.egui_ctx, touch_device);
                     let pasted: Inbox = Inbox::default();
                     if let Err(e) = listen_for_pasted_pictures(pasted.clone(), cc.egui_ctx.clone()) {
                         log::error!("pasting pictures is unavailable: {e}");
@@ -514,6 +518,54 @@ fn listen_for_pasted_pictures(inbox: Inbox, ctx: egui::Context) -> Result<(), St
     Ok(())
 }
 
+/// Read plain text when the user invokes the in-app Paste command. The call to `readText` happens
+/// synchronously in the click handler so browsers can honor their user-activation requirement.
+fn request_clipboard_text(inbox: wordcraft_ui_egui::ClipboardTextInbox, ctx: egui::Context, messages: Rc<RefCell<Vec<String>>>) {
+    let promise = (|| {
+        let window = web_sys::window().ok_or_else(|| "no browser window".to_string())?;
+        let navigator = js_sys::Reflect::get(window.as_ref(), &wasm_bindgen::JsValue::from_str("navigator")).map_err(|e| format!("{e:?}"))?;
+        let clipboard = js_sys::Reflect::get(&navigator, &wasm_bindgen::JsValue::from_str("clipboard")).map_err(|e| format!("{e:?}"))?;
+        let read_text = js_sys::Reflect::get(&clipboard, &wasm_bindgen::JsValue::from_str("readText")).map_err(|e| format!("{e:?}"))?;
+        if !read_text.is_function() {
+            return Err("the browser does not provide clipboard read access".to_string());
+        }
+        let read_text = js_sys::Function::from(read_text);
+        let promise = read_text.call0(&clipboard).map_err(|e| format!("{e:?}"))?;
+        Ok(js_sys::Promise::from(promise))
+    })();
+
+    let promise = match promise {
+        Ok(promise) => promise,
+        Err(error) => {
+            clipboard_read_failed(&messages, &ctx, &error);
+            return;
+        }
+    };
+    wasm_bindgen_futures::spawn_local(async move {
+        match wasm_bindgen_futures::JsFuture::from(promise).await {
+            Ok(value) => {
+                let Some(text) = value.as_string() else {
+                    clipboard_read_failed(&messages, &ctx, "the browser returned no text");
+                    return;
+                };
+                if text.is_empty() {
+                    messages.borrow_mut().push(wordcraft_ui_egui::i18n::t("The clipboard is empty.").to_string());
+                } else {
+                    inbox.lock().unwrap_or_else(|e| e.into_inner()).push(text);
+                }
+                ctx.request_repaint();
+            }
+            Err(error) => clipboard_read_failed(&messages, &ctx, &format!("{error:?}")),
+        }
+    });
+}
+
+fn clipboard_read_failed(messages: &Rc<RefCell<Vec<String>>>, ctx: &egui::Context, error: &str) {
+    log::warn!("browser clipboard read failed: {error}");
+    messages.borrow_mut().push(format!("Couldn't read the clipboard: {error}"));
+    ctx.request_repaint();
+}
+
 /// `dirty` is the flag the `beforeunload` guard reads ([`guard_unload`]).
 fn services(
     inbox: Inbox,
@@ -535,6 +587,10 @@ fn services(
     let font_ctx = ctx.clone();
     let font_messages = messages.clone();
     let save_messages = messages.clone();
+    let clipboard_paste: wordcraft_ui_egui::ClipboardTextInbox = Default::default();
+    let requested_clipboard_paste = clipboard_paste.clone();
+    let clipboard_ctx = ctx.clone();
+    let clipboard_messages = messages.clone();
     let cleanup_ctx = ctx.clone();
     Services {
         open_async: Some(Box::new(move |purpose: &str| {
@@ -609,6 +665,10 @@ fn services(
         download: Some(Box::new(move |path: &str, bytes: &[u8]| download(&saves, &save_ctx, path, bytes, android, &save_messages, &saved_file))),
         print: Some(Box::new(print_pdf)),
         inbox: Some(inbox),
+        clipboard_paste: Some(clipboard_paste),
+        request_clipboard_paste: Some(Box::new(move || {
+            request_clipboard_text(requested_clipboard_paste.clone(), clipboard_ctx.clone(), clipboard_messages.clone());
+        })),
         on_dirty: Some(Box::new(move |d| dirty.set(d))),
         native_storage: android,
         on_saved: android.then(|| {

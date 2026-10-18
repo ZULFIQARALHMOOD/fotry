@@ -20,6 +20,10 @@ fn aligned<R>(ui: &mut Ui, align: egui::Align, add: impl FnOnce(&mut Ui) -> R) -
 pub fn show(app: &mut WordApp, ui: &mut Ui) {
     let t = Tokens::get(ui.ctx());
     let align = if crate::i18n::current().is_rtl() { egui::Align::RIGHT } else { egui::Align::LEFT };
+    if crate::layout::is_compact(ui.ctx()) {
+        show_compact(app, ui.ctx(), align);
+        return;
+    }
     // SmartArt Design › Text Pane, while a SmartArt graphic WordCraft can edit is selected.
     if app.session.view.smart_art_pane && wordcraft_engine::cmd::smart_art::selected_smart_art(&app.session).is_some() {
         side_panel("smart_art_pane", true)
@@ -99,6 +103,103 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
             .resizable(true)
             .frame(egui::Frame::NONE.fill(t.panel).inner_margin(10).stroke(Stroke::new(1.0, t.border)))
             .show(ui, |ui| aligned(ui, align, |ui| comments(app, ui)));
+    }
+}
+
+#[derive(Clone, Copy)]
+enum CompactPane {
+    SmartArt,
+    Navigation,
+    Clipboard,
+    Styles,
+    Inspector,
+    Accessibility,
+    AltText,
+    Restrict,
+    Comments,
+}
+
+fn show_compact(app: &mut WordApp, ctx: &egui::Context, align: egui::Align) {
+    let pane = if app.session.view.smart_art_pane && wordcraft_engine::cmd::smart_art::selected_smart_art(&app.session).is_some() {
+        Some((CompactPane::SmartArt, "smart_art_pane", "Text Pane"))
+    } else if app.session.view.nav_pane {
+        Some((CompactPane::Navigation, "nav_pane", "Navigation"))
+    } else if app.session.view.clipboard_pane {
+        Some((CompactPane::Clipboard, "clipboard_pane", "Clipboard"))
+    } else if app.session.view.styles_pane {
+        Some((CompactPane::Styles, "styles_pane", "Styles"))
+    } else if app.session.view.style_inspector {
+        Some((CompactPane::Inspector, "style_inspector", "Style Inspector"))
+    } else if app.session.view.accessibility_pane {
+        Some((CompactPane::Accessibility, "accessibility_pane", "Accessibility"))
+    } else if app.session.view.alt_text_pane {
+        Some((CompactPane::AltText, "alt_text_pane", "Alt Text"))
+    } else if app.restrict.open {
+        Some((CompactPane::Restrict, "restrict_pane", "Restrict Editing"))
+    } else if app.session.view.comments_pane {
+        Some((CompactPane::Comments, "comments_pane", "Comments"))
+    } else {
+        None
+    };
+    let Some((pane, id, title)) = pane else { return };
+    let size = crate::layout::drawer_size(ctx);
+    let (anchor, offset) = if crate::i18n::current().is_rtl() {
+        (egui::Align2::LEFT_CENTER, egui::vec2(crate::layout::VIEWPORT_MARGIN, 0.0))
+    } else {
+        (egui::Align2::RIGHT_CENTER, egui::vec2(-crate::layout::VIEWPORT_MARGIN, 0.0))
+    };
+    let mut open = true;
+    egui::Window::new(tl!(title))
+        .id(egui::Id::new(("compact_pane", id)))
+        .collapsible(false)
+        .resizable(false)
+        .default_size(size)
+        .max_size(size)
+        .anchor(anchor, offset)
+        .open(&mut open)
+        .show(ctx, |ui| {
+            egui::ScrollArea::vertical().show(ui, |ui| {
+                aligned(ui, align, |ui| match pane {
+                    CompactPane::SmartArt => crate::dialogs_smart_art::text_pane(app, ui),
+                    CompactPane::Navigation => nav(app, ui),
+                    CompactPane::Clipboard => clipboard(app, ui),
+                    CompactPane::Styles => styles(app, ui),
+                    CompactPane::Inspector => inspector(app, ui),
+                    CompactPane::Accessibility => crate::a11y_pane::accessibility(app, ui),
+                    CompactPane::AltText => crate::a11y_pane::alt_text(app, ui),
+                    CompactPane::Restrict => crate::dialogs_review::restrict_pane(app, ui),
+                    CompactPane::Comments => comments(app, ui),
+                });
+            });
+        });
+    if !open {
+        match pane {
+            CompactPane::SmartArt => {
+                let _ = app.run("smartArt.textPane", serde_json::json!({"value": false}));
+            }
+            CompactPane::Navigation => {
+                let _ = app.run("view.navigationPane", serde_json::json!({"value": false}));
+            }
+            CompactPane::Clipboard => {
+                let _ = app.run("edit.clipboardPane", serde_json::json!({"value": false}));
+            }
+            CompactPane::Styles => {
+                let _ = app.run("view.stylesPane", serde_json::json!({"value": false}));
+            }
+            CompactPane::Inspector => {
+                let _ = app.run("view.styleInspector", serde_json::json!({"value": false}));
+            }
+            CompactPane::Accessibility => {
+                let _ = app.run("view.accessibilityPane", serde_json::json!({"value": false}));
+            }
+            CompactPane::AltText => {
+                let _ = app.run("view.altTextPane", serde_json::json!({"value": false}));
+            }
+            CompactPane::Restrict => app.restrict.open = false,
+            CompactPane::Comments => {
+                let _ = app.run("view.commentsPane", serde_json::json!({"value": false}));
+            }
+        }
     }
 }
 

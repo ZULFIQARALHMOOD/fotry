@@ -61,6 +61,7 @@ pub mod icons;
 pub mod ink;
 pub mod keys;
 pub mod keytips;
+pub mod layout;
 pub mod mini_toolbar;
 pub mod objects;
 pub mod options;
@@ -118,6 +119,10 @@ pub struct Services {
     /// apart from `inbox` because a paste only lands in the document when the page is the edit
     /// target (#1349), where a dropped or opened file always lands.
     pub pasted: Option<Inbox>,
+    /// Web: plain text returned asynchronously by a user-requested clipboard read.
+    pub clipboard_paste: Option<ClipboardTextInbox>,
+    /// Web: read the clipboard after a Paste command requests it from a user gesture.
+    pub request_clipboard_paste: Option<Box<dyn Fn()>>,
     /// Web: hand bytes to the browser as a download. An error means no download started (the
     /// browser can't tell the page whether the user then kept the file).
     pub download: Option<Box<dyn Fn(&str, &[u8]) -> Result<(), String>>>,
@@ -218,6 +223,8 @@ pub enum DefaultApp {
 
 /// Files delivered asynchronously.
 pub type Inbox = std::sync::Arc<std::sync::Mutex<Vec<(String, Vec<u8>)>>>;
+/// Plain-text clipboard reads delivered asynchronously by the browser.
+pub type ClipboardTextInbox = std::sync::Arc<std::sync::Mutex<Vec<String>>>;
 
 /// Whether a pasted picture belongs in the document: the page has keyboard focus, and no
 /// Backstage or dialog is open (#1349). A focused text field (comment, Find box) means the page
@@ -802,6 +809,14 @@ impl WordApp {
         // Ctrl+V's paste event carries it (#584), and its HTML and RTF, which egui's paste event
         // doesn't carry (#687).
         let mut params = params;
+        if id == "edit.paste"
+            && params.get("text").is_none()
+            && self.session.clipboard_text.is_empty()
+            && let Some(request) = &self.services.request_clipboard_paste
+        {
+            request();
+            return Ok(json!({"pending": "clipboard"}));
+        }
         if let Some(r) = system_clipboard::fill(self, id, &mut params) {
             return r;
         }
@@ -1866,6 +1881,7 @@ impl WordApp {
         let _ = self.poll_file_dialog();
         self.drain_inbox();
         self.drain_pasted();
+        self.drain_clipboard_pastes();
         self.watch_fonts(ctx);
         let document = self.session.document_id();
         self.session.recovery_tick();
@@ -2039,6 +2055,7 @@ impl WordApp {
         let t0 = now_ms();
         let ctx = ui.ctx().clone();
         i18n::set_current(i18n::Lang::from_pref(&self.ui.language));
+        crate::layout::apply_touch_spacing(&ctx);
         // Animation effects off: egui's scroll areas get a wheel notch whole, not eased in.
         if !self.animations_on() {
             let opts = ctx.options(|o| o.input_options);
@@ -2050,6 +2067,7 @@ impl WordApp {
             ctx.request_repaint();
             return;
         }
+        crate::layout::clear_frame_rects(&ctx);
         let t = theme::Tokens::get(&ctx);
         self.escape_free = self.dialog.is_none() && !self.ui.backstage && self.ui.keytips == keytips::Phase::Off && !egui::Popup::is_any_open(&ctx);
         // Keytips are read before layout so the frame paints the new state; badges paint after
@@ -2211,6 +2229,23 @@ impl WordApp {
                 continue;
             }
             let _ = self.insert_or_change_picture(json!({"data": wordcraft_engine::cmd::insert::base64_encode(&bytes)}));
+        }
+    }
+
+    fn drain_clipboard_pastes(&mut self) {
+        let Some(pasted) = self.services.clipboard_paste.clone() else { return };
+        let texts = std::mem::take(&mut *pasted.lock().unwrap_or_else(|e| e.into_inner()));
+        for text in texts {
+            if text.is_empty() {
+                continue;
+            }
+            if !paste_target(self.canvas.focused, self.ui.backstage, self.dialog.is_some() || self.file_dialog_open()) {
+                log::debug!("browser clipboard text ignored: the document is not the edit target");
+                continue;
+            }
+            if let Err(error) = self.execute("edit.paste", json!({"text": text})) {
+                log::error!("couldn't paste browser clipboard text: {error}");
+            }
         }
     }
 
@@ -6218,6 +6253,38 @@ mod tests {
         a.services.inbox.as_ref().unwrap().lock().unwrap().push(("drop.png".into(), png_bytes([5, 5, 5, 255])));
         a.drain_inbox();
         assert_eq!(object_count(&mut a), 2);
+    }
+
+    #[test]
+    fn browser_clipboard_text_pastes_only_when_the_page_is_the_edit_target() {
+        let mut a = app();
+        let q = ClipboardTextInbox::default();
+        a.services.clipboard_paste = Some(q.clone());
+
+        q.lock().unwrap().push("tablet clipboard".into());
+        a.drain_clipboard_pastes();
+        assert!(body_text(&a).is_empty(), "text is not pasted into a dialog or unfocused editor");
+        assert!(q.lock().unwrap().is_empty(), "the ignored text is not pasted later");
+
+        a.canvas.focused = true;
+        q.lock().unwrap().push("tablet clipboard".into());
+        a.drain_clipboard_pastes();
+        assert_eq!(body_text(&a), "tablet clipboard");
+        assert!(q.lock().unwrap().is_empty());
+    }
+
+    #[test]
+    fn web_paste_command_requests_the_browser_clipboard_when_internal_clipboard_is_empty() {
+        let mut a = app();
+        let requests = std::sync::Arc::new(std::sync::atomic::AtomicUsize::new(0));
+        let requested = requests.clone();
+        a.services.request_clipboard_paste = Some(Box::new(move || {
+            requested.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+        }));
+
+        assert_eq!(a.run("edit.paste", json!({})).unwrap(), json!({"pending": "clipboard"}));
+        assert_eq!(requests.load(std::sync::atomic::Ordering::Relaxed), 1);
+        assert!(body_text(&a).is_empty(), "the asynchronous clipboard read doesn't paste immediately");
     }
 
     fn paste_harness(a: WordApp) -> egui_kittest::Harness<'static, WordApp> {

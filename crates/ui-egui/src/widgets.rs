@@ -7,9 +7,9 @@ use crate::theme::{Tokens, regular};
 use crate::{WordApp, icons};
 
 /// Height of the ribbon content area (without group labels).
-pub const CONTENT_H: f32 = 66.0;
+pub const CONTENT_H: f32 = crate::layout::RIBBON_CONTENT_HEIGHT;
 /// Height of the group title row under the content.
-pub const LABEL_H: f32 = 18.0;
+pub const LABEL_H: f32 = crate::layout::RIBBON_LABEL_HEIGHT;
 /// Large buttons: centre of the 32 px icon, top of the first label line, and the pitch and
 /// height of a label line (`regular(11.5)`; a test checks the font's real line height).
 pub const BIG_ICON_Y: f32 = 18.0;
@@ -165,7 +165,8 @@ fn big_button(ui: &mut Ui, app: &mut WordApp, icon: &str, label: &str, id: &str,
     let galley_w =
         label.split('\n').map(|l| ui.ctx().fonts_mut(|f| f.layout_no_wrap(l.to_string(), regular(11.5), t.text).size().x)).fold(0.0, f32::max);
     let w = (galley_w + 12.0).max(44.0);
-    let (r, resp) = ui.allocate_exact_size(vec2(w, CONTENT_H), Sense::click());
+    let content_h = crate::layout::ribbon_content_height(ui.ctx());
+    let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(w, content_h)), Sense::click());
     keytip_badge(ui, r, id, &label.replace('\n', " "));
     let on = enabled(app, id);
     bg(ui, r, &resp, checked, &t);
@@ -191,7 +192,7 @@ pub fn small(ui: &mut Ui, app: &mut WordApp, icon: &str, label: Option<&str>, ti
     let (label, tip) = (label.map(|l| tl!(l)), tl!(tip));
     let t = Tokens::get(ui.ctx());
     let text_w = label.map(|l| ui.ctx().fonts_mut(|f| f.layout_no_wrap(l.to_string(), regular(11.5), t.text).size().x) + 6.0).unwrap_or(0.0);
-    let (r, resp) = ui.allocate_exact_size(vec2(24.0 + text_w, 22.0), Sense::click());
+    let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(24.0 + text_w, 22.0)), Sense::click());
     keytip_badge(ui, r, id, tip);
     let on = enabled(app, id);
     bg(ui, r, &resp, checked, &t);
@@ -224,9 +225,9 @@ pub fn split(
 ) {
     let tip = tl!(tip);
     let t = Tokens::get(ui.ctx());
-    let (r, resp) = ui.allocate_exact_size(vec2(24.0, 22.0), Sense::click());
+    let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(24.0, 22.0)), Sense::click());
     keytip_badge(ui, r, id, tip);
-    let (ar, aresp) = ui.allocate_exact_size(vec2(11.0, 22.0), Sense::click());
+    let (ar, aresp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(11.0, 22.0)), Sense::click());
     bg(ui, r, &resp, checked, &t);
     bg(ui, ar, &aresp, false, &t);
     let ic = Rect::from_center_size(r.center(), vec2(17.0, 17.0));
@@ -275,7 +276,8 @@ pub fn menu_button(
             .map(|l| ui.ctx().fonts_mut(|f| f.layout_no_wrap(l.to_string(), regular(11.5), t.text).size().x))
             .fold(0.0, f32::max);
         let w = (galley_w + 22.0).max(44.0);
-        let (r, resp) = ui.allocate_exact_size(vec2(w, CONTENT_H), Sense::click());
+        let content_h = crate::layout::ribbon_content_height(ui.ctx());
+        let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(w, content_h)), Sense::click());
         keytip_badge(ui, r, "menu", tip);
         bg(ui, r, &resp, false, &t);
         icons::paint(ui.painter(), Rect::from_center_size(pos2(r.center().x, r.min.y + BIG_ICON_Y), vec2(32.0, 32.0)), icon, c, a);
@@ -288,7 +290,7 @@ pub fn menu_button(
         resp
     } else {
         let text_w = label.map(|l| ui.ctx().fonts_mut(|f| f.layout_no_wrap(l.to_string(), regular(11.5), t.text).size().x) + 6.0).unwrap_or(0.0);
-        let (r, resp) = ui.allocate_exact_size(vec2(24.0 + text_w + 10.0, 22.0), Sense::click());
+        let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(24.0 + text_w + 10.0, 22.0)), Sense::click());
         keytip_badge(ui, r, "menu", tip);
         bg(ui, r, &resp, false, &t);
         icons::paint(ui.painter(), Rect::from_center_size(pos2(r.min.x + 12.0, r.center().y), vec2(17.0, 17.0)), icon, c, a);
@@ -329,19 +331,22 @@ pub fn group_titled(ui: &mut Ui, id_title: &str, title: &str, launcher: Option<&
     let start = ui.cursor().min;
     let inner = ui.vertical(|ui| {
         ui.set_min_width(label_w + if launcher.is_some() { 22.0 } else { 10.0 });
-        let content = ui.allocate_ui_with_layout(vec2(ui.available_width(), CONTENT_H), egui::Layout::left_to_right(egui::Align::Min), |ui| {
+        let content_h = crate::layout::ribbon_content_height(ui.ctx());
+        let content = ui.allocate_ui_with_layout(vec2(ui.available_width(), content_h), egui::Layout::left_to_right(egui::Align::Min), |ui| {
             ui.spacing_mut().item_spacing = vec2(1.0, 1.0);
             add(ui, app);
         });
         #[cfg(test)]
-        if content.response.rect.height() > CONTENT_H + 0.5 {
+        if content.response.rect.height() > content_h + 0.5 {
             TALL_GROUPS.with(|g| g.borrow_mut().push(format!("{id_title}: {:.1}", content.response.rect.height())));
         }
         #[cfg(not(test))]
         let _ = content;
     });
     let r = inner.response.rect;
-    let r = Rect::from_min_max(start, pos2(r.max.x, start.y + CONTENT_H + LABEL_H));
+    let content_h = crate::layout::ribbon_content_height(ui.ctx());
+    let label_h = crate::layout::RIBBON_LABEL_HEIGHT;
+    let r = Rect::from_min_max(start, pos2(r.max.x, start.y + content_h + label_h));
     let title_y = r.max.y - LABEL_H / 2.0;
     ui.painter().text(pos2(r.center().x, title_y), Align2::CENTER_CENTER, title, regular(11.0), t.group_label);
     if let Some(cmd) = launcher {
@@ -357,7 +362,7 @@ pub fn group_titled(ui: &mut Ui, id_title: &str, title: &str, launcher: Option<&
     }
     ui.add_space(5.0);
     let x = ui.cursor().min.x;
-    ui.painter().line_segment([pos2(x, start.y + 4.0), pos2(x, start.y + CONTENT_H + LABEL_H - 4.0)], Stroke::new(1.0, t.border));
+    ui.painter().line_segment([pos2(x, start.y + 4.0), pos2(x, start.y + content_h + label_h - 4.0)], Stroke::new(1.0, t.border));
     ui.add_space(6.0);
 }
 
@@ -680,7 +685,11 @@ fn combo_impl(
         if s.open && !s.matches.is_empty() {
             let matches = s.matches.clone();
             let scroll = reveal.then_some((s.offset, s.view_h));
-            let shown = egui::Area::new(search_id.with("list")).order(egui::Order::Tooltip).fixed_pos(resp.rect.left_bottom()).show(ui.ctx(), |ui| {
+            let popup_width = width + 60.0;
+            let row_height = preview.map_or_else(|| ui.spacing().interact_size.y, |_| COMBO_PREVIEW_ROW_H);
+            let popup_height = (matches.len() as f32 * row_height).min(420.0) + 12.0;
+            let pos = crate::layout::popup_position(resp.rect, vec2(popup_width, popup_height), ui.ctx().content_rect());
+            let shown = egui::Area::new(search_id.with("list")).order(egui::Order::Tooltip).fixed_pos(pos).show(ui.ctx(), |ui| {
                 egui::Frame::popup(ui.style())
                     .show(ui, |ui| {
                         let item = |k: usize| matches.get(k).and_then(|&i| items.get(i));
@@ -743,7 +752,8 @@ fn list_rows<'a>(
 ) -> (Option<String>, f32, f32) {
     let mut out = None;
     let row_h = if preview.is_some() { COMBO_PREVIEW_ROW_H } else { ui.spacing().interact_size.y };
-    let mut area = egui::ScrollArea::vertical().max_height(420.0);
+    let max_height = (ui.ctx().content_rect().height() - 2.0 * crate::layout::VIEWPORT_MARGIN - 16.0).clamp(0.0, 420.0);
+    let mut area = egui::ScrollArea::vertical().max_height(max_height);
     if let (Some(h), Some((offset, view_h))) = (highlight, scroll) {
         let top = h as f32 * (row_h + ui.spacing().item_spacing.y);
         let bottom = top + row_h;
@@ -829,7 +839,7 @@ pub fn primary_button(ui: &Ui, text: impl Into<String>) -> egui::Button<'static>
 /// A frameless 22 px icon button (pane close buttons): ribbon-style hover and press feedback.
 pub fn icon_button(ui: &mut Ui, icon: &str, tip: &str) -> Response {
     let t = Tokens::get(ui.ctx());
-    let (r, resp) = ui.allocate_exact_size(vec2(22.0, 22.0), Sense::click());
+    let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(22.0, 22.0)), Sense::click());
     let st = drawn_state(ui, &resp, false);
     ui.painter().rect_filled(r, CornerRadius::same(4), st.fill);
     icons::paint(ui.painter(), Rect::from_center_size(r.center(), vec2(14.0, 14.0)), icon, t.icon, t.accent);
@@ -855,7 +865,7 @@ fn icon_text_button_with(ui: &mut Ui, icon: &str, text: &str, font: egui::FontId
     let icon_w = 16.0;
     let marker_w = if marker { DROPDOWN + 4.0 } else { 0.0 };
     let size = vec2(pad.x + icon_w + 4.0 + galley.size().x + marker_w + pad.x, galley.size().y.max(icon_w) + 2.0 * pad.y);
-    let (r, resp) = ui.allocate_exact_size(size, Sense::click());
+    let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), size), Sense::click());
     resp.widget_info(|| egui::WidgetInfo::labeled(egui::WidgetType::Button, ui.is_enabled(), text));
     let st = drawn_state(ui, &resp, true);
     let r = r.expand(st.expansion);

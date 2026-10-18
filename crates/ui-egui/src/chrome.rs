@@ -9,7 +9,7 @@ use crate::{WordApp, icons};
 
 fn qat_button(ui: &mut Ui, app: &mut WordApp, icon: &str, tip: &str, id: &str, enabled: bool) -> egui::Response {
     let t = Tokens::get(ui.ctx());
-    let (r, resp) = ui.allocate_exact_size(vec2(26.0, 24.0), Sense::click());
+    let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(26.0, 24.0)), Sense::click());
     if resp.hovered() && enabled {
         ui.painter().rect_filled(r, 4.0, t.hover);
     }
@@ -103,7 +103,7 @@ pub(crate) fn undo_list_footer(n: usize) -> String {
 /// The small arrow beside Undo: opens the list of steps to undo several at once.
 fn undo_list_button(ui: &mut Ui, app: &mut WordApp, enabled: bool) {
     let t = Tokens::get(ui.ctx());
-    let (r, _) = ui.allocate_exact_size(vec2(12.0, 24.0), Sense::hover());
+    let (r, _) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(12.0, 24.0)), Sense::hover());
     let resp = ui.interact(r, undo_list_button_id(), if enabled { Sense::click() } else { Sense::hover() });
     if resp.hovered() && enabled {
         ui.painter().rect_filled(r, 4.0, t.hover);
@@ -224,15 +224,19 @@ impl MacTitleBar {
 }
 
 pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
+    if crate::layout::is_compact(ui.ctx()) {
+        compact_title_bar(app, ui);
+        return;
+    }
     let t = Tokens::get(ui.ctx());
     // macOS: shorter, so the system's traffic lights are centred in it; the tallest controls
     // shrink to keep a margin above and below them.
     let mac = app.integrated_titlebar;
     let bar = app.mac_titlebar;
     let left = if mac { bar.content_left as i8 } else { 8 };
-    let control_h = if mac { 22.0 } else { 26.0 };
-    egui::Panel::top("title_bar")
-        .exact_size(if mac { bar.height } else { 38.0 })
+    let control_h = crate::layout::target_size(ui.ctx(), vec2(if mac { 22.0 } else { 26.0 }, if mac { 22.0 } else { 26.0 })).y;
+    let shown = egui::Panel::top("title_bar")
+        .exact_size(if mac { bar.height } else { crate::layout::target_size(ui.ctx(), vec2(1.0, crate::layout::DESKTOP_TITLE_HEIGHT)).y })
         .frame(egui::Frame::NONE.fill(t.title_bar).inner_margin(egui::Margin { left, right: 10, top: 0, bottom: 0 }))
         .show(ui, |ui| {
             let full = ui.max_rect();
@@ -241,6 +245,7 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
             if drag.drag_started() {
                 ui.ctx().send_viewport_cmd(egui::ViewportCommand::StartDrag);
             }
+
             if drag.double_clicked() {
                 let max = ui.ctx().input(|i| i.viewport().maximized.unwrap_or(false));
                 ui.ctx().send_viewport_cmd(egui::ViewportCommand::Maximized(!max));
@@ -255,7 +260,7 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
                 let on = app.autosaves();
                 let label = if block.is_some() { t.text_dim.gamma_multiply(0.6) } else { t.text_dim };
                 ui.label(egui::RichText::new(tl!("AutoSave")).font(regular(11.5)).color(label));
-                let (r, resp) = ui.allocate_exact_size(vec2(30.0, 16.0), Sense::click());
+                let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(30.0, 16.0)), Sense::click());
                 let (fill, stroke, knob_fill) = match (&block, on) {
                     (Some(_), _) => (t.input.gamma_multiply(0.5), t.border.gamma_multiply(0.7), t.text_dim.gamma_multiply(0.45)),
                     (None, true) => (t.accent, t.accent, t.on_accent),
@@ -294,7 +299,7 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
                     }
                     ui.add_space(8.0);
                     if app.ui.show_discord {
-                        let (r, resp) = ui.allocate_exact_size(vec2(84.0, 22.0), Sense::click());
+                        let (r, resp) = ui.allocate_exact_size(crate::layout::target_size(ui.ctx(), vec2(84.0, 22.0)), Sense::click());
                         let hovered = resp.hovered();
                         ui.painter().rect_filled(r, 11.0, if hovered { t.accent_hover } else { t.accent });
                         icons::paint(
@@ -399,12 +404,70 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
                 );
             }
         });
+    crate::layout::record_rect(ui.ctx(), "title_bar", shown.response.rect);
+}
+
+fn compact_title_bar(app: &mut WordApp, ui: &mut Ui) {
+    let t = Tokens::get(ui.ctx());
+    let title = if app.has_document() {
+        let state = if app.session.dirty {
+            tl!("Edited")
+        } else if app.session.path.is_some() {
+            tl!("Saved")
+        } else {
+            tl!("Not saved")
+        };
+        format!("{} — {state}", app.title_stem())
+    } else {
+        "WordCraft".to_string()
+    };
+    let shown = egui::Panel::top("title_bar")
+        .exact_size(crate::layout::COMPACT_TITLE_HEIGHT)
+        .frame(egui::Frame::NONE.fill(t.title_bar).inner_margin(egui::Margin::symmetric(4, 0)))
+        .show(ui, |ui| {
+            ui.horizontal_centered(|ui| {
+                let button_size = crate::layout::target_size(ui.ctx(), vec2(crate::layout::TOUCH_TARGET, crate::layout::TOUCH_TARGET));
+                let (rect, response) = ui.allocate_exact_size(button_size, Sense::click());
+                icons::paint(ui.painter(), Rect::from_center_size(rect.center(), vec2(20.0, 20.0)), "more", t.icon, t.accent);
+                egui::Popup::menu(&response).show(|ui| {
+                    for (id, label) in
+                        [("file.open", "Open"), ("file.save", "Save"), ("edit.undo", "Undo"), ("edit.redo", "Redo"), ("insert.table", "Insert Table")]
+                    {
+                        let enabled = qat_enabled(app, id);
+                        if ui.add_enabled(enabled, egui::Button::new(tl!(label))).clicked() {
+                            let _ = app.run(id, json!({}));
+                            app.canvas.want_focus = true;
+                            ui.close();
+                        }
+                    }
+                    ui.separator();
+                    if ui.button(tl!("Account")).clicked() {
+                        let _ = app.run("ui.backstage", json!({"value": true, "page": "options", "pane": "general"}));
+                        ui.close();
+                    }
+                });
+                let title_width = (ui.available_width() - button_size.x).max(0.0);
+                let title_response = ui.add_sized(
+                    vec2(title_width, button_size.y),
+                    egui::Label::new(egui::RichText::new(&title).color(t.text)).truncate().sense(Sense::click()),
+                );
+                if title_response.on_hover_text(&title).clicked() {
+                    let _ = app.run("file.rename", json!({}));
+                }
+                let (rect, response) = ui.allocate_exact_size(button_size, Sense::click());
+                icons::paint(ui.painter(), Rect::from_center_size(rect.center(), vec2(20.0, 20.0)), "search", t.icon, t.accent);
+                if response.on_hover_text(tl!("Search commands and help")).clicked() {
+                    let _ = app.run("tools.search", json!({}));
+                }
+            });
+        });
+    crate::layout::record_rect(ui.ctx(), "title_bar", shown.response.rect);
 }
 
 pub fn status_bar(app: &mut WordApp, ui: &mut Ui) {
     let t = Tokens::get(ui.ctx());
     egui::Panel::bottom("status")
-        .exact_size(26.0)
+        .exact_size(crate::layout::target_size(ui.ctx(), vec2(1.0, crate::layout::STATUS_HEIGHT)).y)
         .frame(
             egui::Frame::NONE
                 .fill(t.status_bar)

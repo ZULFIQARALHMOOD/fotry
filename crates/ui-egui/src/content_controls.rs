@@ -163,15 +163,17 @@ pub fn popup(app: &mut WordApp, ctx: &egui::Context) {
     let t = Tokens::get(ctx);
     let at_json = serde_json::to_value(&at).unwrap_or_default();
     let mut close = false;
-    let area = egui::Area::new(egui::Id::new("content_control_popup"))
-        .order(egui::Order::Foreground)
-        .fixed_pos(pos2(anchor.max.x - 180.0, anchor.max.y + 2.0));
+    let max_width = (ctx.content_rect().width() - 2.0 * crate::layout::VIEWPORT_MARGIN).clamp(0.0, 260.0);
+    let popup_size = egui::vec2(max_width, (ctx.content_rect().height() - 2.0 * crate::layout::VIEWPORT_MARGIN).min(300.0));
+    let popup_pos = crate::layout::popup_position(anchor, popup_size, ctx.content_rect());
+    let area = egui::Area::new(egui::Id::new("content_control_popup")).order(egui::Order::Foreground).fixed_pos(popup_pos);
     let shown = area.show(ctx, |ui| {
         egui::Frame::popup(ui.style()).fill(t.menu).show(ui, |ui| {
-            ui.set_min_width(180.0);
+            ui.set_min_width(max_width.min(180.0));
+            ui.set_max_width(max_width);
             match &r.control.kind {
                 ControlKind::ComboBox { items, .. } | ControlKind::DropDown { items, .. } => {
-                    egui::ScrollArea::vertical().max_height(260.0).show(ui, |ui| {
+                    egui::ScrollArea::vertical().max_height((popup_size.y - 12.0).max(0.0)).show(ui, |ui| {
                         for (i, item) in items.iter().enumerate() {
                             if ui.selectable_label(false, &item.display).clicked() {
                                 let _ = app.run("developer.chooseItem", json!({"at": at_json, "index": i}));
